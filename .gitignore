@@ -28,6 +28,7 @@
 
 
 node_modules/
+/public/assets
 bundle.js
 bundle.js.map
 .byebug_history

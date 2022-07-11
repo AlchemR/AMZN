@@ -1,0 +1,18 @@
+
+.cart-text{
+  color: black;
+}
+
+.cart-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cart-img{
+  object-fit: contain;
+  height: 300px;
+  width: 200px;
+  z-index: -1;
+}
+
