@@ -1,0 +1,28 @@
+.outercard{
+  width: 150px;
+  height: 300px;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.innercard{
+  width: 100%;
+  object-fit: contain;
+  border: 2px dotted orange;
+  align-items: center;
+  justify-content: center;
+}
+
+.imagetop{
+  width: 50px;
+  height: 50px;
+  border: 2px dotted green;
+  align-self: center;
+}
+
+.details{
+  width: 75px;
+  height: 20px;
+  border: 2px dotted blue;
+}

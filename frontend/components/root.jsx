@@ -5,9 +5,6 @@ import App from "./App";
 
 const Root = ({ store }) => (
   <Provider store={store}>
-    {/* {console.log(store.getState().session.id)}
-    {console.log(store.getState().entities.users)}
-    {console.log(store.getState().entities.users[store.getState().session.id].account_fname)} */}
     <HashRouter>
       <App />
     </HashRouter>

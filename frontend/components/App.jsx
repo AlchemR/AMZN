@@ -10,7 +10,7 @@ import EmptyCart from './basket/empty_cart';
 import HomePage from '../homepage/homepage';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import AccountDetails from './account/account_info';
-
+import ProductIndex from './products/Product_index';
 
 const App = (currentUsername) => (
   
@@ -27,6 +27,7 @@ const App = (currentUsername) => (
     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
     <Route exact path="/greeting" component={GreetingContainer}/>
     <Route exact path='/account' component={AccountDetails}/>
+    <Route exact path='/products' component={ProductIndex}  />
     <Route exact path="/cart" component={EmptyCart}/>
     <Route path='/' component={HomePage}/>
     </Switch>
