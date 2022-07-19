@@ -21,8 +21,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry-rails'
-gem 'annotate'
+gem 'annotate', ">=2.5.0"
 gem 'bcrypt'
+gem "aws-sdk-s3"
 
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

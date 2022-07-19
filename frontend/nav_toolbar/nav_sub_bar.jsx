@@ -1,14 +1,15 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 const NavSubBar =  () => {
   return( 
     <div className="nav-sub">
-
+      <Link to={`/products`}>
       <div className="sub-1 all-dropdown">
       <div className="dropdown-ico">&#9776;</div>
-      <div className="all-text">All</div>
+          <div className="all-text">All</div>
       </div>
+      </Link>
 
       <div className="sub-2 best-sellers">Best Sellers</div>
       <div className="sub-3 amzn-basics" >AMZN Basics</div>

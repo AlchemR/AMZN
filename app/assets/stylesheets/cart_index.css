@@ -1,0 +1,45 @@
+.checkout-title{
+  font-size: large;
+}
+
+
+.checkout-subheader{
+display: flex;
+justify-content: space-between;
+
+}
+
+.ledger-items-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ledger-item-title{
+  font-size: x-large;
+  font-weight: 600;
+}
+
+.ledger-item-image{
+width: 250px;
+height: 150px;
+object-fit: contain;
+border: black solid 2px;
+}
+
+.ledger-descriptions{
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+}
+.ledger-item-price{
+font-weight: 700;
+display: flex;
+flex-direction: column;
+
+align-items: flex-end;
+}
+
+.text-price{
+  
+}

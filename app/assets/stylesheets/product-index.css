@@ -1,0 +1,32 @@
+
+
+.addcart{
+  margin-top: 60%;
+  z-index: 2;
+  width: 80%;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #a88734 #9c7e31 #846a29;
+ background: linear-gradient(180deg, #f7dfa5, #f0c14b);
+ height: 35px;
+}
+
+.product-index {
+  display: grid;
+  row-gap: 20px;
+  column-gap: 20px;
+  grid-template-columns: repeat(auto-fill, 250px);
+justify-items: center;
+}
+
+
+.outercard {
+  width: 200px;
+  height: 300px;
+  border: 2px solid black;
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

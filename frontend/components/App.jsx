@@ -7,10 +7,12 @@ import LogInFormContainer from './session_form/login_form_container';
 import NavBar from '../nav_toolbar/nav_bar';
 import NavSubBar from '../nav_toolbar/nav_sub_bar';
 import EmptyCart from './basket/empty_cart';
+import BasketSplash from './basket/basketsplash';
 import HomePage from '../homepage/homepage';
 import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import AccountDetails from './account/account_info';
 import ProductIndex from './products/Product_index';
+import ProductShowDetails from './products/Product_details_show';
 
 const App = (currentUsername) => (
   
@@ -28,7 +30,8 @@ const App = (currentUsername) => (
     <Route exact path="/greeting" component={GreetingContainer}/>
     <Route exact path='/account' component={AccountDetails}/>
     <Route exact path='/products' component={ProductIndex}  />
-    <Route exact path="/cart" component={EmptyCart}/>
+    <Route exact path='/products/:id' component={ProductShowDetails} />
+    <Route exact path="/cart" component={BasketSplash}/>
     <Route path='/' component={HomePage}/>
     </Switch>
   </div>

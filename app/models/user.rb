@@ -13,6 +13,9 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
+    has_one :carts, class_name: "Cart", foreign_key: "user_id"
+
+    has_many :cart_items, through: :carts, source: :cartLedgers
 
     after_initialize :ensure_session_token
 

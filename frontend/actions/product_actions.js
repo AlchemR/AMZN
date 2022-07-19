@@ -10,15 +10,12 @@ const receiveProducts = products => {
 const receiveProduct = product => {
   return {type: RECEIVE_PRODUCT, product: product}
 }
-window.requestproducts = requestProducts
+
 export const requestProducts = data => dispatch => {
   return ProductAPIUtils.fetchProducts(data).then(products => dispatch(receiveProducts(products))) 
 }
 
-
-// export const requestProduct = data => dispatch => {
-//   return ProductAPIUtils.fetchProduct(data)
-// }
-
-// maybe it's  ID instead of data?
-// maybe that makes the controller show by ID, params[:id]
+export const requestProduct = id => dispatch => {
+  // console.log("do we hit here on submit")
+  return ProductAPIUtils.fetchProduct(id).then(product => dispatch(receiveProduct(product)))
+}

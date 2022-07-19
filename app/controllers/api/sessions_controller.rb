@@ -3,9 +3,11 @@ class Api::SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
     if @user
+      # @cart = @user.carts
+      # @cart_items = @user.carts.cartLedgers
       login!(@user)
       render "api/users/show"
-      # redirect_to users_path
+      # render :show
     else
       render json: ["Invalid email/password"], status: 401
     end

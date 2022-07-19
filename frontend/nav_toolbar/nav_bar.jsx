@@ -1,22 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-// import Amazon_logo from '../../app/assets/images/Amazon_logo.png'
+import Amazon_logo from '../../app/assets/images/Amazon_logo.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { requestCart } from "../actions/cart_actions"
 
 
 
-const NavBar = (props) => {
+class NavBar extends React.Component{
+constructor(props){
+  super(props)
+}
+
+// const NavBar = (props) => {
   // {let guest = "Guest"}
-  // {console.log(this)}
-  // {console.log(guest)}
-    // (getState().session.id) ? (guest = window.getState().users.currentUser.username) : (guest = "Guest")
-    // {}
+componentDidMount(){
+  console.log("didmount navbar", typeof this.props.cartId !== "string" )
+  console.log("didmount navbar cartid", this.props.cartId)
+  console.log("didmount navbar undefined", this.props.cartId !== undefined)
+  if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined ) { this.props.requestCart(this.props.cartId) }
+}
+
+
+  render(){
+    { if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined ) {this.props.requestCart(this.props.cartId), console.log("navbar render header",)}}
+    {console.log("render", this.props.cart)}
+
   return(
   <div className="navbar-header">
-    <Link to='/'>
-
-        <div className="navbar-left-logo" >logo image here</div>
-      </Link>
+    {console.log("navbarheader",this.props)}
+          <Link to='/'>
+        <div className="navbar-left-logo" ><img className="navbar-left-logo" src={Amazon_logo} alt="" /></div> 
+         </Link>
         {/* <img src="../../../app/assets/images/Amazon logo.png"  className="header-logo" alt="" /> */}
         {/* <img src={Amazon_logo} className="header-logo" alt="" />
         <Image src={Amazon_logo} className="header-logo" /> */}
@@ -29,10 +44,9 @@ const NavBar = (props) => {
           <div className="navbar-right account-1">
             
             
-            <Link to="/login"><span className="navbar-right line-1">Welcome {props.currentUser}</span></Link>
+          <Link to="/login"><span className="navbar-right line-1">Welcome {this.props.currentUser}</span></Link>
             <span className="navbar-right line-2">login/<Link to="/greeting">logout</Link></span>
-          
-          </div> 
+            </div> 
         
             <div className="navbar-right account-2">
               <span className="navbar-right line-1">Returns</span>
@@ -48,8 +62,8 @@ const NavBar = (props) => {
 
           <div className="navbar-right account-4">
             <Link to="/cart" >
-              <span className="navbar-right cart-1">&#128722; </span>
-              <span className="navbar-right line-2">0</span> 
+            <span className="navbar-right line-2">{this.props.cartCount}</span> 
+            <span className="navbar-right cart-1"><FontAwesomeIcon icon="fa-light fa-cart-shopping" /> &#128722;</span>
           </Link>
         </div>
 
@@ -59,16 +73,21 @@ const NavBar = (props) => {
   </div>
 
   )
-}
-
+  }} 
 
 const mapStateToProps = ( state ) => {
-  return (state.entities.users[state.session.id]) ? {currentUser: state.entities.users[state.session.id].account_fname} : {currentUser: "guest"} 
+  console.log("MSTP navbar",state),
+  console.log("MSTP navbar2", state.entities)
+  return  (state.entities.cart && state.entities.users[state.session.id]) ? { 
+    currentUser: state.entities.users[state.session.id].account_fname, 
+    cartId: state.session.cart , 
+    cartCount: state.entities.cart.cartCount
+    } : {currentUser: "guest"} 
   
 };
 
 const mapDispatchToProps = dispatch =>({
-
+  requestCart: (cartId) => dispatch(requestCart(cartId)),
 })
 
 

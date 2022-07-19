@@ -6,7 +6,6 @@ const productReducer = (oldstate = {}, action ) =>{
 
   switch (action.type) {
     case RECEIVE_PRODUCTS:
-      console.log("products reducer receive products",action.products)
       return action.products
       
       case RECEIVE_PRODUCT:

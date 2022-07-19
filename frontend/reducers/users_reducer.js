@@ -10,7 +10,8 @@ const usersReducer = (state = {}, action) => {
       // return Object.assign({}, state, { [action.currentUser.id]: action.currentUser });
       // return Object.assign({}, state, { [action.currentUser.id]: action.currentUser });
       nextstate[action.currentUser.id] = action.currentUser
-      nextstate["currentUser"] = action.currentUser
+      console.log("user_reducers", action)
+      // nextstate["currentUser"] = action.currentUser
       return nextstate
     default:
       return state;

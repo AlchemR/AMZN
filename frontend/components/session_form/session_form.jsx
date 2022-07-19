@@ -16,6 +16,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
+    
     this.props.processForm(user);
   }
 
@@ -53,12 +54,12 @@ handleContinue(e){
               <div className="login-form">
                 <br />
               <label > <span className='form-text username'> Email: </span>
-                  <input type="text" value={this.state.username} onChange={this.update('email')} className="login-input input" />
+                  <input type="text" value={this.state.email} onChange={this.update('email')} className="login-input input" />
                 </label>
               {/* sign up toggle display */}
               <div className={ (this.state.signupshow) ? (`display-true`) : (`display-none`) } >
                 <label> <span className='form-text email'>  Username: </span>
-              <input type="text" value={this.state.email} onChange={this.update('username')} className="login-input input" />
+              <input type="text" value={this.state.username} onChange={this.update('username')} className="login-input input" />
                 </label>
                 <label> <span className='form-text first-name'> First Name: </span>
               <input type="text" value={this.state.account_fname} onChange={this.update('account_fname')} className="login-input input" />

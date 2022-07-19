@@ -4,6 +4,9 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
+      @user.carts = Cart.create!( user_id: @user.id)
+      # @user.cart = cart.create(cart_params)
+      # placeholder to remind to add associations to cart and user, user has many, cart belongs to user
       login!(@user)
       render "api/users/show"
     else

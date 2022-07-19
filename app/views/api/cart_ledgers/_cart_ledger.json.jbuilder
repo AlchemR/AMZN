@@ -1,0 +1,1 @@
+json.extract! cart_ledger, :product_id, :quantity, :cart_id
