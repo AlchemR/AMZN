@@ -32,7 +32,7 @@ if (this.props.product) {this.state = {
       }
       console.log("product", product)
       console.log("quantity typeof", typeof tempnum)
-      if (productexists) { this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: product.id }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 1000)) } else { this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 1000)) }
+      if (productexists) { this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: product.id }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 10)) } else { this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 10)) }
       console.log("handle add to cart",this.state)
       // this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(this.props.requestCart(cartID))
     }

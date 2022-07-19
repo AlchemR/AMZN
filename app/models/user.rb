@@ -13,11 +13,16 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
+  # validates presence :username, :password
+    validates :email, :account_fname, :account_lname, presence: true
+    validates :email, :username, uniqueness:true
+    validates :password, length: { minimum: 3}, allow_nil: true 
+
     has_one :carts, class_name: "Cart", foreign_key: "user_id"
-
     has_many :cart_items, through: :carts, source: :cartLedgers
-
     after_initialize :ensure_session_token
+
+    attr_reader :password
 
     def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

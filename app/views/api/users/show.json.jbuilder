@@ -23,12 +23,15 @@ json.carts do
   # vs @current_cart
   json.set! "currentCart" do 
   # json.set! @user.carts.id do 
+  @user.carts.cartLedgers 
     @user.carts.cartLedgers.each do |cart_item|
       json.set! cart_item.id do
         json.extract! cart_item, :id, :product_id, :quantity, :cart_id
         # json.partial! 'api/cart_ledger/cart_ledger', cart_ledger: cart_item
       end
     end
+
+
   end
 end
 

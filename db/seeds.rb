@@ -22,7 +22,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!("cart_ledgers")
 # do this for all tables and future tables
 
 u1 = User.create!({  username: "bob", account_fname: "bob1", account_lname: "bob2", email: "bob@bob", password: "123" })
-u2 = User.create!({  username: "Guest", account_fname: "Demo_User", account_lname: "bob1", email: "bob@bob1", password: "123" })
+u2 = User.create!({  username: "Demo_User", account_fname: "Demo", account_lname: "_User", email: "Demo@user.com", password: "12345678" })
 
 p1 = Product.create({  title: 'Acer SB220Q bi 21.5 Inches Full HD (1920 x 1080)', description: "IPS Ultra-Thin Zero Frame Monitor (HDMI & VGA Port), Black", details_description_array: [ "Personal", "gaming" ,"Refresh Rate",  "75 Hz" , "Brand", "Acer" , "Screen Size", "21.5 Inches" , "Special Feature", "Frameless"], detailed_description: "computer monitor"  , additional_details:["21.5 inches Full HD (1920 x 1080) widescreen IPS display", "And Radeon free sync technology. No compatibility for VESA Mount" ,"Refresh rate: 75 hertz - Using HDMI port" , "Zero-frame design; Ultra-thin; 4ms response time; IPS panel", "Ports: 1 x HDMI & 1 x VGA" ,  "Aspect ratio - 16:9. Color supported - 16.7 million colors. Brightness - 250 nit" , "Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree" , "75 hertz" ] , price: 99.99, categories: ['electronics', 'computers & accessories', 'monitors', discounts:[ "10% 0ff", "15% off", "25% off" ], seller_id: 1, in_stock: :true, inventory_count: 10 ] } )
 
@@ -38,6 +38,7 @@ p5 = Product.create( {  title: 'book5', description: "its a book", detailed_desc
 # c2 = Cart.create!({ user_id: -1 }) # guest user ID?
 # will need to start with cart_ledger_id's blank, when add to cart, push the ledgerId to the cart's recordkeeping.  this is hopefully for transaction history
 c11 = Cart.create!({user_id: u1.id})
+c12 = Cart.create!({user_id: u2.id })
 
 c2 = CartLedger.create!({ product_id: p1.id , quantity: 4, cart_id: c11.id})
 c3 = CartLedger.create!({ product_id: p2.id, quantity: 2, cart_id: c11.id})

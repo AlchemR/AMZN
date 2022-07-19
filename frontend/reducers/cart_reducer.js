@@ -21,8 +21,8 @@ const cartReducer = (oldstate = {}, action) => {
       // nextstate["currentCart"] = action.currentUser.carts
 
 console.log("receive user carts reducer",action)
-
-      return action.currentUser.carts.currentCart
+      if (action.currentUser.currentCart) {return action.currentUser.currentCart} else {return {}}
+      
       // return action.currentUser.carts
         // ????
     case RECEIVE_LEDGER:
