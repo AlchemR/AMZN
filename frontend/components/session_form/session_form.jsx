@@ -24,7 +24,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     console.log("user",user)
-    this.props.processForm(user).then( console.log("afterform", this))
+    this.props.processForm(user)
       // () => setTimeout(function () { return <Redirect to={'/'} /> }.bind(this), 2000))
   }
 
@@ -35,34 +35,19 @@ demoUser(e){
 
   let email = "Demo@user.com"
   let password = "12345678"
-debugger
+
 let index = 0; 
 
 this.demo = setInterval(() => {
   this.setState({ email: index < password.length ? (this.state.email.concat(email[index])) : (email), password: index < password.length ? (this.state.password.concat(this.state.password[index])) : (password) })
   index++
-  if (index > 15) { setTimeout(function () { this.props.processForm({ password: '12345678', email: 'Demo@user.com' }) }.bind(this), 100); clearInterval(this.demo)}
+  if (index > 15) { setTimeout(function () { this.props.processForm({ password: '12345678', email: 'Demo@user.com' }) }.bind(this), 1000); clearInterval(this.demo)}
 
 }, 100);  
 
 
 }
 
-  // demoUser(e) {
-  //   e.preventDefault();
-
-  //   this.setState({ email: "", password: "" })
-
-  //   let email = "Demo@user.com"
-  //   let password = "12345678"
-  //   debugger
-  //   for (let index = 0; index < 15; index++) {
-  //     setTimeout(function () { this.setState({ email: index < password.length ? (this.state.email.concat(email[index])) : (email), password: index < password.length ? (this.state.password.concat(this.state.password[index])) : (password) }) }.bind(this), 500)
-  //     index++
-  //   }
-
-  //   setTimeout(function () { this.props.processForm({ password: '12345678', email: 'Demo@user.com' }) }.bind(this), 4000)
-  // }
 
   renderErrors() {
     return (
