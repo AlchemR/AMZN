@@ -5,7 +5,6 @@ export const fetchLedgers = () => {
   })
 }
 
-
 export const fetchLedger = ledgerId => {
   return $.ajax({
     method: "GET",
@@ -22,7 +21,6 @@ export const createLedger = cart_ledger => {
 }
 
 export const updateLedger = cart_ledger => {
-  console.log("do we hit utils before error")
   return $.ajax ({
     method: "PATCH",
     url: `/api/cart_ledgers/${cart_ledger.id}`,

@@ -2,11 +2,10 @@
 #
 # Table name: carts
 #
-#  id             :bigint           not null, primary key
-#  cart_ledger_id :integer
-#  user_id        :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id         :bigint           not null, primary key
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
     # t.integer "product_id"
     # t.integer "quantity"

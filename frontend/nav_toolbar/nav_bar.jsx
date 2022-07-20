@@ -15,20 +15,20 @@ constructor(props){
 // const NavBar = (props) => {
   // {let guest = "Guest"}
 componentDidMount(){
-  console.log("didmount navbar", typeof this.props.cartId !== "string" )
-  console.log("didmount navbar cartid", this.props.cartId)
-  console.log("didmount navbar undefined", this.props.cartId !== undefined)
+  // console.log("didmount navbar", typeof this.props.cartId !== "string" )
+  // console.log("didmount navbar cartid", this.props.cartId)
+  // console.log("didmount navbar undefined", this.props.cartId !== undefined)
   if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined ) { this.props.requestCart(this.props.cartId) }
 }
 
 
   render(){
     { if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined ) {this.props.requestCart(this.props.cartId), console.log("navbar render header",)}}
-    {console.log("render", this.props.cart)}
+    // {console.log("render", this.props.cart)}
 
   return(
   <div className="navbar-header">
-    {console.log("navbarheader",this.props)}
+    {/* {console.log("navbarheader",this.props)} */}
           <Link to='/'>
         <div className="navbar-left-logo" ><img className="navbar-left-logo" src={Amazon_logo} alt="" /></div> 
          </Link>
@@ -63,7 +63,8 @@ componentDidMount(){
           <div className="navbar-right account-4">
             <Link to="/cart" >
             <span className="navbar-right line-2">{this.props.cartCount}</span> 
-            <span className="navbar-right cart-1"><FontAwesomeIcon icon="fa-light fa-cart-shopping" /> &#128722;</span>
+            <span className="navbar-right cart-1"> &#128722;</span>
+            {/* <FontAwesomeIcon icon="fa-light fa-cart-shopping" /> */}
           </Link>
         </div>
 
@@ -76,8 +77,8 @@ componentDidMount(){
   }} 
 
 const mapStateToProps = ( state ) => {
-  console.log("MSTP navbar",state),
-  console.log("MSTP navbar2", state.entities)
+  // console.log("MSTP navbar",state),
+  // console.log("MSTP navbar2", state.entities)
   return  (state.entities.cart && state.entities.users[state.session.id]) ? { 
     currentUser: state.entities.users[state.session.id].account_fname, 
     cartId: state.session.cart , 

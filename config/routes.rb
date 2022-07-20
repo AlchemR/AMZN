@@ -17,6 +17,12 @@
 #                  api_cart GET    /api/carts/:id(.:format)                                                                 api/carts#show {:format=>:json}
 #                           PATCH  /api/carts/:id(.:format)                                                                 api/carts#update {:format=>:json}
 #                           PUT    /api/carts/:id(.:format)                                                                 api/carts#update {:format=>:json}
+#               api_reviews GET    /api/reviews(.:format)                                                                   api/reviews#index {:format=>:json}
+#                           POST   /api/reviews(.:format)                                                                   api/reviews#create {:format=>:json}
+#                api_review GET    /api/reviews/:id(.:format)                                                               api/reviews#show {:format=>:json}
+#                           PATCH  /api/reviews/:id(.:format)                                                               api/reviews#update {:format=>:json}
+#                           PUT    /api/reviews/:id(.:format)                                                               api/reviews#update {:format=>:json}
+#                           DELETE /api/reviews/:id(.:format)                                                               api/reviews#destroy {:format=>:json}
 #                      root GET    /                                                                                        static_pages#root
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
@@ -33,6 +39,7 @@ Rails.application.routes.draw do
       resources :products, only: [:index, :show] 
       resources :cart_ledgers, only: [:index, :show, :create, :update, :destroy]
       resources :carts, only: [:index, :show, :create, :update]
+      resources :reviews, only: [:index, :show, :create, :update, :destroy]
       # check plurality if 404
     end
 

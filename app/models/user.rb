@@ -18,8 +18,20 @@ class User < ApplicationRecord
     validates :email, :username, uniqueness:true
     validates :password, length: { minimum: 3}, allow_nil: true 
 
-    has_one :carts, class_name: "Cart", foreign_key: "user_id"
-    has_many :cart_items, through: :carts, source: :cartLedgers
+    has_one :carts, 
+    primary_key: :id,
+    class_name: "Cart", 
+    foreign_key: "user_id"
+
+    has_many :cart_items, 
+    through: :carts, 
+    source: :cartLedgers
+    
+    has_many :reviews, 
+    primary_key: :id, 
+    class_name: "Review", 
+    foreign_key: "user_id"
+   
     after_initialize :ensure_session_token
 
     attr_reader :password

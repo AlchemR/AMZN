@@ -36,6 +36,6 @@ export const updateLedger = ledger => dispatch =>{
 }
 
 export const deleteLedger = ledgerId => dispatch =>{
-  return LedgerAPIUtils.deleteLedger(ledgerId).then( () => dispatch(receiveLedger(ledgerId)))
+  return LedgerAPIUtils.deleteLedger(ledgerId).then( () => dispatch(removeLedger(ledgerId)))
 }
 

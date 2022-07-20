@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_18_213552) do
+ActiveRecord::Schema.define(version: 2022_07_19_223400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,18 @@ ActiveRecord::Schema.define(version: 2022_07_18_213552) do
     t.text "discounts", default: [], array: true
     t.boolean "in_stock"
     t.integer "inventory_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+    t.string "review_header"
+    t.string "review_author"
+    t.integer "rating"
+    t.text "review_body"
+    t.boolean "verified_purchase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

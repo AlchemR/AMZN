@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom"
 import { requestProduct } from "../../actions/product_actions"
 import { createLedger, updateLedger } from "../../actions/cart_ledger_actions"
 import { requestCart } from '../../actions/cart_actions'
+import ReviewDetail from '../reviews/review_detail'
 
 class ProductShowDetails extends React.Component {
   constructor(props){
@@ -30,10 +31,10 @@ if (this.props.product) {this.state = {
       for (let index = 0; index < this.props.tempcart.length; index++) {
         if (this.props.tempcart[index].product_id == itemID) { productexists = true, tempnum = this.props.tempcart[index].quantity }
       }
-      console.log("product", product)
-      console.log("quantity typeof", typeof tempnum)
+      // console.log("product", product)
+      // console.log("quantity typeof", typeof tempnum)
       if (productexists) { this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: product.id }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 10)) } else { this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 10)) }
-      console.log("handle add to cart",this.state)
+      // console.log("handle add to cart",this.state)
       // this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(this.props.requestCart(cartID))
     }
 
@@ -52,7 +53,7 @@ if (this.props.product) {this.state = {
       
     <div className="product-details-main">
         <div className="history-nav"> 
-          <NavLink to={'/products'}> <span onClick={console.log("goback")} > {"<"} {/* placeholder for arrow icons */} back to results</span></NavLink>
+          <NavLink to={'/products'}> <span onClick={() => console.log("goback")} > {"<"} {/* placeholder for arrow icons */} back to results</span></NavLink>
           
           <span>"sponsored"</span>
         </div>
@@ -82,7 +83,7 @@ if (this.props.product) {this.state = {
 
           <div className="qty-dropdown">
   
-  {console.log("detailshow",product)}
+  {/* {console.log("detailshow",product)} */}
 
               <form onSubmit={this.handleAddToCart(product.id, cartId, product)} >
               {/* <select id="quantity" name="quantity" value={this.state.quantity} onChange={this.handleQuantity} className="dropdown" > */}
@@ -112,6 +113,8 @@ if (this.props.product) {this.state = {
 
          </div>
         
+        <ReviewDetail product={product} />
+
     </div>
       )
     }
@@ -120,7 +123,7 @@ if (this.props.product) {this.state = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  console: console.log("product details show", state, ownProps),
+  // console: console.log("product details show", state, ownProps),
   product: state.entities.products[ownProps.match.params.id],
   tempcart: Object.values(state.entities.cart),
   cartId: state.session.cart
