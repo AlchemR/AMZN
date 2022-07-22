@@ -36,7 +36,7 @@ const App = (currentUsername) => (
     <Route exact path='/products/:id' component={ProductShowDetails} />
     {/* <Route exact path='/products/:id/editreview' component={EditReview} /> */}
     <Route exact path='/products/:productId/createreview' component={CreateReview} />
-    <Route exact path='/products/:productId/editreview' component={EditReviewFull} />
+    {/* <Route exact path='/products/:productId/editreview' component={EditReviewFull} /> */}
     <Route exact path="/cart" component={BasketSplash}/>
     <Route path='/' component={HomePage}/>
     </Switch>

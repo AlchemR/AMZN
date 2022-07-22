@@ -110,7 +110,7 @@ p4 = Product.create({
   seller_id: u3.id,  
   in_stock: :true,  
   inventory_count: 2  })
-p4.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/71j7S95OjpL._AC_SL1500_.jpg'), filename: 'Computer monitor4.jpg' )
+p4.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/71j7S95OjpLACSL1500.jpg'), filename: 'Computer monitor4.jpg' )
 
 p5 = Product.create({
   title: 'UPERFECT Y Portable Monitor Freestanding Touchscreen, 15.6''FHD 1080P IPS Screen with Adjust Kickstand,',  
@@ -139,7 +139,7 @@ p6 = Product.create({
   seller_id: u5.id,  
   in_stock: :true,  
   inventory_count: 22  })
-p6.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/61--xSgNcQL._AC_SL1000_.jpg'), filename: 'Television1.jpg' )
+p6.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/61xSgNcQLACSL1000.jpg'), filename: 'Television1.jpg' )
 
 p7 = Product.create({
   title: ' Amazon Fire TV 55" 4-Series 4K UHD smart TV ',  
