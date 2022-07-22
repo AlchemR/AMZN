@@ -3,20 +3,24 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { createReview } from "../../actions/review_actions";
 import { requestProduct } from '../../actions/product_actions'
+import ProductSingleCard from '../products/product_single_card'
+import { Route } from "react-router-dom";
 
-class CreateReview extends React.Component {
+class EditReviewFull extends React.Component {
   constructor(props) {
     super(props)
     console.log("create review constructor", this)
-    debugger
-    this.state = {
-      user_id: props.user.id,
-      product_id: props.productId,
-      review_header: '',
-      review_body: '',
-      review_author: props.user.account_fname,
-      rating: 0,
-      verified_purchase: true
+
+    if (!this.state) {
+      this.state = {
+        user_id: props.user.id,
+        product_id: props.productId,
+        review_header: '',
+        review_body: '',
+        review_author: props.user.account_fname,
+        rating: 0,
+        verified_purchase: true
+      }
     }
 
 
@@ -27,75 +31,77 @@ class CreateReview extends React.Component {
 
   componentDidMount() {
     // console.log(this.state)
-
-    console.log("component did mount create review", this)
     if (!this.props.product) {
       this.props.requestProduct(this.props.productId)
     } else { this.props.requestProduct(this.props.product.id) }
-    // .then(() => this.setState({
-    //   user_id: this.props.user.id,
-    //   product_id: this.props.product.id,
-    //   review_header: '',
-    //   review_body: '',
-    //   review_author: this.props.user.account_fname,
-    //   rating: 0,
-    //   verified_purchase: true
-    // }), console.log("do we hit here componentdidmount", this.state), 
-    // )
     console.log("component did mount create review after after 2", this)
 
-    // use ownprops to get product id
-    // mapstate to props will have state of current user
-    // console.log("redirect hit?")
-    // setTimeout( () => <Redirect to={`/products/${this.props.match.params.productId}`}/>, 2000 )
-
-    //<Redirect to={`/products/${this.props.match.params.productId}`}/>
-
   }
+
+
 
   componentDidUpdate(prevProps) {
     console.log("prevprops", prevProps)
     if (prevProps.productId !== this.props.productId) { this.props.requestProduct(this.props.productId) }
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault()
-    let reviewUpdate = Object.assign({}, this.state)
-    this.props.createReview(reviewUpdate)
+    let reviewCreate = Object.assign({}, this.state)
+    this.props.createReview(reviewCreate).then(setTimeout(() => <Redirect push to={`/products/${this.props.productId}`} />, 1000))
+
   }
 
 
 
   handleUpdate = (feild) => {
-    return e => this.setState({ [feild]: e.currentTarget.value })
+    return e => this.setState({ [feild]: e.target.value }, () => console.log(this.state))
+  }
+
+  displayStars(num) {
+    let output = []
+    for (let index = 1; index < 6; index++) {
+      if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }
+      // else if (num < index && num > index - 0.6) { output.push("halfstar") }
+    }
+    return output
   }
 
   render() {
-    console.log("review render", this)
-    // this.forceUpdate()
-    console.log("review render", this)
     if (!this.props.product) { return null } else {
+      console.log("product create review", this.props.product)
       return (
-        <div>
+        <div className="review-create-wrapper">
+          <h1 className="review-header" >Item Reviewing:</h1>
+          <div className="review-header-items">
+            <div className="singlecard-constraint">
+              <Link to={`/products/${this.props.product.id}`}> <ProductSingleCard prod={this.props.product} /> </Link>
+            </div>
 
-          placeholder for review form feilds
+            <div className="review-form">
 
-          <form onSubmit={this.handleSubmit}>
-            {console.log(this)}
-            <label>Review Header<input type="text" value={this.state.review_header} onChange={this.handleUpdate('review_header')} /></label>
-            <label>Rating: </label>
-            <input type="text" value={this.state.rating} onChange={this.handleUpdate('rating')} placeholder="5" />
-            <input type="textarea" value={this.state.review_body} onChange={this.handleUpdate('review_body')} placeholder="Review body goes here" />
 
-            {/* review_author */}
-            {/* user_id */}
-            {/* product_id */}
-            {/* verified purchase (true default -- to be modified at later date) */}
+              <h1 className="createreview-header">Create Review:</h1>
 
-            <input type="submit" value="Submit Review!" />
-          </form>
 
+              <form className="review-create" onSubmit={this.handleSubmit}>
+                <div className="review-header-form">
+                  <label className="review-header" >Review Header: <input className="review-header 1" type="text" value={this.state.review_header} onChange={this.handleUpdate('review_header')} /></label>
+                </div>
+                <div className="review-rating">
+                  <label>Rating: {this.displayStars(this.state.rating)}</label>
+                  <input type="text" onChange={this.handleUpdate('rating')} value={this.state.rating} placeholder="5" />
+                </div>
+                <div className="review-body">
+                  <input className="review-body-box" type="textarea" onChange={this.handleUpdate('review_body')} value={this.state.review_body} placeholder="Review body goes here" />
+                </div>
+                <input type="submit" value="Submit Review!" onClick={this.handleSubmit} />
+              </form>
+            </div>
+
+          </div>
         </div>
+
       )
     }
   }
@@ -117,8 +123,8 @@ const mapStateToProps = (state, ownProps) => {
 
 
 const mapDispatchToProps = dispatch => ({
-  createReview: (review) => dispatch(createReview(review)),
+  updateReview: (review) => dispatch(updateReview(review)),
   requestProduct: (id) => dispatch(requestProduct(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateReview)
+export default connect(mapStateToProps, mapDispatchToProps)(EditReviewFull)

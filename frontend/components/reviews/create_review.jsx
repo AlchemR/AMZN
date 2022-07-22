@@ -11,7 +11,7 @@ class CreateReview extends React.Component {
     super(props)
     console.log("create review constructor", this)
 
-    this.state = {
+   if (!this.state) {this.state = {
       user_id: props.user.id,
       product_id: props.productId,
       review_header: '',
@@ -19,7 +19,7 @@ class CreateReview extends React.Component {
       review_author: props.user.account_fname,
       rating: 0,
       verified_purchase: true 
-    }
+    }}
 
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,15 +46,14 @@ console.log("prevprops", prevProps)
   handleSubmit = (e) =>{
     e.preventDefault()
     let reviewCreate = Object.assign({}, this.state)
-    this.props.createReview(reviewCreate).then(setTimeout(() => <Route to={`/products/${this.props.productId}`} /> , 1000 ))
+    this.props.createReview(reviewCreate).then(setTimeout(() => <Redirect push to={`/products/${this.props.productId}`} /> , 1000 ))
     
   }
 
 
 
-  handleUpdate = (e, feild) => {
-
-    () => this.setState({ [feild]: e.target.value }), console.log(this)
+  handleUpdate = (feild) => {
+    return e => this.setState({ [feild]: e.target.value }, () => console.log(this.state) )
   }
 
   displayStars(num) {
@@ -85,7 +84,7 @@ console.log("prevprops", prevProps)
 
           <form className="review-create" onSubmit={this.handleSubmit}>
             <div className="review-header-form">
-              <label className="review-header" >Review Header: <input className="review-header 1" type="text" value={this.state.review_header} onChange={() => { this.handleUpdate('review_header'), console.log(this) }} />{}</label>
+              <label className="review-header" >Review Header: <input className="review-header 1" type="text" value={this.state.review_header} onChange={this.handleUpdate('review_header') } /></label>
               </div>
             <div className="review-rating">
             <label>Rating: {this.displayStars(this.state.rating)}</label> 

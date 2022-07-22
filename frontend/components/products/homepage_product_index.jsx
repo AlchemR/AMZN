@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { requestProduct } from "../../actions/product_actions"
+import { Link } from "react-router-dom"
 
 class HomePageProduct extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class HomePageProduct extends React.Component {
 
 
   componentDidMount(){
+    console.log("do we hit here on update")
     this.props.requestProduct(1) 
   }
 
@@ -36,9 +38,12 @@ class HomePageProduct extends React.Component {
           <h1>Featured Product For You:</h1>
           <br />
 
+        <Link to={`/products/1`}>
           {/* <img src="https://m.media-amazon.com/images/I/71jFn3LK0-L._AC_UL1500_.jpg" className="single-card-image" /> */}
           <img src={product.photoUrl} className="single-card-image" />
+        </Link>
         </div>
+        <Link to={`/products/1`}>
         <div className="details" >
           <div className="details title" >{(product.title.length > 60) ? product.title.substring(0, 60) + `....` : product.title}</div>
           {console.log(product)}
@@ -49,8 +54,8 @@ class HomePageProduct extends React.Component {
           {/* {averagerating.toFixed(1)}  */}
           <div className="details price" >{product.price}</div>
           <div className="primeshipping-singlecard"> <img className="primeshipping-singlecard" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/Screen+Shot+2022-07-22+at+2.28.40+AM.png" alt="prime shipping" /> </div>
-
         </div>
+        </Link>
 
 
       </div>
