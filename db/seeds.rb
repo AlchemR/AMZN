@@ -95,7 +95,7 @@ p3 = Product.create({
   seller_id: u3.id,  
   in_stock: :true,  
   inventory_count: 12  })
-p3.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/91K9SyGiyzL._AC_SL1500_.jpg'), filename: 'Computer monitor3.jpg' )
+p3.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/91K9SyGiyzLACSL1500.jpg'), filename: 'Computer monitor3.jpg' )
 
 
 p4 = Product.create({
@@ -167,7 +167,7 @@ p8 = Product.create({
   seller_id: u8.id,  
   in_stock: :true,  
   inventory_count: 18  })
-p8.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/51EBhwkD%2BkL._AC_SL1000_.jpg'), filename: 'Television3.jpg' )
+p8.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/51EBhwkDkLACSL1000.jpg'), filename: 'Television3.jpg' )
 
 p9 = Product.create({
   title: ' SAMSUNG 85-Inch Class QLED 4K UHD Q60B Series Dual LED Quantum HDR ',  

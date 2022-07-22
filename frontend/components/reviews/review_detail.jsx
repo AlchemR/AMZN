@@ -147,7 +147,7 @@ displayEditButtons(review){
 
           {reviews.map(review => 
           <div className="individual-review" key={review.id} >
-              <div className="individual-review-author-info"> <span className="individual-review-pfp" > <img src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/default._CR0%2C0%2C1024%2C1024_SX48_.jpg" alt="default pfp" /> </span>  <div className="review-author-name"> {(review.review_author) ? (review.review_author) : ("AMZN Customer")}  </div> </div>
+              <div className="individual-review-author-info"> <span className="individual-review-pfp" > <img src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/defaultCR0010241024SX48jpg" alt="default pfp" /> </span>  <div className="review-author-name"> {(review.review_author) ? (review.review_author) : ("AMZN Customer")}  </div> </div>
 
               <div className="individual-review-header" ><span className="star-rating">{this.displayStars(review.rating)}</span>   {review.review_header} </div> 
               
