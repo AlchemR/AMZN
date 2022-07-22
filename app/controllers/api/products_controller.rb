@@ -17,6 +17,9 @@ class Api::ProductsController < ApplicationController
   def show
     @product = Product.find_by(id: params[:id])
     # show by category?  Find by category?  Category.includes?
+    total = 0
+    i = 0
+
     render :show
   end
 

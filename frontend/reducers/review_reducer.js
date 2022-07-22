@@ -11,11 +11,12 @@ switch (action.type) {
   case RECEIVE_REVIEW:
     nextstate[action.review.id] = action.review
     return action.review
+
   case REMOVE_REVIEW:
-    delete nextstate[action.reviewId]
-    return nextstate
-  case RECEIVE_PRODUCT:
-  return Object.assign({}, action.product.review)
+    console.log("reviewReducer remove review", action)
+    return action.reviews
+  // case RECEIVE_PRODUCT:
+  // return Object.assign({}, action.product.review)
   default:
     return state
 }

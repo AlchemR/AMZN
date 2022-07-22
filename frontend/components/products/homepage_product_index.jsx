@@ -1,30 +1,78 @@
-import React from "react";
-// import "../../../app/assets/stylesheets/homepage_product.css"
+import React from "react"
+import { connect } from "react-redux"
+import { requestProduct } from "../../actions/product_actions"
 
-// const HomePageProduct = ({image, catrating, title, prodrating, price }) => {
-  //Catrating = category rating
-  //prodrating = product rating
-const HomePageProduct = () => {
+class HomePageProduct extends React.Component {
+  constructor(props) {
+    super(props)
 
-return (
-<div className="product-container">
-  <div className="product-container-wrapper">
-      <div className="product-img">
-        <img src="https://images-na.ssl-images-amazon.com/images/I/51ucuU-qoyL._SX394_BO1,204,203,200_.jpg" className="mock-product" />
-        <div className="number-rating"></div>  {/* #1 , #2 in category up to #10, tag found in top left corner of images */}
+    // this.state = {totalrating: 0, count: 0 }
+  }
+
+
+  componentDidMount(){
+    this.props.requestProduct(1) 
+  }
+
+  displayStars(num) {
+    let output = []
+    for (let index = 1; index < 6; index++) {
+      if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }
+      // else if (num < index && num > index - 0.6) { output.push("halfstar") }
+    }
+    return output
+  }
+
+  render() {
+
+    console.log(this.props)
+    const { product } = this.props
+    // if (product) {Object.values(product.reviews).map(review => this.setState({firstrating: review.rating})) }
+    if (!product) {return null} else{
+    return (
+
+      <div className="innercard">
+        <div className="imagetop">
+          <h1>Featured Product For You:</h1>
+          <br />
+
+          {/* <img src="https://m.media-amazon.com/images/I/71jFn3LK0-L._AC_UL1500_.jpg" className="single-card-image" /> */}
+          <img src={product.photoUrl} className="single-card-image" />
+        </div>
+        <div className="details" >
+          <div className="details title" >{(product.title.length > 60) ? product.title.substring(0, 60) + `....` : product.title}</div>
+          {console.log(product)}
+          <div className="in-stock-details-card"> {(product.inventory_count) ? "In Stock" : "Out of Stock"} </div>
+          {/* <div className="in-stock-details-card"> {(product.in_stock) ? "In Stock" : "Out of Stock" } </div> */}
+          {/* <div className="details-rating" >{this.state.firstrating}</div> */}
+          <h3> <span className="star-rating"> {this.displayStars(product.reviews_avg)}</span> {product.reviews_avg} / 5 </h3>
+          {/* {averagerating.toFixed(1)}  */}
+          <div className="details price" >{product.price}</div>
+          <div className="primeshipping-singlecard"> <img className="primeshipping-singlecard" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/Screen+Shot+2022-07-22+at+2.28.40+AM.png" alt="prime shipping" /> </div>
+
+        </div>
+
+
       </div>
-
-      <div className="product-info">
-        <div className="product-title"> Ruby on Rails for Dummies </div>
-        <div className="product-rating"> &#9733; &#9733; &#9733; &#9734; &#9734; </div>
-        <div className="product-price">$ 19.99 </div>
-      </div>
-
-
-  </div>
-</div>
-
-)
+    )
+  }
+  }
 }
 
-export default HomePageProduct
+
+
+
+
+const mapStateToProps = (state, ownProps) => ({
+  console: console.log("product details show", state, ownProps),
+  product: state.entities.products[1],
+  // tempcart: Object.values(state.entities.cart),
+  // cartId: state.session.cart
+
+});
+
+const mapDispatchToProps = dispatch => ({
+  requestProduct: id => dispatch(requestProduct(id)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageProduct)

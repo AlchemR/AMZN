@@ -13,6 +13,9 @@ import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import AccountDetails from './account/account_info';
 import ProductIndex from './products/Product_index';
 import ProductShowDetails from './products/Product_details_show';
+import EditReview from './reviews/edit_review';
+import CreateReview from './reviews/create_review';
+import EditReviewFull from './reviews/edit_review_full';
 
 const App = (currentUsername) => (
   
@@ -31,6 +34,9 @@ const App = (currentUsername) => (
     <Route exact path='/account' component={AccountDetails}/>
     <Route exact path='/products' component={ProductIndex}  />
     <Route exact path='/products/:id' component={ProductShowDetails} />
+    {/* <Route exact path='/products/:id/editreview' component={EditReview} /> */}
+    <Route exact path='/products/:productId/createreview' component={CreateReview} />
+    <Route exact path='/products/:productId/editreview' component={EditReviewFull} />
     <Route exact path="/cart" component={BasketSplash}/>
     <Route path='/' component={HomePage}/>
     </Switch>

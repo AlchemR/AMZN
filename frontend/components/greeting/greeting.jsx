@@ -12,7 +12,7 @@ const Greeting = ({ currentUser, logout }) => {
       <Link to="/signup">Sign up!</Link>
     </nav>  );
   const namedGreeting = () => (
-    <hgroup className="header-group">
+    <hgroup className="header-group-1">
       <h2 className="header-name">Hi, {currentUser.username}!</h2>
       <button className="header-button" onClick={logout}>Log Out</button>
     </hgroup>

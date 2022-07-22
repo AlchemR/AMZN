@@ -3,8 +3,11 @@ import { RECEIVE_LEDGER, RECEIVE_LEDGERS, REMOVE_LEDGER } from "../actions/cart_
 const ledgerReducer = (oldstate = {}, action) => {
   Object.freeze(oldstate)
   let nextstate = Object.assign({},oldstate)
+  let nextstate2 = Object.assign({},oldstate)
 
-
+  console.log("ledgerreducer",action)
+  console.log("ledgerreducer",nextstate)
+  console.log("ledgerreducer",nextstate2)
   switch (action.type) {
     case RECEIVE_LEDGERS:
     return action.ledgers  
@@ -13,7 +16,10 @@ const ledgerReducer = (oldstate = {}, action) => {
       nextstate[action.ledger.product_id] = action.ledger
       return nextstate
     case REMOVE_LEDGER:
-      delete nextstate[action.ledger.product_id]
+    Object.values(nextstate2).map(stateitem =>
+      {stateitem.id == action.ledgerId,
+      delete nextstate[stateitem.product_id]
+        })  
       return nextstate
     default:
       return oldstate

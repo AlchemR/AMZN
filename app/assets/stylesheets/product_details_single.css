@@ -1,11 +1,17 @@
 .product-details-main{
   width: 100%;
+  margin-left: 6%;
+}
+
+.details-price{
+  font-size: x-large;
 }
 
 .history-nav{
-  height: 15px;
+  height: 20px;
   display: flex;
   justify-content: space-between;
+  margin: 10px;
 }
 
 .product-container{
@@ -16,7 +22,7 @@
 
 .image-left-col{
   width: 34%;
-  border: dotted 2px gray;
+  /* border: dotted 2px gray; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,6 +46,7 @@ color: gray;
   column-gap: 5px;
   row-gap: 10px;
 }
+
 .subgrid{
 border: 2px solid black;
 width: 50px;
@@ -55,7 +62,7 @@ overflow-wrap: break-word;
   width: 34%;
   flex-direction: column;
   justify-content: center;
-  border: dotted 2px gray;
+  /* border: dotted 2px gray; */
 }
 
 .details-title{
@@ -80,7 +87,11 @@ overflow-wrap: break-word;
   font-size: 16px;
   margin-left: 10px;
   display: flex;
-  align-self: flex-start;
+  align-self: center;
+}
+
+.primeshipping-show{
+  height: 30px;
 }
 
 .buy-now{
@@ -100,6 +111,51 @@ text-align: center;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  border: dotted 2px gray;
+  border-left:  solid 2px gray;
+  border-radius: 20px;
+  margin-right: 8%;
+
+}
+
+
+.details-options{
+margin: 5px;
+}
+
+.options-block{
+  margin: 5px;
+  padding: 3px ;
+  border: 1px solid black;
+}
+
+.options-block:hover {
+background-color: rgb(169, 169, 169);
+}
+
+.redtext{
+  color: red;
+  font-weight: 500;
+}
+
+.hidden-math{
+  display: none;
+}
+
+.footer-margin{
+  margin-bottom: 100px;
+}
+
+.price-total{
+  font-size: large;
+  font-weight: 700;
+}
+
+.sponsored{
+
+display: flex;
+flex-direction: column;
+  align-items: center;
+  justify-content: center;
+border: 1px solid black;
 
 }

@@ -1,8 +1,8 @@
 class Api::ReviewsController < ApplicationController
 
   def index
-    @reviews = Review.all
-    # @product_reviews = Reviews.all.where(product_id: params[:product_id])
+    @reviews = Review.where(product_id: params[:product_id])
+    # @reviews = Review.all
     # @user_reviews   = Reviews.all.where(user_id: params[:user_id])
       render :index
   end
@@ -13,7 +13,7 @@ class Api::ReviewsController < ApplicationController
   # @review.review_author = user.account_fname + user.account_lname 
   # maybe can get by association?
   # @product = review.product
-    if review.save
+    if @review.save
       render :show
       # Render individual review page details
     else 
@@ -28,8 +28,10 @@ class Api::ReviewsController < ApplicationController
 
   def update
     @review = Review.find_by(id: params[:id])
+    prod_id = @review.product_id
     # @product = review.product
     if @review.update(review_params)
+    @reviews = Review.where(product_id: params[prod_id])
       render :show
       #redirect to product show page?  Or individual review page
     else
@@ -38,11 +40,15 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find_by(params[:id])
-
+    @review = Review.find_by(id: params[:id])
+    prod_id = @review.product_id
+    
     if @review.destroy
+      @reviews = Review.where(product_id: prod_id)
       # @review.delete instead
       # how do I render product show?
+      render :index
+      # render "api/reviews/"
     else
       render json: @review.errors.full_messages
 

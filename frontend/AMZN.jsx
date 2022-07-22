@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from "./components/root";
 import {createLedger} from './actions/cart_ledger_actions'
+import { requestReviews } from './actions/review_actions';
 
 
 
@@ -18,7 +19,7 @@ ReactDOM.render( <Root store={store} /> , root)
   // ReactDOM.render( <h1>Test upload to heroku</h1>, root)
 
 //testing
-
+window.requestReviews = requestReviews
 window.getState = store.getState
 window.dispatch = store.dispatch
 window.store = store

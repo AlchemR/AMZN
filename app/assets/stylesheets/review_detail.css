@@ -1,0 +1,163 @@
+h1{
+  font-size: x-large;
+}
+
+.review-details-outer{
+display: flex;
+
+border-top: 1px;
+border-color: solid black;
+margin-top: 72px;
+width: 1200px;
+
+}
+
+
+.review-left-col{
+  display: flex;
+  width: 400px;
+  margin-left: 1%;
+
+}
+
+.customer-reviews-header1{
+font-size: x-large;
+}
+
+.customer-reviews-header3 {
+  font-size: large;
+}
+
+.star-rating{
+  font-size: larger;
+  color: orange;
+}
+
+.review-left-bar-chart{
+  display: flex;
+  flex-direction: column;
+justify-self: center;
+align-self: center;
+  border: solid black 2px;
+  height: fit-content;
+  width: 300px;
+  margin-left: 100px;
+}
+
+
+.review-details-main{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px;
+  border-color: solid black;
+}
+
+
+
+/* right side  */
+
+.review-right-col{
+  margin-right: 20%;
+  margin-left: 7%;
+  width: 80%;
+}
+
+.reviews-with-images-header{
+display: flex;
+font-size: x-large;
+margin: 30px;
+}
+
+/* .review-images-all{
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 5px;
+  row-gap: 10px;
+} */
+
+.review-images-all{
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+
+}
+
+.review-images-small{
+  border: 2px solid black;
+  width: 150px;
+  height: 150px;
+  font-size: smaller;
+  overflow-wrap: break-word;
+}
+.wordcloud-link{
+  display: flex;
+  justify-content: center;
+}
+.reviews-wordcloud-header{
+  font-size: x-large;
+}
+
+.see-all-customer-images{
+margin: 50px;
+}
+
+
+.reviews-wordcloud{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+
+.reviews-wordcloud-indi{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  width: 100px;
+  height: 53px;
+  margin: 20px;
+}
+
+.individual-review{
+  margin: 30px;
+}
+
+.individual-review-author-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.individual-review-pfp{
+  width: 50px;
+  height: 50px;
+  border: 2px black solid;
+  border-radius: 25px ;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  font-size: small;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-author-name{
+  margin-left: 20px;
+}
+
+
+.review-left-head{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-review-buttons-left{
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}

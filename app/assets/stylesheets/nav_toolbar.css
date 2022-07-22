@@ -7,6 +7,7 @@
 /* navbar file */
 
 
+
 .navbar-header {
   height: 70px;
   display: flex;
@@ -47,6 +48,7 @@
   border-bottom-right-radius: 7px;
   border-top-right-radius: 7px;
   align-items: center;
+  justify-content: center;
   background-color: #cd9040;
 }
 
@@ -61,6 +63,7 @@
   flex-direction: column;
   margin-left: 10px;
   margin-right: 10px;
+align-items: center;
 }
 
 .account-4 {
@@ -72,7 +75,7 @@
 }
 
 .navbar-right.line-1 {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .navbar-right.line-2 {
@@ -86,7 +89,7 @@
   height: 40px;
   align-items: center;
   position: sticky;
-  background-color: #007185;
+  background-color: #232F3E;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -32,4 +32,12 @@ class Product < ApplicationRecord
   has_one_attached :photo
     # has_many_attached :photos
 
+    # def average_reviews
+    #   self.reviews.each do |review|
+    #   total += review.rating
+    #   i += 1
+    #   end
+    # return @averagerating = (total / i)
+    # end
+
 end

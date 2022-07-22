@@ -10,10 +10,8 @@ const HomePage = () =>{
     <img src="https://m.media-amazon.com/images/I/71Sfdy7hMAL._SX3000_.jpg" className="home-background" />
 
 <div className="home-products"> 
-    <HomePageProduct  />
-    <HomePageProduct />
-    <HomePageProduct />
-      </div>
+    <HomePageProduct  />      
+    </div>
 
       
     </div>

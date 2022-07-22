@@ -2,6 +2,22 @@
   font-size: large;
 }
 
+.main-wrapper{
+display: flex;
+flex-direction: row;
+}
+
+.checkout-right{
+width: 300px;
+height: 500px;
+margin-left: 50px;
+}
+.checkout-delete-button{
+  border: none;
+}
+.blue-text:hover{
+text-decoration: underline;
+}
 
 .checkout-subheader{
 display: flex;
@@ -9,10 +25,21 @@ justify-content: space-between;
 
 }
 
+.in-stock-1{
+  font-size: medium;
+  color: green;
+}
+
+.free-shipping{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .ledger-items-container{
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin: 20px;
 }
 
 .ledger-item-title{
@@ -30,7 +57,9 @@ border: black solid 2px;
 .ledger-descriptions{
   display: flex;
   flex-direction: column;
-  width: 275px;
+  width: 450px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 .ledger-item-price{
 font-weight: 700;
@@ -40,6 +69,16 @@ flex-direction: column;
 align-items: flex-end;
 }
 
+.price-subheader{
+  margin-right: 30px;
+}
+
+.checkout-right-total{
+  font-size: larger;
+  font-weight: 800;
+}
+
 .text-price{
-  
+  font-size: large;
+  font-weight: 700;
 }

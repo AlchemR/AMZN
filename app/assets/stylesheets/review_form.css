@@ -1,0 +1,39 @@
+.review-form{
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 50px;
+margin-left: 100px;
+}
+
+.review-body-box{
+  width: 250px;
+  height: 100px;
+}
+
+.review-header-items{
+  display: flex;
+
+}
+
+.singlecard-constraint{
+  width: 400;
+  margin-top: 50px;
+  margin-left: -200px;
+}
+
+.review-header{
+/* align-self: center; */
+}
+
+.review-create-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createreview-header{
+  margin: 50px;
+
+}

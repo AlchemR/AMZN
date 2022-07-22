@@ -46,9 +46,26 @@ if (this.props.product) {this.state = {
     // console.log("etargervalue",e.target.value)
     }
 
+  displayStars(num) {
+    let output = []
+    for (let index = 1; index < 6; index++) {
+      if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }
+      // else if (num < index && num > index - 0.6) { output.push("halfstar") }
+    }
+    return output
+  }
+
+  // averagerating(product){
+//   let averagerate = 0;
+//   Object.values(product.reviews).map(review => averagerate += review.rating)
+//   averagerate = (averagerate / reviews.count)
+//  return averagerate
+// }
+
   render(){
     const {product, cartId} = this.props 
     if (!product) {return null} else {
+
     return(
       
     <div className="product-details-main">
@@ -60,27 +77,43 @@ if (this.props.product) {this.state = {
         <hr />
       <div className="product-container">
        <div className="image-left-col">
-            <div className="detailed-imagetop"> <img src="https://m.media-amazon.com/images/I/81Fpec4E0zL._AC_SL1500_.jpg" className="detailed-view-image" /> </div>
+            <div className="detailed-imagetop"> <img src={product.photoUrl} className="detailed-view-image" /> </div>
          <div className="image-instruction"> roll over image to zoom in </div>
-            <div className="images-array"> <div className="subgrid"> (placeholder) 8x8 grid </div><div className="subgrid"> (placeholder) 8x8 grid </div><div className="subgrid"> (placeholder) 8x8 grid </div><div className="subgrid"> (placeholder) 8x8 grid </div> </div>
+            <div className="images-array"> <div className="subgrid"> 8x8 grid </div><div className="subgrid"> 8x8 grid </div><div className="subgrid"> 8x8 grid </div><div className="subgrid">  8x8 grid </div> </div>
           </div>
         <div className="details-center-col">
             <div className="details-title" > {product.title} </div>
             <div className="seller blue-text" > visit seller store</div>
             <hr />
             <div className="details-rating"> 
-              <span className="rating-start"> | </span> <span className="ratings-redirect blue-text">placeholder for redirect</span></div>
+              <span className="rating-start"><span className="star-rating">{this.displayStars(product.reviews_avg)}</span> | </span> <span className="ratings-redirect blue-text"> 
+              {/* <Link >{product.reviews.length}Reviews</Link>  */}
+            {console.log(product)}  
+            </span> <span className="details-descriptive" > {product.detailed_description} </span></div>
              
-             <div className="details-price" > $ {product.price} </div>
-              <div className="details-options"> placeholder for buttons of options </div>
+            <div className="details-price" > <span className="dollarsign" >$</span> {product.price} </div>
+            <div className="details-options"> <span className="options-block">option1</span> | <span className="options-block" >option2</span> </div>
+
             <div className="details-description" > {product.description} </div>
-            <div className="details-descriptive" > {product.detailed_description} </div>
+            <div className="details-descriptive-2" > {product.details_description_array.map(ele1 => 
+              <li>{ele1}</li> )} </div>
+            <hr />
+            <div className="details-descriptive" > {product.additional_details.map(ele => 
+              <li>{ele}</li>
+              )} </div>
            </div>
 
           <div className="checkout-right-col">
-          <div className="checkout-delivery"> Order within X hours </div>
+            <div className="details-price" > <span className="dollarsign" >$</span> {product.price} </div>
+          <div className="checkout-delivery"> Order within 12 hours </div>
           <div className="in-stock"> in stock </div>
 
+            <div className="layaway-product"> Reserve with Layaway. <br /> Make <span className="redtext"> 5 payments of {(product.price / 5).toFixed(2)} every 2 weeks</span>. <br /> No interest or fees. Item ships after payments are complete. <br /></div> <span className="blue-text"> Learn more</span>
+          br
+            & FREE Returns
+            FREE delivery
+
+            <div className="primeshipping"> <img className="primeshipping-show" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/Screen+Shot+2022-07-22+at+2.28.40+AM.png" alt="prime shipping" /> </div>
           <div className="qty-dropdown">
   
   {/* {console.log("detailshow",product)} */}
@@ -107,13 +140,18 @@ if (this.props.product) {this.state = {
           </div>
           <div className="secure" >secure transaction</div>
           <div className="returns"> return policy</div>
-          <div className="protection-plan"> if applicable, checkboxes for "insurance"</div>
+            <div className="protection-plan"> 
+            <div>
+              <input type="checkbox" id="insurance" name="insurance" />
+                <label for="insurance">add Insurance for {(product.price * .15).toFixed(2)}</label>
+            </div>
+            </div>
           <button>Add to Saved-for-later List</button>
           </div>
 
          </div>
         
-        <ReviewDetail product={product} />
+        <ReviewDetail product={product}  />
 
     </div>
       )

@@ -30,7 +30,10 @@ componentDidMount(){
   <div className="navbar-header">
     {/* {console.log("navbarheader",this.props)} */}
           <Link to='/'>
-        <div className="navbar-left-logo" ><img className="navbar-left-logo" src={Amazon_logo} alt="" /></div> 
+        <div className="navbar-left-logo" >
+          {/* <img className="navbar-left-logo" src={Amazon_logo} alt="" /> */}
+          <img className="navbar-left-logo" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/Amazon_logo.png" alt="Amazon IMG logo" />
+          </div> 
          </Link>
         {/* <img src="../../../app/assets/images/Amazon logo.png"  className="header-logo" alt="" /> */}
         {/* <img src={Amazon_logo} className="header-logo" alt="" />
@@ -45,7 +48,7 @@ componentDidMount(){
             
             
           <Link to="/login"><span className="navbar-right line-1">Welcome {this.props.currentUser}</span></Link>
-            <span className="navbar-right line-2">login/<Link to="/greeting">logout</Link></span>
+          <span className="navbar-right line-2"><Link to="/greeting">login/logout</Link></span>
             </div> 
         
             <div className="navbar-right account-2">
@@ -62,8 +65,8 @@ componentDidMount(){
 
           <div className="navbar-right account-4">
             <Link to="/cart" >
-            <span className="navbar-right line-2">{this.props.cartCount}</span> 
-            <span className="navbar-right cart-1"> &#128722;</span>
+            <span className="navbar-right cartcount">{this.props.cartCount}</span> 
+            <span className="navbar-right cart-1"> <img className="cart-1" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/clipart1303615.png" alt="shopping-cart" /></span>
             {/* <FontAwesomeIcon icon="fa-light fa-cart-shopping" /> */}
           </Link>
         </div>

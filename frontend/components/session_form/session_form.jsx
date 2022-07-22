@@ -68,7 +68,7 @@ this.demo = setInterval(() => {
     return (
       <div className="login-form-container">
         <div className='login-form-wrapper'>
-        <div className='login-logo'> logo goes here </div>
+          <div className='login-logo'> <img className="login-logo" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/Amazon_logo.png" alt="Amazon IMG logo" /> </div>
             <form onSubmit={this.handleSubmit} className="login-form-box">
               Welcome to AMZN!
               <br />
@@ -99,11 +99,14 @@ this.demo = setInterval(() => {
                 <input className="session-submit input" type="submit" value={this.props.formType} />
               </div>
             </form>
-
+          <div className='variable-display' >
           <div className={(this.props.formType === "login") ? (`display-true`) : (`display-none`)} >
-            <span>Or, Try A Demo User</span>
-            <button onClick={this.demoUser} >Demo User Login</button>
+            <br />
+            <span className='variable-display'>Or, Try A Demo User</span>
+            <br />
+            <button onClick={this.demoUser} className="demo-user-btn session-submit" >Demo User Login</button>
             </div>
+        </div>
         </div>
       </div>
     );
