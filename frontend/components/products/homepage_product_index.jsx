@@ -12,7 +12,7 @@ class HomePageProduct extends React.Component {
 
 
   componentDidMount(){
-    console.log("do we hit here on update")
+
     this.props.requestProduct(1) 
   }
 
@@ -27,7 +27,6 @@ class HomePageProduct extends React.Component {
 
   render() {
 
-    console.log(this.props)
     const { product } = this.props
     // if (product) {Object.values(product.reviews).map(review => this.setState({firstrating: review.rating})) }
     if (!product) {return null} else{
@@ -46,7 +45,7 @@ class HomePageProduct extends React.Component {
         <Link to={`/products/1`}>
         <div className="details" >
           <div className="details title" >{(product.title.length > 60) ? product.title.substring(0, 60) + `....` : product.title}</div>
-          {console.log(product)}
+
           <div className="in-stock-details-card"> {(product.inventory_count) ? "In Stock" : "Out of Stock"} </div>
           {/* <div className="in-stock-details-card"> {(product.in_stock) ? "In Stock" : "Out of Stock" } </div> */}
           {/* <div className="details-rating" >{this.state.firstrating}</div> */}

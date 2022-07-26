@@ -5,9 +5,6 @@ const ledgerReducer = (oldstate = {}, action) => {
   let nextstate = Object.assign({},oldstate)
   let nextstate2 = Object.assign({},oldstate)
 
-  console.log("ledgerreducer",action)
-  console.log("ledgerreducer",nextstate)
-  console.log("ledgerreducer",nextstate2)
   switch (action.type) {
     case RECEIVE_LEDGERS:
     return action.ledgers  

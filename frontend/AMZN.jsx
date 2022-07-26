@@ -19,11 +19,11 @@ ReactDOM.render( <Root store={store} /> , root)
   // ReactDOM.render( <h1>Test upload to heroku</h1>, root)
 
 //testing
-window.requestReviews = requestReviews
-window.getState = store.getState
-window.dispatch = store.dispatch
-window.store = store
-window.createLedger = createLedger
+// window.requestReviews = requestReviews
+// window.getState = store.getState
+// window.dispatch = store.dispatch
+// window.store = store
+// window.createLedger = createLedger
 // testing
 
 });

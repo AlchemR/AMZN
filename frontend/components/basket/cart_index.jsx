@@ -30,7 +30,7 @@ class CartIndex extends React.Component {
     let price_total = 0;
     let item_total = 0;
 
-    if (!cart) { console.log("isnull"); return <EmptyCart /> } else {
+    if (!cart) { return <EmptyCart /> } else {
 
       return (
 
@@ -47,7 +47,7 @@ class CartIndex extends React.Component {
               <div className="hidden-math" >{price_total += (cartitem.quantity * cartitem.price)}</div>
               <div className="hidden-math" >{item_total += (cartitem.quantity)}</div>
               <div key={`${cartitem}-#`} className="ledger-items-container">
-                <div key={`${cartitem}-###`} className="ledger-checkbox"><input type="checkbox" checked onChange={() => console.log("changed") }/></div>
+                <div key={`${cartitem}-###`} className="ledger-checkbox"><input type="checkbox" checked onChange={() => {} }/></div>
                 <div key={`${cartitem.id}-##`} className="ledger-item-image" >
                   {(this.props.products[cartitem.product_id]) ? <img className="ledger-item-image" src={this.props.products[cartitem.product_id].photoUrl} alt="" /> : null  }                    </div>
 
@@ -112,9 +112,9 @@ class CartIndex extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
   cartId: state.session.cart,
-  console1: console.log("state", state),
-  console2: console.log("ownProps", ownProps),
-  console3: console.log("state entities cart", state.entities.cart),
+  // console1: console.log("state", state),
+  // console2: console.log("ownProps", ownProps),
+  // console3: console.log("state entities cart", state.entities.cart),
   cart: state.entities.cart ? Object.values(state.entities.cart) : null,
   products:  state.entities.products ? Object.values(state.entities.products) : null
   // cart: state.entities.cart,
