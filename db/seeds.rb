@@ -19,7 +19,7 @@ Cart.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!("carts")
 CartLedger.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!("cart_ledgers")
-do this for all tables and future tables
+# do this for all tables and future tables
 
 u1 = User.create!({  username: "Sceptre", account_fname: "Sceptre", account_lname: "Electronics", email: "Sceptre@electronics.com", password: "123456" })
 u2 = User.create!({  username: "Demo_User", account_fname: "Demo", account_lname: "_User", email: "Demo@user.com", password: "12345678" })
