@@ -7,6 +7,7 @@ class Api::CartsController < ApplicationController
   end
 
   def show
+    # debugger
     @cart = Cart.find_by(id: params[:id])
     @cart_items = CartLedger.where(cart_id: @cart.id)
     # maybe active carts where cart_active: true

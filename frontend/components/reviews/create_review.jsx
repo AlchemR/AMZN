@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { createReview } from "../../actions/review_actions";
 import {requestProduct} from '../../actions/product_actions'
 import ProductSingleCard from '../products/product_single_card'
@@ -19,6 +19,7 @@ class CreateReview extends React.Component {
       review_author: props.user.account_fname,
       rating: 0,
       verified_purchase: true 
+      // this would change in the future
     }}
 
 
@@ -46,7 +47,8 @@ console.log("prevprops", prevProps)
   handleSubmit = (e) =>{
     e.preventDefault()
     let reviewCreate = Object.assign({}, this.state)
-    this.props.createReview(reviewCreate).then(setTimeout(() => <Redirect push to={`/products/${this.props.productId}`} /> , 1000 ))
+    this.props.createReview(reviewCreate).then( this.props.history.push(`/products/${this.props.productId}`) )
+    // this.props.createReview(reviewCreate).then( <Redirect to={`/products/${this.props.productId}`} /> )
     
   }
 

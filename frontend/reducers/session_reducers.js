@@ -8,6 +8,7 @@ const sessionReducer = (state = _nullUser, action) => {
     case RECEIVE_CURRENT_USER:
       // return { id: action.currentUser.id };
       console.log("sessionreducers",action.currentUser)
+      console.log("sessionreducers action",action)
       return { id: action.currentUser.id, cart: action.currentUser.currentCart , currentUser: action.currentUser.id };
     case LOGOUT_CURRENT_USER:
       return _nullUser;

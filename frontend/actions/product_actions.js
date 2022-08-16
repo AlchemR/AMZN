@@ -12,6 +12,7 @@ const receiveProduct = product => {
 }
 
 export const requestProducts = data => dispatch => {
+  console.log("request products product actions data", data)
   return ProductAPIUtils.fetchProducts(data).then(products => dispatch(receiveProducts(products))) 
 }
 

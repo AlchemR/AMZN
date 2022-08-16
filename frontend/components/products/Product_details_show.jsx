@@ -9,6 +9,7 @@ import ReviewDetail from '../reviews/review_detail'
 class ProductShowDetails extends React.Component {
   constructor(props){
     super(props)
+    console.log("product show details constructor", this.props)
 if (this.props.product) {this.state = {
       product_id: this.props.product.id,
       quantity: 1,
@@ -18,8 +19,33 @@ if (this.props.product) {this.state = {
     // this.handleQuantity = this.handleQuantity.bind(this)
   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.props.requestProduct(this.props.match.params.id)
+    // console.log("componentwillmount Product details show this props", this.props)
+    // console.log("componentwillmount Product details show this state", this.state)
+    // console.log("componentwillmount Product details show this props productid", this.props.product === undefined)
+    // console.log("componentwillmount Product details show this props match params", this.props.match.params.id)
+  }
+
+  componentDidMount(){
+    // this.props.requestProduct(this.props.match.params.id)
+    // console.log("componentdidmount Product details show this props",this.props)
+    // console.log("componentdidmount Product details show this state",this.state)
+    // console.log("componentdidmount Product details show this props productid",this.props.product === undefined)
+    // console.log("componentdidmount Product details show this props match params",this.props.match.params.id)
+  }
+
+  componentDidUpdate(){
+    // console.log("component did update product details state" , this.state)
+    if (this.state === null && this.props.product) {
+      this.setState({
+        product_id: this.props.product.id,
+        quantity: 1,
+        cart_id: this.props.cartId })
+        // console.log("after setstate")
+      }
+      // console.log("component did update product details show", this.props)
+      // console.log("component did update product details state" , this.state === null)
 
   }
 
@@ -27,13 +53,14 @@ if (this.props.product) {this.state = {
       e.preventDefault()
       let productexists = false
       let tempnum = 0
-
+      let tempId = 0
       for (let index = 0; index < this.props.tempcart.length; index++) {
-        if (this.props.tempcart[index].product_id == itemID) { productexists = true, tempnum = this.props.tempcart[index].quantity }
+        console.log("tempcart at index", this.props.tempcart[index])
+        if (this.props.tempcart[index].product_id == itemID) { productexists = true, tempnum = this.props.tempcart[index].quantity, tempId = this.props.tempcart[index].id }
       }
       // console.log("product", product)
       // console.log("quantity typeof", typeof tempnum)
-      if (productexists) { this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: product.id }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 10)) } else { this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 10)) }
+      if (productexists) { this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: tempId }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) } else { this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) }
       // console.log("handle add to cart",this.state)
       // this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(this.props.requestCart(cartID))
     }
@@ -88,7 +115,8 @@ if (this.props.product) {this.state = {
             <div className="details-rating"> 
               <span className="rating-start"><span className="star-rating">{this.displayStars(product.reviews_avg)}</span> | </span> <span className="ratings-redirect blue-text"> 
               {/* <Link >{product.reviews.length}Reviews</Link>  */}
-            {console.log(product)}  
+            {/* {console.log("product 92",product)}   */}
+            {/* {console.log("this.state 93",this.state)}   */}
             </span> <span className="details-descriptive" > {product.detailed_description} </span></div>
              
             <div className="details-price" > <span className="dollarsign" >$</span> {product.price} </div>
@@ -121,7 +149,7 @@ if (this.props.product) {this.state = {
               <form onSubmit={this.handleAddToCart(product.id, cartId, product)} >
               {/* <select id="quantity" name="quantity" value={this.state.quantity} onChange={this.handleQuantity} className="dropdown" > */}
               <select onChange={(e) => this.handleQuantity(e)}  className="dropdown" >
-                  <option value={1}>Qty: 1</option>
+                  <option value={1} selected>Qty: 1</option>
                   <option value={2}>Qty: 2</option>
                   <option value={3}>Qty: 3</option>
                   <option value={4}>Qty: 4</option>
@@ -151,7 +179,7 @@ if (this.props.product) {this.state = {
 
          </div>
         
-        <ReviewDetail product={product}  />
+        <ReviewDetail key={`x${product.id}x${product.id}x`} product={product}  />
 
     </div>
       )

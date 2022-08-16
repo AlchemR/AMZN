@@ -21,7 +21,8 @@ class CartIndex extends React.Component {
 
   handleQuantity = (e, cartitem) => {
     e.preventDefault()
-    return ( this.props.updateLedger({ product_id: cartitem.product_id, quantity: e.target.value, cart_id: cartitem.cart_id, id: cartitem.id }).then(setTimeout(() => this.props.requestCart(this.props.cartId), 1) ) )
+    return ( this.props.updateLedger({ product_id: cartitem.product_id, quantity: e.target.value, cart_id: cartitem.cart_id, id: cartitem.id }).then(setTimeout(() => this.props.requestCart(this.props.cartId), 100) ) )
+    // return ( this.props.updateLedger({ product_id: cartitem.product_id, quantity: e.target.value, cart_id: cartitem.cart_id, id: cartitem.id }).then(setTimeout(() => this.props.requestCart(this.props.cartId), 100) ) )
   }
 
   
@@ -42,7 +43,7 @@ class CartIndex extends React.Component {
           <hr />
  
           {cart.slice(0, cart.length - 1).map(cartitem => 
-          <div>
+            <div key={`${cartitem.id}${cartitem.id}${cartitem.id}`}>
               {/* <CartLedgerDetails key={`${cartitem.id}x${cartitem.id}`} cartitem={cartitem} itemqty={cartitem.quantity} /> */}
               <div className="hidden-math" >{price_total += (cartitem.quantity * cartitem.price)}</div>
               <div className="hidden-math" >{item_total += (cartitem.quantity)}</div>
@@ -66,9 +67,17 @@ class CartIndex extends React.Component {
                     <option value={7}>Qty: 7</option>
                     <option value={8}>Qty: 8</option>
                     <option value={9}>Qty: 9</option>
-                  </select>  |  <button key={`${cartitem.id}-6`} onClick={() => this.props.deleteLedger(cartitem.id).then(setTimeout(() => this.props.requestCart(this.props.cartId), 1))} className="checkout-delete-button blue-text" >  delete</button> | <span className="blue-text"> save for later</span> | <span className="blue-text"> compare with similar items</span></div>
+                    <option value={10}>Qty: 10</option>
+                    <option value={11}>Qty: 11</option>
+                    <option value={12}>Qty: 12</option>
+                    <option value={13}>Qty: 13</option>
+                    <option value={14}>Qty: 14</option>
+                    <option value={15}>Qty: 15</option>
+                  {/* </select>  |  <button key={`${cartitem.id}-6`} onClick={() => this.props.deleteLedger(cartitem.id).then(console.log("send delete"))} className="checkout-delete-button blue-text" >  delete</button> | <span className="blue-text"> save for later</span> | <span className="blue-text"> compare with similar items</span></div> */}
+                  </select>  |  <button key={`${cartitem.id}-6`} onClick={() => this.props.deleteLedger(cartitem.id).then(setTimeout(() => this.props.requestCart(this.props.cartId), 80))} className="checkout-delete-button blue-text" >  delete</button> | <span className="blue-text"> save for later</span> | <span className="blue-text"> compare with similar items</span></div>
                 </div>
                 <div key={`${cartitem.id}-7`} className="ledger-item-price" > <div className="text-price"> price: {cartitem.price} </div>  <div>  Apply cupon dropdown <select name="cupon" id=""  >
+                  <option value={1}>no discount</option>
                   <option value={.1}>10% off</option>
                   <option value={.15}>15% off</option>
                 </select>
@@ -85,7 +94,7 @@ class CartIndex extends React.Component {
           
 
             <div className="checkout-right">
-              {console.log("checkout-right", cart)}
+              {console.log("checkout-right cart", cart)}
               <div className="free-shipping">
                 <span className="in-stock-1" >Your order qualifies for FREE Shipping</span>. 
                 <br />

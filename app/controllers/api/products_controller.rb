@@ -1,17 +1,24 @@
 class Api::ProductsController < ApplicationController
 
   def index
-    @products = Product.all
-    render :index
-    # filter by cateogry in index
-    # Product.find_by(categories)
 
-    # if params[:categories] == "books"
-      # @products = Product.where({categories.includes?("books")})
-      # render :index
-    # elsif params[:categories] == "firewood"
-    # end
+    if params[:category] == nil # category false
+      if params[:query] ==  nil 
+        # if both category and paramters are null then get everything
+        @products = Product.all
+      else  # where category false but query is true
+        @products = Product.where("LOWER(title) LIKE LOWER(?)", "%#{params[:query]}%")
+      end
     
+    else
+      if params[:query] ==  nil  # where category true but query is false
+        @products = Product.where("?=ANY(categories)", "#{params[:category]}")
+      else # wjere the category is true and # where query is true
+        @products = Product.where("?=ANY(categories)", "#{params[:category]}").where("LOWER(title) LIKE LOWER(?)", "%#{params[:query]}%")      
+      end
+      
+    end
+    render :index
   end
 
   def show

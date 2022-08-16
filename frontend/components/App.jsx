@@ -32,11 +32,17 @@ const App = (currentUsername) => (
     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
     <Route exact path="/greeting" component={GreetingContainer}/>
     <Route exact path='/account' component={AccountDetails}/>
+    <Route exact path='/products/search/:query' component={ProductIndex} />
+    <Route exact path='/products/:category/search/:query' component={ProductIndex} />
+    <Route exact path='/products/category/:category' component={ProductIndex} />
     <Route exact path='/products' component={ProductIndex}  />
     <Route exact path='/products/:id' component={ProductShowDetails} />
-    {/* <Route exact path='/products/:id/editreview' component={EditReview} /> */}
     {/* <Route exact path='/products/:productId/editreview' component={EditReviewFull} /> */}
+    {/* <Route exact path='/products/:id/editreview' component={EditReview} /> */}
+    <Route exact path='/products/:productId/editreview/:id' component={EditReviewFull} />
     <Route exact path='/products/:productId/createreview' component={CreateReview} />
+    {/* <Route exact path='/products/:category' component={SearchProducts} /> */}
+    {/* <Route exact path='/search/:query' component={SearchProducts} /> */}
     <Route exact path="/cart" component={BasketSplash}/>
     <Route path='/' component={HomePage}/>
     </Switch>

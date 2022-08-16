@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { Link, NavLink, Redirect } from "react-router-dom"
 import { requestReview, createReview, updateReview, deleteReview, requestReviews } from "../../actions/review_actions"
 import EditReview from "./edit_review"
+import ReviewSmallCard from "./review_smallcard"
 
 
 class ReviewDetail extends React.Component {
@@ -75,7 +76,7 @@ displayEditButtons(review){
 }
 
   render() {
-    const { reviews, product } = this.props
+    const { reviews, product, currentUser } = this.props
     let sum = 0; reviews.map(review1 => sum += review1.rating) ; let averagerating = (sum / reviews.length)
 
     if (!reviews) {return null} else {
@@ -146,21 +147,10 @@ displayEditButtons(review){
           <h1>Reviews: </h1>
 
           {reviews.map(review => 
-          <div className="individual-review" key={review.id} >
-              <div className="individual-review-author-info"> <span className="individual-review-pfp" > <img src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/defaultCR0010241024SX48jpg" alt="default pfp" /> </span>  <div className="review-author-name"> {(review.review_author) ? (review.review_author) : ("AMZN Customer")}  </div> </div>
-
-              <div className="individual-review-header" ><span className="star-rating">{this.displayStars(review.rating)}</span>   {review.review_header} </div> 
+            // 
+              // {console.log("review line 151", review, "review id", review.id)} 
+              <ReviewSmallCard review={review} key={`t${review.id}t${review.id}t`} currentUser={currentUser} /> 
               
-              {/* {console.log("review",review)} */}
-
-              <div className="review-time">Reviewed on: { new Date(review.updated_at).toDateString()}</div>
-              <div className="review-verified-purchase" > {(review.verified_purchase) ? ("Verified Purchase"): ("Unverified Customer") }  </div>
-              <div className="individual-review-body">{review.review_body}</div>
-              {/* {let review.id.abuse = false} */}
-              <div className="helpful-buttons"> <button className="helpful-button-helpful" onClick={() => this.toggleHelpful()} > Helpful </button> | <button className="helpful-button-report" onClick={() => this.reportAbuse} >report abuse</button> </div> <div> {(this.state.helpful) ? "marked as helpful!" : null} {(this.state.abuse) ? "marked as abuse" : null}  </div>
-              <div className="review-edit-delete"> { this.displayEditButtons(review) } </div>
-
-            </div>       
             )}
 
           <hr />

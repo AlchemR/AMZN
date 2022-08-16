@@ -43,8 +43,8 @@
 }
 
 .navbar-search-icon {
-  padding: 10px;
-  height: 20px;
+  /* padding: 10px; */
+  height: 43px;
   border-bottom-right-radius: 7px;
   border-top-right-radius: 7px;
   align-items: center;

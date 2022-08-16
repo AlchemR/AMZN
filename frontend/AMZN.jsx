@@ -12,7 +12,7 @@ const root = document.getElementById('root');
   let store;
   let preloadedState;
   // { window.currentUser ? ( console.log("addeventlistener",currentUser), preloadedState = { entities: { users: { [window.currentUser.id]: window.currentUser } }, session: { id: window.currentUser.id } }, store = configureStore(preloadedState), delete window.currentUser ) : ( store = configureStore() )}
-  { window.currentUser ? (console.log("addeventlistener", currentUser), preloadedState = { entities: { users: { [window.currentUser.id]: window.currentUser } }, session: { id: window.currentUser.id, cart: window.currentUser.currentCart , currentUser: window.currentUser.currentUser} }, store = configureStore(preloadedState), delete window.currentUser) : (store = configureStore()) }
+  { window.currentUser ? ( preloadedState = { entities: { users: { [window.currentUser.id]: window.currentUser } }, session: { id: window.currentUser.id, cart: window.currentUser.currentCart , currentUser: window.currentUser.currentUser} }, store = configureStore(preloadedState), delete window.currentUser) : (store = configureStore()) }
 
 
 ReactDOM.render( <Root store={store} /> , root)

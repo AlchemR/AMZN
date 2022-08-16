@@ -68,7 +68,7 @@ class HomePageProduct extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
-  console: console.log("product details show", state, ownProps),
+  // console: console.log("product details show", state, ownProps),
   product: state.entities.products[1],
   // tempcart: Object.values(state.entities.cart),
   // cartId: state.session.cart

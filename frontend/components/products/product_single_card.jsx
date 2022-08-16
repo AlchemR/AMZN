@@ -32,7 +32,7 @@ class ProductSingleCard extends React.Component {
           </div>
         <div className="details" >
           <div className="details title" >{(prod.title.length > 60) ? prod.title.substring(0,60) +`....` : prod.title}</div>
-{console.log(prod)}
+
           <div className="in-stock-details-card"> {(prod.inventory_count) ? "In Stock" : "Out of Stock" } </div>
           {/* <div className="in-stock-details-card"> {(prod.in_stock) ? "In Stock" : "Out of Stock" } </div> */}
           {/* <div className="details-rating" >{this.state.firstrating}</div> */}

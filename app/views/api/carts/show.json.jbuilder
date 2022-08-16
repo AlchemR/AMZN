@@ -14,6 +14,7 @@
     #  can pull like in line 12, through associations in the model files
   end
 end
+# debugger
 json.cartCount total
 
 # maybe check if userid matches the cart_user_id?

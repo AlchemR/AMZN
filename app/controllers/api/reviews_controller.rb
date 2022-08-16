@@ -1,9 +1,10 @@
 class Api::ReviewsController < ApplicationController
 
   def index
+    # debugger
     @reviews = Review.where(product_id: params[:product_id])
+    # @reviews = Review.where(user_id: params[:user_id])
     # @reviews = Review.all
-    # @user_reviews   = Reviews.all.where(user_id: params[:user_id])
       render :index
   end
 
