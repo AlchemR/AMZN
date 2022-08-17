@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { updateReview } from "../../actions/review_actions";
+import { requestReview, updateReview } from "../../actions/review_actions";
 
 
 
@@ -18,6 +18,10 @@ this.handleUpdate = this.handleUpdate.bind(this);
 
  } 
 
+componentDidMount(){
+  console.log(this.props)
+  // this.props.requestReview(this.props)
+}
 
 
  handleSubmit(e){
@@ -64,14 +68,14 @@ this.setState({[feild]: e.currentTarget.value}), console.log(this.state, e)
 
 
 const mapStateToProps = (state, ownProps) => ({
-  // console: console.log("review details show state", state),
-  // console: console.log("review details show ownprops", ownProps),
+  console: console.log("review details show state", state),
+  console: console.log("review details show ownprops", ownProps),
 });
 
 
 const mapDispatchToProps = dispatch => ({
 updateReview: (review) => dispatch(updateReview(review)),
-
+requestReview: (id) => dispatch(requestReview(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditReview)

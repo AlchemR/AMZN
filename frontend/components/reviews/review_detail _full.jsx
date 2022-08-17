@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Link, NavLink } from "react-router-dom"
-import { requestReview, createReview, updateReview, deleteReview, requestReviews } from "../../actions/review_actions"
+import { createReview, updateReview, deleteReview, requestReviews } from "../../actions/review_actions"
 
 class ReviewFullDetail extends React.Component {
   constructor(props) {
@@ -104,7 +104,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   requestReviews: () => dispatch(requestReviews()),
-  requestReview: id => dispatch(requestReview(id)),
   createReview: (review) => dispatch(createReview(review)),
   updateReview: (review) => dispatch(updateReview(review)),
   deleteReview: (ledgerId) => dispatch(deleteReview(ledgerId)),

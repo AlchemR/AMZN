@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { Link, NavLink, Redirect } from "react-router-dom"
-import { requestReview, createReview, updateReview, deleteReview, requestReviews } from "../../actions/review_actions"
+import { createReview, updateReview, deleteReview, requestReviews } from "../../actions/review_actions"
 import EditReview from "./edit_review"
 import ReviewSmallCard from "./review_smallcard"
 
@@ -24,6 +24,7 @@ class ReviewDetail extends React.Component {
 
   componentDidMount(){
     this.props.requestReviews(this.props.product.id)
+    console.log("requested reviews plural in review_detail")
     // consider doing active record on index search
     // .where(product_id: params[:product_id])
     //This is kind of getting into searching territory
@@ -61,21 +62,23 @@ toggleEdit(){
 }
 
 
-displayEditButtons(review){
-  if (this.props.currentUser == review.user_id)
-    return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => this.toggleEdit()}> Edit Review</button> <button onClick={() => this.toggleDelete()} >{(this.state.displayConfirm) ? "Are you Sure?" : "Delete Review" } </button> {(this.state.displayConfirm) ? <button onClick={() => this.props.deleteReview(review.id) }>Confirm Delete</button> : null}
-    <br />
-    {(this.state.displayEdit) ? < EditReview review={review} key={review.id} /> : null}
-     </div>
-    // return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => console.log("hitting edit review") }> Edit Review</button> <button onClick={()=> this.deleteConfirm} >Delete Review </button></div>
-    // return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => this.showEditReview}> Edit Review</button> <button onClick={()=> this.deleteConfirm} >Delete Review </button></div>
-    // return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => this.showEditReview(review)}> Edit Review</button> <button onClick={()=> this.deleteConfirm} >Delete Review </button></div>
-  else 
-  return null
+// displayEditButtons(review){
+//   if (this.props.currentUser == review.user_id)
+//     // return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => this.props.history.push(`/products/${this.props.product.id}}/editreview/:id`)}> Edit Review</button> <button onClick={() => this.toggleDelete()} >{(this.state.displayConfirm) ? "Are you Sure?" : "Delete Review" } </button> {(this.state.displayConfirm) ? <button onClick={() => this.props.deleteReview(review.id) }>Confirm Delete</button> : null}
+//      return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => this.toggleEdit()}> Edit Review</button> <button onClick={() => this.toggleDelete()} >{(this.state.displayConfirm) ? "Are you Sure?" : "Delete Review" } </button> {(this.state.displayConfirm) ? <button onClick={() => this.props.deleteReview(review.id) }>Confirm Delete</button> : null} 
+//     <br />
+//     {(this.state.displayEdit) ? < EditReview review={review} key={review.id} /> : null}
+//      </div>
+//     // return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => console.log("hitting edit review") }> Edit Review</button> <button onClick={()=> this.deleteConfirm} >Delete Review </button></div>
+//     // return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => this.showEditReview}> Edit Review</button> <button onClick={()=> this.deleteConfirm} >Delete Review </button></div>
+//     // return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => this.showEditReview(review)}> Edit Review</button> <button onClick={()=> this.deleteConfirm} >Delete Review </button></div>
+//   else 
+//   return null
 
-}
+// }
 
   render() {
+    console.log("reviewdetail props in render", this.props)
     const { reviews, product, currentUser } = this.props
     let sum = 0; reviews.map(review1 => sum += review1.rating) ; let averagerating = (sum / reviews.length)
 
@@ -146,10 +149,10 @@ displayEditButtons(review){
           <div className="reviews-list"> 
           <h1>Reviews: </h1>
 
+          {console.log("review line 151", this.props)} 
           {reviews.map(review => 
             // 
-              // {console.log("review line 151", review, "review id", review.id)} 
-              <ReviewSmallCard review={review} key={`t${review.id}t${review.id}t`} currentUser={currentUser} /> 
+            <ReviewSmallCard review={review} key={`t${review.id}t${review.id}t`} currentUser={currentUser} /> 
               
             )}
 
@@ -181,7 +184,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   requestReviews: (productid) => dispatch(requestReviews(productid)),
-  requestReview: id => dispatch(requestReview(id)),
+  // requestReview: id => dispatch(requestReview(id)),
   // createReview: (review) => dispatch(createReview(review)),
   // updateReview: (review) => dispatch(updateReview(review)),
   deleteReview: (reviewId) => dispatch(deleteReview(reviewId)),
