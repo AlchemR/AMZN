@@ -44,17 +44,17 @@ class EditReviewFull extends React.Component {
 
   componentDidMount() {
     // console.log(this.state)      
-    this.props.requestProduct(this.props.productId)
     this.props.requestReview(this.props.reviewId)
+    this.props.requestProduct(this.props.productId)
     // this.timeoutCount()
     console.log("component did mount edit review after after mount", this)
   }
 
   componentDidUpdate() {
-    console.log("when does component did update hit?", this.props),
-    console.log("when does component did update hit this state?", this.state)
+    // console.log("when does component did update hit?", this.props),
+    // console.log("when does component did update hit this state?", this.state)
 
-    if (!this.state) { 
+    if (!this.state && this.props.review) { 
       const {id, product_id, rating, review_author, review_body, review_header, user_id, verified_purchase } = this.props.review
       this.setState({ id, product_id, rating, review_author, review_body, review_header, user_id, verified_purchase })    
     }
@@ -63,13 +63,14 @@ class EditReviewFull extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.updateReview(this.state).then(this.props.history.push(`/products/${this.props.productId}`))
+    console.log("updated review handlesubmit")
+    this.props.updateReview(this.state).then(this.props.history.push(`/products/${this.props.productId}`), console.log("updated review submit, history pushed"))
   }
 
 
 
   handleUpdate = (feild) => {
-    return e => this.setState({ [feild]: e.target.value }, () => console.log("this.state",this.state))
+    return e => this.setState({ [feild]: e.target.value })
   }
 
   displayStars(num) {
@@ -82,7 +83,7 @@ class EditReviewFull extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+
     if (this.props.product && this.props.review && this.state) {
       return (
         <div className="review-create-wrapper">

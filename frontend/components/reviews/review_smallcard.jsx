@@ -52,6 +52,7 @@ class ReviewSmallCard extends React.Component{
   displayEditButtons(review) {
     // console.log("display edit buttons",review, "this.props.currentuser", this.props.currentUser)
     if (this.props.currentUser == review.user_id)
+
       return <div className="button-edit-delete-container"> <button className="review-edit" onClick={() => this.props.history.push(`/products/${this.props.review.product_id}/editreview/${this.props.review.id}`)}> Edit Review</button> <button onClick={() => this.toggleDelete()} >{(this.state.displayConfirm) ? "Are you Sure?" : "Delete Review"} </button> {(this.state.displayConfirm) ? <button onClick={() => this.props.deleteReview(review.id)}>Confirm Delete</button> : null}  </div>
     else
       return null
@@ -61,7 +62,7 @@ class ReviewSmallCard extends React.Component{
 
 render(){
   const {review} = this.props
-  console.log("review smallcard props line 73 -- smallcard getting mapped over", this.props)
+  // console.log("review smallcard props line 73 -- smallcard getting mapped over", this.props)
 
   if (!review) { return null } else {
 return( 

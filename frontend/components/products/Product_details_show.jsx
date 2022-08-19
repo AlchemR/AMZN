@@ -20,6 +20,7 @@ if (this.props.product) {this.state = {
   }
 
   componentWillMount(){
+    console.log("does componentwillmount fire")
     this.props.requestProduct(this.props.match.params.id)
     // console.log("componentwillmount Product details show this props", this.props)
     // console.log("componentwillmount Product details show this state", this.state)

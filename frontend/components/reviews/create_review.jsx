@@ -19,7 +19,7 @@ class CreateReview extends React.Component {
       review_author: props.user.account_fname,
       rating: 0,
       verified_purchase: true 
-      // this would change in the future
+      // verified purchase part would change in the future
     }}
 
 
@@ -32,7 +32,8 @@ componentDidMount(){
 // console.log(this.state)
 if (!this.props.product){ 
   this.props.requestProduct(this.props.productId)
- } else { this.props.requestProduct(this.props.product.id) }
+} 
+// }  else { this.props.requestProduct(this.props.product.id) }
 console.log("component did mount create review after after 2",this)
 
 }
@@ -46,8 +47,9 @@ console.log("prevprops", prevProps)
 
   handleSubmit = (e) =>{
     e.preventDefault()
-    let reviewCreate = Object.assign({}, this.state)
-    this.props.createReview(reviewCreate).then( this.props.history.push(`/products/${this.props.productId}`) )
+    // let reviewCreate = Object.assign({}, this.state)
+    console.log("submitted review handlesubmit")
+    this.props.createReview(this.state).then(this.props.history.push(`/products/${this.props.productId}`), console.log("submitted review push") )
     // this.props.createReview(reviewCreate).then( <Redirect to={`/products/${this.props.productId}`} /> )
     
   }

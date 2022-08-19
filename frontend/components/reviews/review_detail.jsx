@@ -11,7 +11,7 @@ class ReviewDetail extends React.Component {
   constructor(props) {
     super(props)
     console.log("constructor props reviewdetail" , this.props)
-    this.state = { displayConfirm: false, displayEdit: false, helpful: false, abuse: false}
+    this.state = { displayConfirm: false, displayEdit: false, helpful: false, abuse: false, sortBy: "4"}
     // this.state = { displayConfirm: false, displayEdit: false, helpful: false, this.state.id: false}
     this.toggleDelete = this.toggleDelete.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
@@ -61,6 +61,9 @@ toggleEdit(){
   (this.state.displayEdit) ? (this.setState({displayEdit: false})) : (this.setState({displayEdit: true }))
 }
 
+handleUpdate = (feild, e) => {
+    this.setState({ [feild]: e.currentTarget.value }), console.log("handleupdate state", this.state, e)
+  }
 
 // displayEditButtons(review){
 //   if (this.props.currentUser == review.user_id)
@@ -77,7 +80,35 @@ toggleEdit(){
 
 // }
 
-  render() {
+sortReviews(reviews, filter) {
+console.log("filter", filter)
+console.log("filter typeof", typeof filter)
+  switch (filter) {
+    case "1":
+      reviews.sort((a,b) => b.rating - a.rating) // highest to lowest
+      console.log("1 case")
+      break;
+    case "2":
+      reviews.sort((a, b) => a.rating - b.rating) // lowest to highest
+      console.log("2 case")
+      break;
+      case "3":
+      reviews.sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at)) // oldest to newest
+      console.log("3 case")
+      break;
+      case "4":
+        reviews.sort((a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at)) // newest to oldest
+      console.log("4 case")
+      break;
+      
+      default:
+      console.log("default case, something went wrong here")
+      break;
+  }
+}
+
+render() {
+    let output 
     console.log("reviewdetail props in render", this.props)
     const { reviews, product, currentUser } = this.props
     let sum = 0; reviews.map(review1 => sum += review1.rating) ; let averagerating = (sum / reviews.length)
@@ -140,19 +171,22 @@ toggleEdit(){
               </div>
 
               <div className="sort-by-dropdown">
-              <select onChange={(e) => console.log("dropdown sort by most recent, or top rated")} className="dropdown" >
-                <option value={1}>Top Reviews</option>
-                <option value={2}>Most Recent</option>
+              <select value={this.state.sortBy} onChange={(e) => this.handleUpdate('sortBy', e)} className="dropdown" >
+                <option value={"1"}>Top Reviews</option>
+                <option value={"2"}>Lowest Rated</option>
+                <option value={"3"}>Oldest First</option>
+                <option value={"4"} selected>Most Recent</option>
               </select>
               </div>
 
           <div className="reviews-list"> 
           <h1>Reviews: </h1>
-
-          {console.log("review line 151", this.props)} 
+          {console.log("reviews before ", reviews)} 
+          {this.sortReviews(reviews, this.state.sortBy)}
+          {console.log("reviews after ", reviews)} 
           {reviews.map(review => 
             // 
-            <ReviewSmallCard review={review} key={`t${review.id}t${review.id}t`} currentUser={currentUser} /> 
+            <ReviewSmallCard review={review} key={`t${review.id}t${review.id}t`} currentUser={currentUser} deleteReview={this.props.deleteReview} />
               
             )}
 

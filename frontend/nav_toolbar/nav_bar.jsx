@@ -38,7 +38,7 @@ componentDidMount(){
   // console.log("didmount navbar", typeof this.props.cartId !== "string" )
   // console.log("didmount navbar cartid", this.props.cartId)
   // console.log("didmount navbar undefined", this.props.cartId !== undefined)
-  // if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined ) { this.props.requestCart(this.props.cartId), console.log("nav bar 29, requested cart") }
+  if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined ) { this.props.requestCart(this.props.cartId), console.log("nav bar 29, requested cart") }
 }
 
 componentWillUnmount(){
