@@ -9,7 +9,7 @@ import {requestCart } from '../../actions/cart_actions'
 class ProductIndex extends React.Component{
 constructor(props){
   super(props)
-  // console.log("product constructor props",props)
+  console.log("product constructor props")
   this.handleClick = this.handleClick.bind(this)
 }
 
@@ -32,6 +32,45 @@ componentDidMount(){
   }
   // console.log("searchdata",searchData)
   this.props.requestProducts(searchData)
+  console.log("component did mount")
+}
+
+componentDidUpdate(prevProps, prevState){
+// let searched = false
+  let searchData = {
+    category: this.props.match.params.category,
+    query: this.props.match.params.query
+  }
+ 
+  if ((this.props.match.params.category !== prevProps.match.params.category) || (this.props.match.params.query !== prevProps.match.params.query)) { this.props.requestProducts(searchData)} else {console.log("no request")}
+  // if (this.props.match.params.query !== prevProps.match.params.query) { console.log("query request success")}
+
+  console.log("component didupdate prevprops category", prevProps.match.params.category)
+  console.log("component didupdate this.props category", this.props.match.params.category)
+  console.log("component didupdate this.props category !==", this.props.match.params.category !== prevProps.match.params.category)
+  console.log("component didupdate prevprops query", prevProps.match.params.query)
+  console.log("component didupdate this.props query", this.props.match.params.query)
+  console.log("component didupdate this.props query !==", this.props.match.params.query !== prevProps.match.params.query)
+
+}
+
+componentWillReceiveProps(nextProps){
+  // console.log("nextprops", nextProps)
+  // console.log("nextprops this.props", this.props)
+  // console.log("nextprops == this.props category", nextProps.match.params.category !== this.props.match.params.category)
+  // console.log("nextprops == this.props query", nextProps.match.params.query !== this.props.match.params.query)
+  // console.log("nextprops == this.props one is ", ((nextProps.match.params.category !== this.props.match.params.category) !== (nextProps.match.params.query !== this.props.match.params.query)) ? "one is not the other true" : " both are same false" )
+ 
+  // let searchData = {
+  //   category: this.props.match.params.category,
+  //   query: this.props.match.params.query
+  // }
+
+    // if ((nextProps.match.params.category !== this.props.match.params.category) !== (nextProps.match.params.query !== this.props.match.params.query)) {console.log("should request") }
+    // if ((nextProps.match.params.category !== this.props.match.params.category) !== (nextProps.match.params.query !== this.props.match.params.query)) {this.props.requestProducts(searchData) }
+//     this.props.requestProducts(searchData)
+  
+
 }
 
 handleClick = (itemID, cartID, prod) => e => {
@@ -57,14 +96,9 @@ console.log("query category show this.props",this.props)
     return (<div> <h1>Product Category: {this.props.match.params.category}</h1>
       <h1>Search Query: {this.props.match.params.query} </h1>
     </div>) }
-  
-
-    
     if (this.props.match.params.query && !this.props.match.params.category)  {  return ( <div> <h1>Product Category: All</h1> 
     <h1>Search Query: {this.props.match.params.query} </h1>
     </div>) }
-      
-    
     if (!this.props.match.params.query && this.props.match.params.category)  { return(
     <div> <h1>Product Category: {this.props.match.params.category}</h1> 
     </div> ) }

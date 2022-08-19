@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const NavSubBar =  () => {
   return( 
@@ -25,4 +25,4 @@ const NavSubBar =  () => {
 
 }
 
-export default NavSubBar
+export default withRouter(NavSubBar)
