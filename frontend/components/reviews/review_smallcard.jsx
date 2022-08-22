@@ -67,7 +67,8 @@ render(){
   if (!review) { return null } else {
 return( 
   <div className="individual-review" key={review.id} >
-    <div className="individual-review-author-info"> <span className="individual-review-pfp" > <img src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/defaultCR0010241024SX48jpg" alt="default pfp" /> </span>  <div className="review-author-name"> {(review.review_author) ? (review.review_author) : ("AMZN Customer")}  </div> </div>
+    <div className="individual-review-author-info"> <span className="individual-review-pfp" > <img src={window.default_profile} alt="default pfp" /> </span>  <div className="review-author-name"> Reviewed by: {(review.review_author) ? (review.review_author) : ("AMZN Customer")}  </div> </div>
+    {/* <div className="individual-review-author-info"> <span className="individual-review-pfp" > <img src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/defaultCR0010241024SX48jpg" alt="default pfp" /> </span>  <div className="review-author-name"> {(review.review_author) ? (review.review_author) : ("AMZN Customer")}  </div> </div> */}
     
 
     <div className="individual-review-header" ><span className="star-rating">{this.displayStars(review.rating)}</span>   {review.review_header} </div>

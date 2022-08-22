@@ -1,15 +1,14 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
 
 const Greeting = ({ currentUser, logout }) => {
+  console.log("greeting cont props", this)
   const loginSignupLinks = () => (
     <nav className="login-signup">
-      <Link to="/login">Login</Link>
-      {/* &nbsp;or&nbsp; */}
-      <p> or </p>
-      <Link to="/signup">Sign up!</Link>
+      <Redirect to="/login">Login</Redirect>
     </nav>  );
   const namedGreeting = () => (
     <hgroup className="header-group-1">

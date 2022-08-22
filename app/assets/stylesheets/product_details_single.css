@@ -5,6 +5,15 @@
 
 .details-price{
   font-size: x-large;
+  align-self: flex-start;
+  margin-bottom: 12px;
+}
+.price-whole{
+  font-size: xx-large;
+font-weight: 600;
+}
+.price-fraction{
+font-size: small;
 }
 
 .history-nav{
@@ -65,10 +74,29 @@ overflow-wrap: break-word;
   /* border: dotted 2px gray; */
 }
 
+.details-description-table td{
+  padding: 5px 20px;
+}
+.bold-1{
+  font-weight: 800;
+}
+.non-bold-text-2{
+  margin-left: 50px;
+}
+
 .details-title{
   font-size: x-large;
 }
-
+.details-descriptive-header{
+font-size: large;
+font-family: "Amazon Ember",Arial, sans-serif;
+}
+.details-descriptive > li{
+  margin: 10px 0px;
+  word-wrap: break-word;
+  text-indent: -24px;
+  font-family: "Amazon Ember",Arial, sans-serif;
+}
 .add-to-cart{
   margin-top: 10px;
   display: flex;
@@ -107,16 +135,26 @@ text-align: center;
 
 .checkout-right-col{
   display: flex;
-  width: 34%;
+  width: 20%;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   border-left:  solid 2px gray;
+  border-top:  solid 2px gray;
+  border-right:  solid 2px gray;
+  border-bottom:  solid 2px gray;
   border-radius: 20px;
-  margin-right: 8%;
+  margin-right: 12%;
+  margin-left: 3%
 
 }
+.checkout-inner-right-col{
+padding: 15px;
+}
 
+.checkout-right-spacer{
+  width: 12%;
+}
 
 .details-options{
 margin: 5px;
@@ -124,7 +162,7 @@ margin: 5px;
 
 .options-block{
   margin: 5px;
-  padding: 3px ;
+  padding: 3px 10px ;
   border: 1px solid black;
 }
 

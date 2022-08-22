@@ -5,6 +5,8 @@ import { requestProduct } from "../../actions/product_actions"
 import { createLedger, updateLedger } from "../../actions/cart_ledger_actions"
 import { requestCart } from '../../actions/cart_actions'
 import ReviewDetail from '../reviews/review_detail'
+import { IoMdArrowDropdown } from "react-icons/io"
+import { RiArrowDropDownLine, RiChat2Line } from "react-icons/ri"
 
 class ProductShowDetails extends React.Component {
   constructor(props){
@@ -93,6 +95,8 @@ if (this.props.product) {this.state = {
   render(){
     const {product, cartId} = this.props 
     if (!product) {return null} else {
+let a;
+       a = new String(product.price).split(".")
 
     return(
       
@@ -114,7 +118,7 @@ if (this.props.product) {this.state = {
             <div className="seller blue-text" > visit seller store</div>
             <hr />
             <div className="details-rating"> 
-              <span className="rating-start"><span className="star-rating">{this.displayStars(product.reviews_avg)}</span> | </span> <span className="ratings-redirect blue-text"> 
+              <span className="rating-start"><span className="star-rating">{this.displayStars(product.reviews_avg)}</span> < RiArrowDropDownLine /> | </span> <span className="ratings-redirect blue-text"> 
               {/* <Link >{product.reviews.length}Reviews</Link>  */}
             {/* {console.log("product 92",product)}   */}
             {/* {console.log("this.state 93",this.state)}   */}
@@ -124,22 +128,42 @@ if (this.props.product) {this.state = {
             <div className="details-options"> <span className="options-block">option1</span> | <span className="options-block" >option2</span> </div>
 
             <div className="details-description" > {product.description} </div>
-            <div className="details-descriptive-2" > {product.details_description_array.map(ele1 => 
-              <li>{ele1}</li> )} </div>
+            <table className="details-description-table">
+              {/* <thead><tr><th>quality</th><th>quality2</th></tr></thead> */}
+              <tbody>
+                 {/* {product.details_description_array.map((ele1, idx) => { if (idx % 2 < 1) { console.log("first row option") } else {console.log("blank row")} }   )} */}
+                {product.details_description_array.map((ele1, idx) => { if (idx % 2 == 0) { return (<tr><td> <span className="bold-1">  {ele1}</span></td><td> <span className="non-bold-text-2"> {product.details_description_array[idx + 1]}</span></td></tr> ) } else {console.log("blank row")} }   )}
+              </tbody>
+            </table>
+            
+           
             <hr />
+            <h2 className="bold-1 details-descriptive-header">About this item:</h2>
             <div className="details-descriptive" > {product.additional_details.map(ele => 
               <li>{ele}</li>
+              // <li> <span className="details-descriptive-text-indi">{ele}</span></li>
               )} </div>
+              <br /><br /><br />
+            <span className="incorrect-product-info blue-text"><RiChat2Line /> Report Incorrect product informaton</span>
+              <hr />
            </div>
 
           <div className="checkout-right-col">
-            <div className="details-price" > <span className="dollarsign" >$</span> {product.price} </div>
+              <div className="checkout-inner-right-col">
+                {console.log("a", a)}
+                {console.log("a", a)}
+            <div className="details-price" > <span className="dollarsign" >$</span> <span className="price-whole">{a[0]}</span><span className="price-fraction">{a[1]}</span> </div>
+            {/* <div className="details-price" > <span className="dollarsign" >$</span> {product.price} </div> */}
+            {console.log(product.price)}
+            {/* {console.log(let a = new String(product.price))} */}
+            {console.log(typeof product.price)}
           <div className="checkout-delivery"> Order within 12 hours </div>
           <div className="in-stock"> in stock </div>
 
             <div className="layaway-product"> Reserve with Layaway. <br /> Make <span className="redtext"> 5 payments of {(product.price / 5).toFixed(2)} every 2 weeks</span>. <br /> No interest or fees. Item ships after payments are complete. <br /></div> <span className="blue-text"> Learn more</span>
-          br
-            & FREE Returns
+          <br />
+              & <span className="blue-text">FREE Returns</span> < RiArrowDropDownLine />
+              <br />
             FREE delivery
 
             <div className="primeshipping"> <img className="primeshipping-show" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/Screen+Shot+2022-07-22+at+2.28.40+AM.png" alt="prime shipping" /> </div>
@@ -167,7 +191,7 @@ if (this.props.product) {this.state = {
           <div className="checkout-buttons">
             <button className="buy-now" onClick={() => console.log("onwards to the hypothetical checkout page!")}>Buy Now</button>
           </div>
-          <div className="secure" >secure transaction</div>
+            <div className="secure" >&#x1F512; secure transaction</div>
           <div className="returns"> return policy</div>
             <div className="protection-plan"> 
             <div>
@@ -177,6 +201,9 @@ if (this.props.product) {this.state = {
             </div>
           <button>Add to Saved-for-later List</button>
           </div>
+          </div>
+
+          <div className="checkout-right-spacer"></div>
 
          </div>
         

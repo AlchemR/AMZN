@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { requestCart } from "../actions/cart_actions"
+import { BsSearch } from "react-icons/bs"
+
 
 
 class SearchBar extends React.Component{
@@ -38,20 +40,24 @@ updateSearchInput = (e, feild) => {
     this.setState({ query: "", category: "All" },  () => console.log("searchsubmit, this state", this.state) )
   }
 
-  render(){
 
+
+  render(){
     return (
       <div className="navbar-search">
         <form onSubmit={(e) => this.searchSubmit(e)} className="navbar-search" > 
           {/* <select onChange={() => this.updateSearchInput("category")}> */}
-          <select onChange={(e) => this.updateSearchInput(e, "category")}>
+                      
+
+          <select style={{width:`${ 8 * this.state.category.length + 20 }px`}} className="search-dropdown" onChange={(e) => this.updateSearchInput(e, "category")}>
             <option value="All" selected>All</option>
             <option value="Electronics">Electronics</option>
+            <option value="really long dynamic range test dummy modal">really long dynamic range test dummy modal</option>
           </select>
         {/* <input type="text" className="navbar-search-input" onChange={() => this.updateSearchInput("query")} /> */}
         <input type="text" className="navbar-search-input" onChange={(e) => this.updateSearchInput(e, "query")} />
           {/* <div type="text" className="navbar-search-icon">&#x1F50D;</div> */}
-        <button className="navbar-search-icon" onClick={(e) => this.searchSubmit(e)} >&#x1F50D;</button>
+          <button className="navbar-search-icon" onClick={(e) => this.searchSubmit(e)} ><BsSearch size={20} color={'black'} /></button>
         </form>
        </div>
     )

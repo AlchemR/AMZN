@@ -5,6 +5,7 @@ import Amazon_logo from '../../app/assets/images/Amazon_logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { requestCart } from "../actions/cart_actions"
 import SearchBar from "./search_bar"
+import { IoMdArrowDropdown } from "react-icons/io"
 
 
 let fetched = false
@@ -45,6 +46,10 @@ componentWillUnmount(){
   console.log("component will unmount test time")
 }
 
+loginlogout(){
+  if (this.props.currentUser == "guest") {return "/login"} else {return "/greeting"}
+}
+
   render(){
     // { if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined ) {this.props.requestCart(this.props.cartId), console.log("navbar render header",)}}
     // {console.log("render", this.props.cart)}
@@ -53,10 +58,11 @@ componentWillUnmount(){
   <div className="navbar-header">
     {console.log("navbarheader line 32 props",this.props)}
     {console.log("navbarheader line 32 state",this.state)}
-          <Link to='/'>
+          <Link className="navtop" to='/'>
         <div className="navbar-left-logo" >
           {/* <img className="navbar-left-logo" src={Amazon_logo} alt="" /> */}
-          <img className="navbar-left-logo" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/Amazon_logo.png" alt="Amazon IMG logo" />
+          <div className="box-hover">
+            <img className="navbar-left-logo" src={window.amzn_logo} alt="Amazon IMG logo" /></div>
           </div> 
          </Link>
         {/* <img src="../../../app/assets/images/Amazon logo.png"  className="header-logo" alt="" /> */}
@@ -70,29 +76,29 @@ componentWillUnmount(){
         </div> */}
 
       <div className="navbar-account">
-          <div className="navbar-right account-1">
-            
-            
-          <Link to="/login"><span className="navbar-right line-1">Welcome {this.props.currentUser}</span></Link>
-          <span className="navbar-right line-2"><Link to="/greeting">login/logout</Link></span>
+          <div className="navbar-right box-hover account-1">
+          <Link to={this.loginlogout()}><span className="navbar-right line-1">Welcome {this.props.currentUser}</span>
+            <span className="navbar-right line-2">login/logout </span></Link>
+            {/* <span className="navbar-right line-2">login/logout <IoMdArrowDropdown className='arrow-down' /></span></Link> */}
             </div> 
         
-            <div className="navbar-right account-2">
+            <div className="navbar-right box-hover navtop account-2">
               <span className="navbar-right line-1">Returns</span>
               <span className="navbar-right line-2">& Orders </span>
             </div>
 
-          <div className="navbar-right account-3">
+          <div className="navbar-right box-hover navtop account-3">
             <Link to='/account'>
             <span className="navbar-right line-1">Your</span>
-            <span className="navbar-right line-2" >prime</span>
+            <span className="navbar-right line-2" >prime <IoMdArrowDropdown /> </span>
           </Link>
           </div>
 
-          <div className="navbar-right account-4">
+          <div className="navbar-right box-hover navtop account-4">
             <Link to="/cart" >
             <span className="navbar-right cartcount">{this.props.cartCount}</span> 
-            <span className="navbar-right cart-1"> <img className="cart-1" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/clipart1303615.png" alt="shopping-cart" /></span>
+            <span className="navbar-right cart-1"> <img className="cart-1" src={window.cart_image} alt="shopping-cart" /></span>
+            {/* <span className="navbar-right cart-1"> <img className="cart-1" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/clipart1303615.png" alt="shopping-cart" /></span> */}
             {/* <FontAwesomeIcon icon="fa-light fa-cart-shopping" /> */}
           </Link>
         </div>
