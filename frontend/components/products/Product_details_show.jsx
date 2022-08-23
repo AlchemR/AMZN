@@ -1,12 +1,13 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, Redirect, withRouter } from "react-router-dom"
 import { requestProduct } from "../../actions/product_actions"
 import { createLedger, updateLedger } from "../../actions/cart_ledger_actions"
 import { requestCart } from '../../actions/cart_actions'
 import ReviewDetail from '../reviews/review_detail'
 import { IoMdArrowDropdown } from "react-icons/io"
 import { RiArrowDropDownLine, RiChat2Line } from "react-icons/ri"
+
 
 class ProductShowDetails extends React.Component {
   constructor(props){
@@ -54,6 +55,15 @@ if (this.props.product) {this.state = {
 
     handleAddToCart = (itemID, cartID, product) => e => {
       e.preventDefault()
+
+      if (cartID == 'Guest') {
+
+        console.log("cartID", cartID)
+        alert("Please login to use Cart Functionality");
+        this.props.history.push('/login')
+        return ( <Redirect to={"/login"} /> )
+      } else {
+
       let productexists = false
       let tempnum = 0
       let tempId = 0
@@ -61,11 +71,9 @@ if (this.props.product) {this.state = {
         console.log("tempcart at index", this.props.tempcart[index])
         if (this.props.tempcart[index].product_id == itemID) { productexists = true, tempnum = this.props.tempcart[index].quantity, tempId = this.props.tempcart[index].id }
       }
-      // console.log("product", product)
-      // console.log("quantity typeof", typeof tempnum)
-      if (productexists) { this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: tempId }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) } else { this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) }
-      // console.log("handle add to cart",this.state)
-      // this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(this.props.requestCart(cartID))
+       if (productexists) { this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: tempId }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) } else { this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) }
+     
+    }
     }
 
     handleQuantity = (e) => {
@@ -95,12 +103,12 @@ if (this.props.product) {this.state = {
   render(){
     const {product, cartId} = this.props 
     if (!product) {return null} else {
-let a;
+      let a;
        a = new String(product.price).split(".")
 
     return(
       
-    <div className="product-details-main">
+    <div className="product-details-main grow-main">
         <div className="history-nav"> 
           <NavLink to={'/products'}> <span onClick={() => console.log("goback")} > {"<"} {/* placeholder for arrow icons */} back to results</span></NavLink>
           
@@ -125,6 +133,12 @@ let a;
             </span> <span className="details-descriptive" > {product.detailed_description} </span></div>
              
             <div className="details-price" > <span className="dollarsign" >$</span> {product.price} </div>
+            <div className="discount-available">
+              <span className="discount-1">Was: </span> <span className="discount-2">${(product.price + product.price *.15).toFixed(2)}</span>
+              <span className="discount-1">With Deal:</span> <div className="discount-2-upsell-div"><span className="discount-2-upsell">${product.price}</span> <span className="free-returns blue-text">Free Returns< RiArrowDropDownLine /></span></div>
+              <span className="discount-1">You Save</span> <span className="discount-2"></span>
+            </div>
+            <div className="discount-financing-available"> <span className="blue-text">Pay </span><span className="redtext">{(product.price / 5).toFixed(2)} or less for 3 Months</span><span className="blue-text"> with Affirm.  Learn More</span> </div>
             <div className="details-options"> <span className="options-block">option1</span> | <span className="options-block" >option2</span> </div>
 
             <div className="details-description" > {product.description} </div>
@@ -150,13 +164,12 @@ let a;
 
           <div className="checkout-right-col">
               <div className="checkout-inner-right-col">
-                {console.log("a", a)}
-                {console.log("a", a)}
             <div className="details-price" > <span className="dollarsign" >$</span> <span className="price-whole">{a[0]}</span><span className="price-fraction">{a[1]}</span> </div>
             {/* <div className="details-price" > <span className="dollarsign" >$</span> {product.price} </div> */}
+                {console.log("a", a)}
             {console.log(product.price)}
-            {/* {console.log(let a = new String(product.price))} */}
             {console.log(typeof product.price)}
+            {/* {console.log(let a = new String(product.price))} */}
           <div className="checkout-delivery"> Order within 12 hours </div>
           <div className="in-stock"> in stock </div>
 
@@ -192,6 +205,14 @@ let a;
             <button className="buy-now" onClick={() => console.log("onwards to the hypothetical checkout page!")}>Buy Now</button>
           </div>
             <div className="secure" >&#x1F512; secure transaction</div>
+            <div className="secure-transacrion-ships">
+              <span className="checkout-span-1">Ships from</span><span className="checkout-span-2">AMZN.com</span>
+              <span className="checkout-span-1">Sold by</span><span className="checkout-span-2">AMZN.ccom</span>
+              <span className="checkout-span-1">Customer Service</span><span className="checkout-span-2">AMZN.com ....</span>
+              <span className="checkout-span-1">Packaging</span><span className="checkout-span-2">Show what's in ...</span>
+            </div>
+            <hr />
+            <span className="details blue-text">Detai;s</span>
           <div className="returns"> return policy</div>
             <div className="protection-plan"> 
             <div>
@@ -232,4 +253,4 @@ updateLedger: (ledger) => dispatch(updateLedger(ledger)),
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductShowDetails)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductShowDetails))

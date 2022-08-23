@@ -15,7 +15,9 @@
   border-radius: 10px;
 }
 
-
+.login-form-wrapper{
+  margin-bottom: 150px;
+}
 
 .session-submit{
   width: 300px;

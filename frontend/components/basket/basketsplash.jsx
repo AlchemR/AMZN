@@ -5,7 +5,7 @@ import CartIndex from './cart_index'
 const BasketSplash = () => {
 
   return (
-    <div className="cart-container">
+    <div className="cart-container grow-main">
 
         <br /><br /><br />
         {/* < CartLedgerDetails /> */}

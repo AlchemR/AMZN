@@ -3,7 +3,8 @@ import React from "react";
 const AccountDetails = () => {
 
   return (
-      <div className="account-information-main">
+
+      <div className="account-information-main grow-main">
         <div className="account-information-wrapper">
         <div>Your shopping Cart</div>
         <div>Your Reviews</div>

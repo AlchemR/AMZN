@@ -20,7 +20,8 @@
 .product-index {
   display: grid;
   row-gap: 20px;
-  column-gap: 20px;
+  column-gap: 50px;
+  width: 70%;
   grid-template-columns: repeat(auto-fill, 250px);
 justify-items: center;
 }
@@ -49,3 +50,11 @@ background-color: rgb(169, 169, 169);
 height: 22px;
 width: fit-content;
 }
+
+.product-index-spacer-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+

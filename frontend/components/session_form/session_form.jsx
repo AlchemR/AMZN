@@ -66,7 +66,8 @@ this.demo = setInterval(() => {
 
   render() {
     return (
-      <div className="login-form-container">
+
+      <div className="login-form-container grow-main" >
         <div className='login-form-wrapper'>
           <div className='login-logo'> <img className="login-logo" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/Amazon_logo.png" alt="Amazon IMG logo" /> </div>
             <form onSubmit={this.handleSubmit} className="login-form-box">

@@ -57,6 +57,7 @@ padding: 5px 5px;
 .navbar-search-input {
   padding: 10px;
   width: 100%;
+  min-width: 250px;
   height: 20px;
   border: none;
 }
@@ -73,6 +74,7 @@ padding: 5px 5px;
   justify-content: center;
   background-color: #FEBD69;
   width: 5%;
+  min-width: 50px;
 }
 
 .navbar-account {
@@ -155,4 +157,59 @@ margin-left: 25px;
 
 #books{
  margin-right: 30px; 
+}
+
+.nav-footer-above{
+    height: 70px;
+    align-items: center;
+    background-color: #232F3E;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: 800;
+    color: white;
+}
+.navbar-footer-below{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background-color: #131921;
+    position: sticky;
+    bottom: 0;
+    z-index: -3;
+    justify-content: center;
+}
+.built-in-location{
+  background-color: transparent;
+  border: white solid 1px;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+}
+.white-hover-border{
+  border: 1px solid transparent;
+  padding: 5px;
+  margin: 5px;
+}
+.white-hover-border:hover{
+border: 1px solid white;
+}
+
+.language-dropdown{
+  padding: 10px;
+  margin: 10px;
+}
+
+
+/* this sticks the footer at the bottom of the page */
+.wrapper{  
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.grow-main {
+  flex-grow: 1;
 }

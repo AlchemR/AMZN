@@ -16,10 +16,11 @@ import ProductShowDetails from './products/Product_details_show';
 import CreateReview from './reviews/create_review';
 import EditReview from './reviews/edit_review';
 import EditReviewFull from './reviews/edit_review_full';
+import Footer from '../nav_toolbar/footer';
 
 const App = (currentUsername) => (
   
-  <div>
+  <div className='wrapper'>
     <header>
   
     < NavBar />
@@ -46,6 +47,8 @@ const App = (currentUsername) => (
     <Route exact path="/cart" component={BasketSplash}/>
     <Route path='/' component={HomePage}/>
     </Switch>
+
+    <Footer/>
   </div>
 
 );

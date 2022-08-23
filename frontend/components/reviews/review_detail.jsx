@@ -164,7 +164,8 @@ render() {
             <div className="review-images-all">
                 <div className="review-images-small" > links to each review on clicking on image</div><div className="review-images-small" > links to each review on clicking on image</div><div className="review-images-small" > links to each review on clicking on image</div><div className="review-images-small" > links to each review on clicking on image</div>
             </div>
-              <div className="wordcloud-link"> <a href="#" className="see-all-customer-images"> See All Customer images </a></div>
+              <div className="wordcloud-link"> <a className="see-all-customer-images blue-text"> See All Customer images </a></div>
+              {/* <div className="wordcloud-link"> <a href="" className="see-all-customer-images"> See All Customer images </a></div> */}
               <span className="reviews-wordcloud-header"> Read Reviews that mention:</span>
                <div className="reviews-wordcloud">
               <span className="reviews-wordcloud-indi" >Electronics</span> <span className="reviews-wordcloud-indi" >wordcloud </span> <span className="reviews-wordcloud-indi" >wordcloud </span> <span className="reviews-wordcloud-indi" >wordcloud </span> <span className="reviews-wordcloud-indi" >wordcloud</span>
