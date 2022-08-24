@@ -6,7 +6,7 @@ import { createReview, updateReview, deleteReview, requestReviews } from "../../
 class ReviewFullDetail extends React.Component {
   constructor(props) {
     super(props)
-    console.log("constructor props reviewdetail", this.props)
+    // console.log("constructor props reviewdetail", this.props)
   }
 
   // this.handleQuantity = this.handleQuantity.bind(this)
@@ -14,14 +14,14 @@ class ReviewFullDetail extends React.Component {
 
   componentDidMount() {
     this.props.requestReviews()
-    console.log("reviewdetail component did mount", this)
+    // console.log("reviewdetail component did mount", this)
     // consider doing active record on index search
     // .where(product_id: params[:product_id])
     //This is kind of getting into searching territory
   }
 
   displayStars(num) {
-    console.log("displaystars -- add symbols and remove this when complete")
+    // console.log("displaystars -- add symbols and remove this when complete")
     let output = []
     for (let index = 1; index < 5; index++) {
       if (num >= index) { output.push("fullstar") } else if ((num < index) && (num > index - 0.6)) { output.push("halfstar") } else if (num < index) { output.push("emptystar") }
@@ -58,7 +58,7 @@ class ReviewFullDetail extends React.Component {
             </div>
 
             <div className="sort-by-dropdown">
-              <select onChange={(e) => console.log("dropdown sort by most recent, or top rated")} className="dropdown" >
+              <select onChange={(e) => {} } className="dropdown" >
                 <option value={1}>Top Reviews</option>
                 <option value={2}>Most Recent</option>
               </select>
@@ -95,8 +95,8 @@ class ReviewFullDetail extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  console: console.log("review details show state", state),
-  console: console.log("review details show ownprops", ownProps),
+  // console: console.log("review details show state", state),
+  // console: console.log("review details show ownprops", ownProps),
   reviews: Object.values(state.entities.review)
   // cartId: state.session.cart
 

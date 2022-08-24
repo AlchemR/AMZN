@@ -4,17 +4,17 @@ import {RECEIVE_REVIEW, REMOVE_REVIEW, RECEIVE_REVIEWS } from '../actions/review
 const reviewReducer = (state = {}, action ) => {
   Object.freeze(state)
   const nextstate = Object.assign({}, state)
-  console.log("review_reducer state", state)
-  console.log("review_reducer action", action)
+  // console.log("review_reducer state", state)
+  // console.log("review_reducer action", action)
 switch (action.type) {
 
   case RECEIVE_REVIEWS:
     return action.reviews
   case RECEIVE_REVIEW:
-    console.log("nextstate before", nextstate)
+    // console.log("nextstate before", nextstate)
 
     nextstate[action.review.id] = action.review[action.review.id]
-    console.log("nextstate after", nextstate)
+    // console.log("nextstate after", nextstate)
     return nextstate
 
   case REMOVE_REVIEW:

@@ -9,9 +9,9 @@ class EditReview extends React.Component{
   constructor(props){
    super(props)
    this.state = this.props.review
-   console.log("rating",this.state.rating)
-   console.log("props edit review",this.props)
-   console.log("reviewbody",this.state.review_body)
+  //  console.log("rating",this.state.rating)
+  //  console.log("props edit review",this.props)
+  //  console.log("reviewbody",this.state.review_body)
 this.handleSubmit = this.handleSubmit.bind(this);
 this.handleUpdate = this.handleUpdate.bind(this);
 
@@ -19,7 +19,7 @@ this.handleUpdate = this.handleUpdate.bind(this);
  } 
 
 componentDidMount(){
-  console.log(this.props)
+  // console.log(this.props)
   // this.props.requestReview(this.props)
 }
 
@@ -35,11 +35,11 @@ this.props.updateReview(this.state).then(() => this.props.toggle())
 
 
  handleUpdate = (feild, e) => {
-this.setState({[feild]: e.currentTarget.value}), console.log(this.state, e)
+this.setState({[feild]: e.currentTarget.value})
  }
 
  render(){
-   console.log("review render",this.state)
+  //  console.log("review render",this.state)
   if (!this.state) {return null} else{
    return (
      <div>
@@ -68,8 +68,8 @@ this.setState({[feild]: e.currentTarget.value}), console.log(this.state, e)
 
 
 const mapStateToProps = (state, ownProps) => ({
-  console: console.log("review details show state", state),
-  console: console.log("review details show ownprops", ownProps),
+  // console: console.log("review details show state", state),
+  // console: console.log("review details show ownprops", ownProps),
 });
 
 

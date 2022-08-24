@@ -7,7 +7,7 @@ class ReviewSmallCard extends React.Component{
   constructor(props){
   super(props)
 
-  console.log("reviewsmallcard", this.props)
+  // console.log("reviewsmallcard", this.props)
     this.state = { displayConfirm: false, displayEdit: false, helpful: false, abuse: false }
 
     this.toggleDelete = this.toggleDelete.bind(this)

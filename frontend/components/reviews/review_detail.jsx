@@ -10,7 +10,7 @@ class ReviewDetail extends React.Component {
 
   constructor(props) {
     super(props)
-    console.log("constructor props reviewdetail" , this.props)
+    // console.log("constructor props reviewdetail" , this.props)
     this.state = { displayConfirm: false, displayEdit: false, helpful: false, abuse: false, sortBy: "4"}
     // this.state = { displayConfirm: false, displayEdit: false, helpful: false, this.state.id: false}
     this.toggleDelete = this.toggleDelete.bind(this)
@@ -24,7 +24,7 @@ class ReviewDetail extends React.Component {
 
   componentDidMount(){
     this.props.requestReviews(this.props.product.id)
-    console.log("requested reviews plural in review_detail")
+    // console.log("requested reviews plural in review_detail")
     // consider doing active record on index search
     // .where(product_id: params[:product_id])
     //This is kind of getting into searching territory
@@ -62,7 +62,7 @@ toggleEdit(){
 }
 
 handleUpdate = (feild, e) => {
-    this.setState({ [feild]: e.currentTarget.value }), console.log("handleupdate state", this.state, e)
+    this.setState({ [feild]: e.currentTarget.value })
   }
 
 // displayEditButtons(review){
@@ -81,24 +81,24 @@ handleUpdate = (feild, e) => {
 // }
 
 sortReviews(reviews, filter) {
-console.log("filter", filter)
-console.log("filter typeof", typeof filter)
+// console.log("filter", filter)
+// console.log("filter typeof", typeof filter)
   switch (filter) {
     case "1":
       reviews.sort((a,b) => b.rating - a.rating) // highest to lowest
-      console.log("1 case")
+      // console.log("1 case")
       break;
     case "2":
       reviews.sort((a, b) => a.rating - b.rating) // lowest to highest
-      console.log("2 case")
+      // console.log("2 case")
       break;
       case "3":
       reviews.sort((a, b) => Date.parse(a.updated_at) - Date.parse(b.updated_at)) // oldest to newest
-      console.log("3 case")
+      // console.log("3 case")
       break;
       case "4":
         reviews.sort((a, b) => Date.parse(b.updated_at) - Date.parse(a.updated_at)) // newest to oldest
-      console.log("4 case")
+      // console.log("4 case")
       break;
       
       default:
@@ -109,7 +109,7 @@ console.log("filter typeof", typeof filter)
 
 render() {
     let output 
-    console.log("reviewdetail props in render", this.props)
+    // console.log("reviewdetail props in render", this.props)
     const { reviews, product, currentUser } = this.props
     let sum = 0; reviews.map(review1 => sum += review1.rating) ; let averagerating = (sum / reviews.length)
 
@@ -182,9 +182,9 @@ render() {
 
           <div className="reviews-list"> 
           <h1>Reviews: </h1>
-          {console.log("reviews before ", reviews)} 
+          {/* {console.log("reviews before ", reviews)}  */}
           {this.sortReviews(reviews, this.state.sortBy)}
-          {console.log("reviews after ", reviews)} 
+          {/* {console.log("reviews after ", reviews)}  */}
           {reviews.map(review => 
             // 
             <ReviewSmallCard review={review} key={`t${review.id}t${review.id}t`} currentUser={currentUser} deleteReview={this.props.deleteReview} />
@@ -208,8 +208,8 @@ render() {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  console: console.log("review details show state", state),
-  console: console.log("review details show ownprops", ownProps),
+  // console: console.log("review details show state", state),
+  // console: console.log("review details show ownprops", ownProps),
   reviews: Object.values(state.entities.review),
   currentUser: state.session.currentUser,
   // currentUserName: state.session.currentUser

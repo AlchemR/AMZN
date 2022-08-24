@@ -23,7 +23,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    console.log("user",user)
+    // console.log("user",user)
     this.props.processForm(user)
       // () => setTimeout(function () { return <Redirect to={'/'} /> }.bind(this), 2000))
   }

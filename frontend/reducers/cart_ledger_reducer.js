@@ -4,7 +4,7 @@ const ledgerReducer = (oldstate = {}, action) => {
   Object.freeze(oldstate)
   let nextstate = Object.assign({},oldstate)
 
-console.log("ledger reducer", action)
+// console.log("ledger reducer", action)
   switch (action.type) {
     case RECEIVE_LEDGERS:
     return action.ledgers  

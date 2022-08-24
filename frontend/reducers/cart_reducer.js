@@ -6,7 +6,7 @@ import { LOGOUT_CURRENT_USER, RECEIVE_CURRENT_USER } from "../actions/session_ac
 const cartReducer = (oldstate = {}, action) => {
   Object.freeze(oldstate)
   let nextstate = Object.assign({}, oldstate)
-  console.log("cart reducer action", action)
+  // console.log("cart reducer action", action)
   switch (action.type) {
     case RECEIVE_CARTS:
       return action.carts

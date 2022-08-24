@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { requestProduct } from "../../actions/product_actions"
 import { Link } from "react-router-dom"
 
+
 class HomePageProduct extends React.Component {
   constructor(props) {
     super(props)

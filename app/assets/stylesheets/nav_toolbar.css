@@ -72,9 +72,12 @@ padding: 5px 5px;
   border-top-right-radius: 7px;
   align-items: center;
   justify-content: center;
-  background-color: #FEBD69;
+  background-color: #febd69;
   width: 5%;
   min-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar-account {
@@ -170,11 +173,11 @@ margin-left: 25px;
     color: white;
 }
 .navbar-footer-below{
-    height: 70px;
+    height: 35px;
     display: flex;
     align-items: center;
     background-color: #131921;
-    position: sticky;
+    /* position: sticky; */
     bottom: 0;
     z-index: -3;
     justify-content: center;
@@ -212,4 +215,14 @@ border: 1px solid white;
 
 .grow-main {
   flex-grow: 1;
+}
+
+.footer-message{
+  color: white;
+  font-size: small ;
+  font-family:'Franklin Gothic Medium', Arial, sans-serif
+}
+
+.navbar-footer-spacer{
+margin-top: 100px;
 }

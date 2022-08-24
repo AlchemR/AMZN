@@ -37,7 +37,7 @@ updateSearchInput = (e, feild) => {
     let querydata = this.state
     // console.log("searchSubmit", querydata)
     if (this.state.category === "All") { this.props.history.push(`/products/search/${this.state.query}`) } else { this.props.history.push(`/products/${this.state.category}/search/${this.state.query}`) }
-    this.setState({ query: "", category: "All" },  () => console.log("searchsubmit, this state", this.state) )
+    this.setState({ query: "", category: "All" } )
   }
 
 

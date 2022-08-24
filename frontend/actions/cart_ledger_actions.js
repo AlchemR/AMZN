@@ -31,8 +31,8 @@ export const createLedger = data => dispatch =>{
 }
 
 export const updateLedger = ledger => dispatch =>{
-  console.log("do we hit ledger actions before error")
-  console.log("do we hit ledger actions before error", ledger)
+  // console.log("do we hit ledger actions before error")
+  // console.log("do we hit ledger actions before error", ledger)
   return LedgerAPIUtils.updateLedger(ledger).then(ledger => dispatch(receiveLedger(ledger)))
 }
 

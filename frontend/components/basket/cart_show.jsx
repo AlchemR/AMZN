@@ -7,8 +7,8 @@ import {requestCart} from '../../actions/cart_actions'
 class CartLedgerDetails extends React.Component {
   constructor(props) {
     super(props)
-    console.log("cartledgerdetails constructor",this.props)
-    if (this.props.cartitem) {this.state = this.props.cartitem, console.log("constructor state", this.state)} else {this.state = null}
+    // console.log("cartledgerdetails constructor",this.props)
+    if (this.props.cartitem) {this.state = this.props.cartitem} else {this.state = null}
   }
 
   // componentDidMount() {
@@ -17,7 +17,7 @@ class CartLedgerDetails extends React.Component {
 
   handleQuantity = (e) => {
     e.preventDefault() 
-    return ( this.setState({ quantity: parseInt(e.target.value) }) , console.log("handlequantity", this.state), this.props.updateLedgers(this.state), this.props.requestCart(this.state.cart_id) )
+    return ( this.setState({ quantity: parseInt(e.target.value) }) ,this.props.updateLedgers(this.state), this.props.requestCart(this.state.cart_id) )
   }
 
   render() {
@@ -27,8 +27,8 @@ class CartLedgerDetails extends React.Component {
       return (
 
         <div className="ledger-items">
-            {console.log("render, cartitem",cartitem)}
-            {console.log("render, state", this.state)}
+            {/* {console.log("render, cartitem",cartitem)} */}
+            {/* {console.log("render, state", this.state)} */}
         
         
         <div key={`${cartitem.id}-1`} className="ledger-map">
@@ -61,8 +61,8 @@ class CartLedgerDetails extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  console: console.log("state", state),
-  console1: console.log("ownprops", ownProps),
+  // console: console.log("state", state),
+  // console1: console.log("ownprops", ownProps),
   cartitem1: Object.values(ownProps.cartitem),
   cartitem: ownProps.cartitem
 });

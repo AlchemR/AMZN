@@ -15,7 +15,7 @@ constructor(props){
   //   pageEnd: 4
   // }
 
-  console.log("product constructor props")
+  // console.log("product constructor props")
   this.handleClick = this.handleClick.bind(this)
 }
 
@@ -38,7 +38,7 @@ componentDidMount(){
   }
   // console.log("searchdata",searchData)
   this.props.requestProducts(searchData)
-  console.log("component did mount", this)
+  // console.log("component did mount", this)
 }
 
 componentDidUpdate(prevProps, prevState){
@@ -50,12 +50,12 @@ componentDidUpdate(prevProps, prevState){
  
   if ((this.props.match.params.category !== prevProps.match.params.category) || (this.props.match.params.query !== prevProps.match.params.query)) { this.props.requestProducts(searchData)} else {console.log("no request")}
 
-  console.log("component didupdate prevprops category", prevProps.match.params.category)
-  console.log("component didupdate this.props category", this.props.match.params.category)
-  console.log("component didupdate this.props category !==", this.props.match.params.category !== prevProps.match.params.category)
-  console.log("component didupdate prevprops query", prevProps.match.params.query)
-  console.log("component didupdate this.props query", this.props.match.params.query)
-  console.log("component didupdate this.props query !==", this.props.match.params.query !== prevProps.match.params.query)
+  // console.log("component didupdate prevprops category", prevProps.match.params.category)
+  // console.log("component didupdate this.props category", this.props.match.params.category)
+  // console.log("component didupdate this.props category !==", this.props.match.params.category !== prevProps.match.params.category)
+  // console.log("component didupdate prevprops query", prevProps.match.params.query)
+  // console.log("component didupdate this.props query", this.props.match.params.query)
+  // console.log("component didupdate this.props query !==", this.props.match.params.query !== prevProps.match.params.query)
 
 }
 
@@ -80,7 +80,7 @@ handleClick = (itemID, cartID, prod) => e => {
 e.preventDefault()
 
 if (cartID == 'Guest') { 
-  console.log("cartID", cartID)
+  // console.log("cartID", cartID)
   alert("Please login to use Cart Functionality");
   this.props.history.push('/login')
   return (<Redirect to={"/login"} />) 
@@ -110,7 +110,7 @@ for (let index = 0; index < this.props.tempcart.length; index++) {
 // }
 
 queryCategoryShow(){
-console.log("query category show this.props",this.props)
+// console.log("query category show this.props",this.props)
   if (this.props.match.params.query && this.props.match.params.category) {
     return (<div> <h1>Product Category: {this.props.match.params.category}</h1>
       <h1>Search Query: {this.props.match.params.query} </h1>
@@ -134,7 +134,7 @@ render(){
   // console.log("products",this.props)
 return(
   <div className='grow-main'>
-    {console.log("line 60 product index", this.props)}
+    {/* {console.log("line 60 product index", this.props)} */}
     {this.queryCategoryShow()}
     <div className='product-index-spacer-wrapper'>
       <div className='product-index-spacer'></div>
@@ -162,7 +162,7 @@ return(
 
 
 const mapStateToProps = (state, ownProps) => {
-console.log("MSTP Productindex state",state)
+// console.log("MSTP Productindex state",state)
 // console.log("MSTP Productindex ownprops",ownProps),
 // console.log("MSTP Productindex ownprops 2",ownProps.match.params)
 // console.log("MSTP Productindex ownprops 2", typeof ownProps.match.params)

@@ -17,6 +17,7 @@ import CreateReview from './reviews/create_review';
 import EditReview from './reviews/edit_review';
 import EditReviewFull from './reviews/edit_review_full';
 import Footer from '../nav_toolbar/footer';
+import Checkout from './basket/checkout';
 
 const App = (currentUsername) => (
   
@@ -45,6 +46,7 @@ const App = (currentUsername) => (
     {/* <Route exact path='/products/:category' component={SearchProducts} /> */}
     {/* <Route exact path='/search/:query' component={SearchProducts} /> */}
     <Route exact path="/cart" component={BasketSplash}/>
+    <Route exact path="/checkout" component={Checkout}/>
     <Route path='/' component={HomePage}/>
     </Switch>
 

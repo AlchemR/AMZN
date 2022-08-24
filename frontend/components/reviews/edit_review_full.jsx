@@ -9,8 +9,7 @@ import { Route } from "react-router-dom";
 class EditReviewFull extends React.Component {
   constructor(props) {
     super(props)
-    console.log("edit review constructor", this)
-
+    // console.log("edit review constructor", this)
     // if (!this.state) {
     //   this.state = {
     //     user_id: props.user.id,
@@ -47,7 +46,7 @@ class EditReviewFull extends React.Component {
     this.props.requestReview(this.props.reviewId)
     this.props.requestProduct(this.props.productId)
     // this.timeoutCount()
-    console.log("component did mount edit review after after mount", this)
+    // console.log("component did mount edit review after after mount", this)
   }
 
   componentDidUpdate() {
@@ -63,8 +62,8 @@ class EditReviewFull extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log("updated review handlesubmit")
-    this.props.updateReview(this.state).then(this.props.history.push(`/products/${this.props.productId}`), console.log("updated review submit, history pushed"))
+    // console.log("updated review handlesubmit")
+    this.props.updateReview(this.state).then(this.props.history.push(`/products/${this.props.productId}`) )
   }
 
 
@@ -125,8 +124,8 @@ class EditReviewFull extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("MSTP,State ", state),
-  console.log("MSTP, ownprops ", ownProps)
+  // console.log("MSTP,State ", state),
+  // console.log("MSTP, ownprops ", ownProps)
 
   return {
     user: state.entities.users[state.session.id],

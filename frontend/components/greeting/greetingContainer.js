@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = ({ session, entities: { users } }) => {
   return {
-    current_console: console.log("current user greeting container", session),
+    // current_console: console.log("current user greeting container", session),
     currentUser: users[session.id]
   };
 };

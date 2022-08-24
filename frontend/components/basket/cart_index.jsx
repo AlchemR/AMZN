@@ -1,11 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, Redirect } from "react-router-dom"
 import { requestCarts, requestCart } from "../../actions/cart_actions"
 import { deleteLedger, requestLedger, updateLedger } from '../../actions/cart_ledger_actions'
 import CartLedgerDetails from "./cart_show"
 import EmptyCart from "./empty_cart";
 import { requestProducts } from '../../actions/product_actions'
+import { withRouter } from "react-router-dom";
 
 class CartIndex extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class CartIndex extends React.Component {
   componentDidMount() {
     this.props.requestCart(this.props.cartId)
     this.props.requestProducts()
-    console.log("requestcarts", this.props)
+    // console.log("requestcarts", this.props)
   }
 
   handleQuantity = (e, cartitem) => {
@@ -28,10 +29,11 @@ class CartIndex extends React.Component {
   
   render() {
     const { cart } = this.props
+    console.log("this props", this.props)
     let price_total = 0;
     let item_total = 0;
 
-    if (!cart) { return <EmptyCart /> } else {
+    if (cart.length <= 1) { return <EmptyCart /> } else {
 
       return (
 
@@ -94,7 +96,7 @@ class CartIndex extends React.Component {
           
 
             <div className="checkout-right">
-              {console.log("checkout-right cart", cart)}
+              {/* {console.log("checkout-right cart", cart)} */}
               <div className="free-shipping">
                 <span className="in-stock-1" >Your order qualifies for FREE Shipping</span>. 
                 <br />
@@ -105,7 +107,7 @@ class CartIndex extends React.Component {
               <div className="checkout-right-total"> Subtotal ({item_total} items): {price_total.toFixed(2)} </div>
               <br />
               <label> this order contains a gift <input type="checkbox" /> </label>
-              <button className="buy-now">Proceed to Checkout</button>
+              <Link to="/checkout"><button className="buy-now" onClick={() => console.log("to the checkout page!  Hello to whomever carefully examines console logs.  I see you!")}>Proceed to Checkout</button></Link>
             </div>
 
           </div>

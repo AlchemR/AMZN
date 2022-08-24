@@ -9,7 +9,7 @@ import { Route } from "react-router-dom";
 class CreateReview extends React.Component {
   constructor(props) {
     super(props)
-    console.log("create review constructor", this)
+    // console.log("create review constructor", this)
 
    if (!this.state) {this.state = {
       user_id: props.user.id,
@@ -34,22 +34,22 @@ if (!this.props.product){
   this.props.requestProduct(this.props.productId)
 } 
 // }  else { this.props.requestProduct(this.props.product.id) }
-console.log("component did mount create review after after 2",this)
+// console.log("component did mount create review after after 2",this)
 
 }
 
 
 
 componentDidUpdate(prevProps){
-console.log("prevprops", prevProps)
+// console.log("prevprops", prevProps)
   if (prevProps.productId !== this.props.productId) { this.props.requestProduct(this.props.productId) } 
 }
 
   handleSubmit = (e) =>{
     e.preventDefault()
     // let reviewCreate = Object.assign({}, this.state)
-    console.log("submitted review handlesubmit")
-    this.props.createReview(this.state).then(this.props.history.push(`/products/${this.props.productId}`), console.log("submitted review push") )
+    // console.log("submitted review handlesubmit")
+    this.props.createReview(this.state).then(this.props.history.push(`/products/${this.props.productId}`) )
     // this.props.createReview(reviewCreate).then( <Redirect to={`/products/${this.props.productId}`} /> )
     
   }
@@ -57,7 +57,7 @@ console.log("prevprops", prevProps)
 
 
   handleUpdate = (feild) => {
-    return e => this.setState({ [feild]: e.target.value }, () => console.log(this.state) )
+    return e => this.setState({ [feild]: e.target.value } )
   }
 
   displayStars(num) {
@@ -71,7 +71,7 @@ console.log("prevprops", prevProps)
 
   render() {
     if (!this.props.product) { return null } else {
-      console.log("product create review",this.props.product)
+      // console.log("product create review",this.props.product)
       return (
     <div className="review-create-wrapper">
           <h1 className="review-header" >Item Reviewing:</h1>
@@ -112,11 +112,11 @@ console.log("prevprops", prevProps)
 
 
 const mapStateToProps = (state, ownProps) => {
- console.log("MSTP, ",state.entities.products[ownProps.match.params.productId])
+//  console.log("MSTP, ",state.entities.products[ownProps.match.params.productId])
 
  return {
-   console: console.log("create review show state", state),
-   console: console.log("create review show ownprops", ownProps),
+  //  console: console.log("create review show state", state),
+  //  console: console.log("create review show ownprops", ownProps),
    product: state.entities.products[ownProps.match.params.productId],
    user: state.entities.users[state.session.id],
    productId: parseInt(ownProps.match.params.productId)

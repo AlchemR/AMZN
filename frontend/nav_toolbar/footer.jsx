@@ -15,13 +15,9 @@ class Footer extends React.Component {
 
   }
 
-  componentDidUpdate() {
-    console.log("how often does componentdidupdate hit?")
-  }
-
   componentDidMount() {
-    console.log("how often does componentdidmount hit?")
-    if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined) { this.props.requestCart(this.props.cartId), console.log("nav bar 29, requested cart") }
+
+    if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined) { this.props.requestCart(this.props.cartId) }
   }
 
   // componentWillUnmount() {
@@ -42,10 +38,10 @@ class Footer extends React.Component {
         <div className="nav-footer-above">
           <button className="built-in-location ">Built in California <img className="navbar-footer-ca-logo" width="25" src={window.ca_flag} alt="caifornia flag IMG" />, <img className="navbar-footer-usa-logo" width="25" src={window.usa_flag} alt="usa flag IMG" /> USA</button>
           <img className="navbar-footer-logo white-hover-border" height="50"  src={window.amzn_logo} alt="Amazon IMG logo" />
-          <a href="https://www.linkedin.com/in/peter-r-173614230/"><img className="navbar-footer-linkedin-logo white-hover-border" height="50" src={window.linkedin_logo} alt="linkedin logo IMG" /></a>
-          <a href="https://github.com/AlchemR/"><img className="navbar-footer-github-logo white-hover-border" height="50" src={window.github_logo} alt="github logo IMG" /></a>
-          <a href="https://angel.co/u/peter-romo"><img className="navbar-footer-angels-list-logo white-hover-border" height="50" src={window.angels_list} alt="angels list logo IMG" /></a>
-          <a href="https://alchemr.github.io/portfolio/"> <img className="navbar-footer-portfolio-logo white-hover-border" height="50" src={window.portfolio} alt="portfoilio logo IMG" /></a>
+          <a href="https://www.linkedin.com/in/peter-r-173614230/" target="_blank"><img className="navbar-footer-linkedin-logo white-hover-border" height="50" src={window.linkedin_logo} alt="linkedin logo IMG" /></a>
+          <a href="https://github.com/AlchemR/" target="_blank"><img className="navbar-footer-github-logo white-hover-border" height="50" src={window.github_logo} alt="github logo IMG" /></a>
+          <a href="https://angel.co/u/peter-romo" target="_blank"><img className="navbar-footer-angels-list-logo white-hover-border" height="50" src={window.angels_list} alt="angels list logo IMG" /></a>
+          <a href="https://alchemr.github.io/portfolio/" target="_blank"> <img className="navbar-footer-portfolio-logo white-hover-border" height="50" src={window.portfolio} alt="portfoilio logo IMG" /></a>
 
 
           <select placeholder="Select a Language to Contact Peter in" className="language-dropdown" >
@@ -58,7 +54,7 @@ class Footer extends React.Component {
 
         </div>
         <div className="navbar-footer-below">
-
+          <div className="footer-message">AMZN.com is an Amazon.com clone by Peter Romo</div>
         </div>
       </div>
 

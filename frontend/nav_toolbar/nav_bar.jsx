@@ -21,33 +21,33 @@ constructor(props){
   // {let guest = "Guest"}
  
   componentDidUpdate(){
-    console.log("navbar, component did upate cartcount same as ledgercount", this.props.ledgerCount == this.props.cartCount)
-    console.log("navbar, component did upate this.props ledgercount", this.props.ledgerCount)
-    console.log("navbar, component did upate this.props cartcount", this.props.cartCount)
-    console.log("fetched", fetched)
+    // console.log("navbar, component did upate cartcount same as ledgercount", this.props.ledgerCount == this.props.cartCount)
+    // console.log("navbar, component did upate this.props ledgercount", this.props.ledgerCount)
+    // console.log("navbar, component did upate this.props cartcount", this.props.cartCount)
+    // console.log("fetched", fetched)
     // console.log("navbar, component did upate this.props cartcount typeof", typeof this.props.cartCount)
     // console.log("navbar, component did upate this.props cartcount == ", this.props.cartCount == undefined)
-    if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined && !!this.props.cartCount == false && fetched == false) { this.props.requestCart(this.props.cartId), console.log("nav bar 29, requested cart"), fetched = true } else {
-      if (fetched == false && this.props.ledgerCount != this.props.cartCount && !this.props.ledgerCount == false) { this.props.requestCart(this.props.cartId), console.log("not fetched else clause, requested cart"), fetched = true } }
-      console.log("fetched", fetched)
+    if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined && !!this.props.cartCount == false && fetched == false) { this.props.requestCart(this.props.cartId), fetched = true } else {
+      if (fetched == false && this.props.ledgerCount != this.props.cartCount && !this.props.ledgerCount == false) { this.props.requestCart(this.props.cartId), fetched = true } }
+      // console.log("fetched", fetched)
       if (this.props.ledgerCount == this.props.cartCount) { fetched = false }
-      console.log("fetched", fetched)
+      // console.log("fetched", fetched)
   }
   
 componentDidMount(){
-  console.log("how often does componentdidmount hit?")
+  // console.log("how often does componentdidmount hit?")
   // console.log("didmount navbar", typeof this.props.cartId !== "string" )
   // console.log("didmount navbar cartid", this.props.cartId)
   // console.log("didmount navbar undefined", this.props.cartId !== undefined)
-  if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined ) { this.props.requestCart(this.props.cartId), console.log("nav bar 29, requested cart") }
-}
-
-componentWillUnmount(){
-  console.log("component will unmount test time")
+  if (typeof this.props.cartId !== "string" && this.props.cartId !== undefined ) { this.props.requestCart(this.props.cartId) }
 }
 
 loginlogout(){
   if (this.props.currentUser == "guest") {return "/login"} else {return "/greeting"}
+}
+showcartquantity(qty){
+  // console.log("qty",qty)
+  if (qty == undefined) {return 0} else {return qty}
 }
 
   render(){
@@ -56,8 +56,6 @@ loginlogout(){
 
   return(
   <div className="navbar-header">
-    {console.log("navbarheader line 32 props",this.props)}
-    {console.log("navbarheader line 32 state",this.state)}
           <Link className="navtop" to='/'>
         <div className="navbar-left-logo" >
           {/* <img className="navbar-left-logo" src={Amazon_logo} alt="" /> */}
@@ -96,7 +94,7 @@ loginlogout(){
 
           <div className="navbar-right box-hover navtop account-4">
             <Link to="/cart" >
-            <span className="navbar-right cartcount">{this.props.cartCount}</span> 
+            <span className="navbar-right cartcount">{this.showcartquantity(this.props.cartCount)}</span> 
             <span className="navbar-right cart-1"> <img className="cart-1" src={window.cart_image} alt="shopping-cart" /></span>
             {/* <span className="navbar-right cart-1"> <img className="cart-1" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/clipart1303615.png" alt="shopping-cart" /></span> */}
             {/* <FontAwesomeIcon icon="fa-light fa-cart-shopping" /> */}
@@ -112,7 +110,7 @@ loginlogout(){
   }} 
 
 const mapStateToProps = ( state, ownProps ) => {
-  console.log("MSTP navbar state",state)
+  // console.log("MSTP navbar state",state)
   // console.log("MSTP navbar ownprops",ownProps)
   // console.log("MSTP navbar2", state.entities)
   return  (state.entities.cart && state.entities.users[state.session.id]) ? { 

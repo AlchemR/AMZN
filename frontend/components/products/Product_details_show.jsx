@@ -12,7 +12,7 @@ import { RiArrowDropDownLine, RiChat2Line } from "react-icons/ri"
 class ProductShowDetails extends React.Component {
   constructor(props){
     super(props)
-    console.log("product show details constructor", this.props)
+    // console.log("product show details constructor", this.props)
 if (this.props.product) {this.state = {
       product_id: this.props.product.id,
       quantity: 1,
@@ -23,7 +23,7 @@ if (this.props.product) {this.state = {
   }
 
   componentWillMount(){
-    console.log("does componentwillmount fire")
+    // console.log("does componentwillmount fire")
     this.props.requestProduct(this.props.match.params.id)
     // console.log("componentwillmount Product details show this props", this.props)
     // console.log("componentwillmount Product details show this state", this.state)
@@ -58,7 +58,7 @@ if (this.props.product) {this.state = {
 
       if (cartID == 'Guest') {
 
-        console.log("cartID", cartID)
+        // console.log("cartID", cartID)
         alert("Please login to use Cart Functionality");
         this.props.history.push('/login')
         return ( <Redirect to={"/login"} /> )
@@ -68,7 +68,7 @@ if (this.props.product) {this.state = {
       let tempnum = 0
       let tempId = 0
       for (let index = 0; index < this.props.tempcart.length; index++) {
-        console.log("tempcart at index", this.props.tempcart[index])
+        // console.log("tempcart at index", this.props.tempcart[index])
         if (this.props.tempcart[index].product_id == itemID) { productexists = true, tempnum = this.props.tempcart[index].quantity, tempId = this.props.tempcart[index].id }
       }
        if (productexists) { this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: tempId }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) } else { this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) }
@@ -110,7 +110,8 @@ if (this.props.product) {this.state = {
       
     <div className="product-details-main grow-main">
         <div className="history-nav"> 
-          <NavLink to={'/products'}> <span onClick={() => console.log("goback")} > {"<"} {/* placeholder for arrow icons */} back to results</span></NavLink>
+          <NavLink to={'/products'}> <span > {"<"} {/* placeholder for arrow icons */} back to results</span></NavLink>
+          {/* <NavLink to={'/products'}> <span onClick={() => console.log("goback")} > {"<"} placeholder for arrow icons back to results</span></NavLink> */}
           
           <span>"sponsored"</span>
         </div>
@@ -146,7 +147,7 @@ if (this.props.product) {this.state = {
               {/* <thead><tr><th>quality</th><th>quality2</th></tr></thead> */}
               <tbody>
                  {/* {product.details_description_array.map((ele1, idx) => { if (idx % 2 < 1) { console.log("first row option") } else {console.log("blank row")} }   )} */}
-                {product.details_description_array.map((ele1, idx) => { if (idx % 2 == 0) { return (<tr><td> <span className="bold-1">  {ele1}</span></td><td> <span className="non-bold-text-2"> {product.details_description_array[idx + 1]}</span></td></tr> ) } else {console.log("blank row")} }   )}
+                {product.details_description_array.map((ele1, idx) => { if (idx % 2 == 0) { return (<tr><td> <span className="bold-1">  {ele1}</span></td><td> <span className="non-bold-text-2"> {product.details_description_array[idx + 1]}</span></td></tr> ) } else {} }   )}
               </tbody>
             </table>
             
@@ -166,9 +167,9 @@ if (this.props.product) {this.state = {
               <div className="checkout-inner-right-col">
             <div className="details-price" > <span className="dollarsign" >$</span> <span className="price-whole">{a[0]}</span><span className="price-fraction">{a[1]}</span> </div>
             {/* <div className="details-price" > <span className="dollarsign" >$</span> {product.price} </div> */}
-                {console.log("a", a)}
-            {console.log(product.price)}
-            {console.log(typeof product.price)}
+            {/* {console.log("a", a)} */}
+            {/* {console.log(product.price)} */}
+            {/* {console.log(typeof product.price)} */}
             {/* {console.log(let a = new String(product.price))} */}
           <div className="checkout-delivery"> Order within 12 hours </div>
           <div className="in-stock"> in stock </div>
@@ -202,7 +203,8 @@ if (this.props.product) {this.state = {
               </form>
           </div>
           <div className="checkout-buttons">
-            <button className="buy-now" onClick={() => console.log("onwards to the hypothetical checkout page!")}>Buy Now</button>
+                <Link to="/checkout"> <button className="buy-now">Buy Now</button> </Link>
+
           </div>
             <div className="secure" >&#x1F512; secure transaction</div>
             <div className="secure-transacrion-ships">
