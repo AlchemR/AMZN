@@ -7,7 +7,9 @@ import rootReducer from '../reducers/root_reducer';
 
 
 const configureStore = (preloadedState = {}) => (
-  createStore( rootReducer, preloadedState, applyMiddleware(thunk, logger)
+  // for production enviroment
+  createStore( rootReducer, preloadedState, applyMiddleware(thunk)
+  // for DEV enviroment
   // createStore( rootReducer, preloadedState, composeWithDevTools(applyMiddleware(thunk, logger)
   // )
   )

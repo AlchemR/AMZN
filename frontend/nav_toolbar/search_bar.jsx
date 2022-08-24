@@ -50,7 +50,7 @@ updateSearchInput = (e, feild) => {
                       
 
           <select style={{width:`${ 8 * this.state.category.length + 20 }px`}} className="search-dropdown" onChange={(e) => this.updateSearchInput(e, "category")}>
-            <option value="All" selected>All</option>
+            <option value="All" defaultValue>All</option>
             <option value="Electronics">Electronics</option>
             <option value="really long dynamic range test dummy modal">really long dynamic range test dummy modal</option>
           </select>

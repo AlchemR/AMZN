@@ -188,7 +188,7 @@ if (this.props.product) {this.state = {
               <form onSubmit={this.handleAddToCart(product.id, cartId, product)} >
               {/* <select id="quantity" name="quantity" value={this.state.quantity} onChange={this.handleQuantity} className="dropdown" > */}
               <select onChange={(e) => this.handleQuantity(e)}  className="dropdown" >
-                  <option value={1} selected>Qty: 1</option>
+                    <option value={1} defaultValue>Qty: 1</option>
                   <option value={2}>Qty: 2</option>
                   <option value={3}>Qty: 3</option>
                   <option value={4}>Qty: 4</option>

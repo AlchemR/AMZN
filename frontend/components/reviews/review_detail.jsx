@@ -176,7 +176,7 @@ render() {
                 <option value={"1"}>Top Reviews</option>
                 <option value={"2"}>Lowest Rated</option>
                 <option value={"3"}>Oldest First</option>
-                <option value={"4"} selected>Most Recent</option>
+                  <option value={"4"} defaultValue>Most Recent</option>
               </select>
               </div>
 
