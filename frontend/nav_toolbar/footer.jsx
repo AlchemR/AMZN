@@ -36,7 +36,7 @@ class Footer extends React.Component {
       <div className="navbar-footer">
         <div className="navbar-footer-spacer"></div>
         <div className="nav-footer-above">
-          <button className="built-in-location ">Built in California <img className="navbar-footer-ca-logo" width="25" src={window.ca_flag} alt="caifornia flag IMG" />, <img className="navbar-footer-usa-logo" width="25" src={window.usa_flag} alt="usa flag IMG" /> USA</button>
+          <button className="built-in-location ">Located in California <img className="navbar-footer-ca-logo" width="25" src={window.ca_flag} alt="caifornia flag IMG" />, <img className="navbar-footer-usa-logo" width="25" src={window.usa_flag} alt="usa flag IMG" /> USA</button>
           <img className="navbar-footer-logo white-hover-border" height="50"  src={window.amzn_logo} alt="Amazon IMG logo" />
           <a href="https://www.linkedin.com/in/peter-r-173614230/" target="_blank"><img className="navbar-footer-linkedin-logo white-hover-border" height="50" src={window.linkedin_logo} alt="linkedin logo IMG" /></a>
           <a href="https://github.com/AlchemR/" target="_blank"><img className="navbar-footer-github-logo white-hover-border" height="50" src={window.github_logo} alt="github logo IMG" /></a>

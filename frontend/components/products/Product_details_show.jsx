@@ -6,7 +6,7 @@ import { createLedger, updateLedger } from "../../actions/cart_ledger_actions"
 import { requestCart } from '../../actions/cart_actions'
 import ReviewDetail from '../reviews/review_detail'
 import { IoMdArrowDropdown } from "react-icons/io"
-import { RiArrowDropDownLine, RiChat2Line } from "react-icons/ri"
+import { RiArrowDropDownLine, RiChat2Line, RiInformationFill } from "react-icons/ri"
 
 
 class ProductShowDetails extends React.Component {
@@ -32,21 +32,34 @@ if (this.props.product) {this.state = {
   }
 
   componentDidMount(){
-    // this.props.requestProduct(this.props.match.params.id)
-    // console.log("componentdidmount Product details show this props",this.props)
-    // console.log("componentdidmount Product details show this state",this.state)
-    // console.log("componentdidmount Product details show this props productid",this.props.product === undefined)
-    // console.log("componentdidmount Product details show this props match params",this.props.match.params.id)
   }
 
   componentDidUpdate(){
     // console.log("component did update product details state" , this.state)
     if (this.state === null && this.props.product) {
+      const freeShip = new Date();
+      freeShip.setDate(freeShip.getDate() + 5);
+      const freeShipArr = freeShip.toDateString().split(' ');
+      const freeShipDate = `${freeShipArr[0]}, ${freeShipArr[1]} ${freeShipArr[2]}`;
+
+      const fastShip = new Date();
+      fastShip.setDate(fastShip.getDate() + 1);
+      const fastShipArr = fastShip.toDateString().split(' ');
+      const fastShipDate = `${fastShipArr[0]}, ${fastShipArr[1]} ${fastShipArr[2]}`;
+
+      const heute = new Date();
+      const orderWithin = `Order within ${23 - heute.getHours()} hrs and ${59 - heute.getMinutes()} mins`;
+
+
       this.setState({
         product_id: this.props.product.id,
         quantity: 1,
-        cart_id: this.props.cartId })
-        // console.log("after setstate")
+        cart_id: this.props.cartId,
+        freeShipDate: freeShipDate,
+        fastShipDate: fastShipDate,
+        orderWithin: orderWithin
+      
+      })
       }
       // console.log("component did update product details show", this.props)
       // console.log("component did update product details state" , this.state === null)
@@ -102,7 +115,8 @@ if (this.props.product) {this.state = {
 
   render(){
     const {product, cartId} = this.props 
-    if (!product) {return null} else {
+    console.log("This state",this.state)
+    if (!product || !this.state) {return null} else {
       let a;
        a = new String(product.price).split(".")
 
@@ -110,7 +124,7 @@ if (this.props.product) {this.state = {
       
     <div className="product-details-main grow-main">
         <div className="history-nav"> 
-          <NavLink to={'/products'}> <span > {"<"} {/* placeholder for arrow icons */} back to results</span></NavLink>
+           <span onClick={()=> this.props.history.goBack()} > {"<"} back to results</span>
           {/* <NavLink to={'/products'}> <span onClick={() => console.log("goback")} > {"<"} placeholder for arrow icons back to results</span></NavLink> */}
           
           <span>"sponsored"</span>
@@ -124,6 +138,8 @@ if (this.props.product) {this.state = {
           </div>
         <div className="details-center-col">
             <div className="details-title" > {product.title} </div>
+            <div className="details-description details-pad" > {product.description} </div>
+
             <div className="seller blue-text" > visit seller store</div>
             <hr />
             <div className="details-rating"> 
@@ -131,19 +147,24 @@ if (this.props.product) {this.state = {
               {/* <Link >{product.reviews.length}Reviews</Link>  */}
             {/* {console.log("product 92",product)}   */}
             {/* {console.log("this.state 93",this.state)}   */}
-            </span> <span className="details-descriptive" > {product.detailed_description} </span></div>
-             
-            <div className="details-price" > <span className="dollarsign" >$</span> {product.price} </div>
-            <div className="discount-available">
-              <span className="discount-1">Was: </span> <span className="discount-2">${(product.price + product.price *.15).toFixed(2)}</span>
-              <span className="discount-1">With Deal:</span> <div className="discount-2-upsell-div"><span className="discount-2-upsell">${product.price}</span> <span className="free-returns blue-text">Free Returns< RiArrowDropDownLine /></span></div>
-              <span className="discount-1">You Save</span> <span className="discount-2"></span>
+            </span> <span className="details-description-header" > {product.detailed_description} </span></div>
+             <hr />
+            <div className="details-price details-pad" > <span className="red-discount price-whole redtext details-pad">-{(((product.price *.15) * 100)/ product.price).toFixed()}%</span>  <span className="dollarsign" >$</span> <span className="price-whole">{a[0]}</span><span className="price-fraction">{a[1]}</span> </div>
+            <div className="discount-available details-pad">
+              <div className="discount-col-wrap details-pad">
+                <span className="discount-1 details-pad discount-smaller">List Price: </span> <span className="discount-2 discount-smaller details-pad discount-strikethrough">${(product.price + product.price * .15).toFixed(2)}    <RiInformationFill /></span>
+              </div>
+              <div className="discount-col-wrap details-pad">
+                <span className="discount-1 details-pad">With Deal:</span> <div className="discount-2-upsell-div details-pad"><span className="discount-2-upsell ">${product.price}</span> <span className="free-returns blue-text">Free Returns< RiArrowDropDownLine /></span></div>
+              </div>
+              <div className="discount-col-wrap details-pad">
+                <span className="discount-1 details-pad">You Save:</span> <span className="discount-2 details-pad"> ${((product.price * .15)).toFixed(2)} </span>
+              </div>
             </div>
-            <div className="discount-financing-available"> <span className="blue-text">Pay </span><span className="redtext">{(product.price / 5).toFixed(2)} or less for 3 Months</span><span className="blue-text"> with Affirm.  Learn More</span> </div>
-            <div className="details-options"> <span className="options-block">option1</span> | <span className="options-block" >option2</span> </div>
+            <div className="discount-financing-available details-pad"> <span className="blue-text">Pay </span><span className="redtext">{(product.price / 5).toFixed(2)} or less for 3 Months</span><span className="blue-text"> with Affirm.  Learn More</span> </div>
+            <div className="details-options details-pad"> <span className="options-block">option1</span> | <span className="options-block" >option2</span> </div>
 
-            <div className="details-description" > {product.description} </div>
-            <table className="details-description-table">
+            <table className="details-description-table details-pad">
               {/* <thead><tr><th>quality</th><th>quality2</th></tr></thead> */}
               <tbody>
                  {/* {product.details_description_array.map((ele1, idx) => { if (idx % 2 < 1) { console.log("first row option") } else {console.log("blank row")} }   )} */}
@@ -158,10 +179,12 @@ if (this.props.product) {this.state = {
               <li>{ele}</li>
               // <li> <span className="details-descriptive-text-indi">{ele}</span></li>
               )} </div>
-              <br /><br /><br />
+              <br />
             <span className="incorrect-product-info blue-text"><RiChat2Line /> Report Incorrect product informaton</span>
               <hr />
+              <div className="product-details-grow-filler"> </div>
            </div>
+
 
           <div className="checkout-right-col">
               <div className="checkout-inner-right-col">
@@ -171,23 +194,26 @@ if (this.props.product) {this.state = {
             {/* {console.log(product.price)} */}
             {/* {console.log(typeof product.price)} */}
             {/* {console.log(let a = new String(product.price))} */}
-          <div className="checkout-delivery"> Order within 12 hours </div>
-          <div className="in-stock"> in stock </div>
-
-            <div className="layaway-product"> Reserve with Layaway. <br /> Make <span className="redtext"> 5 payments of {(product.price / 5).toFixed(2)} every 2 weeks</span>. <br /> No interest or fees. Item ships after payments are complete. <br /></div> <span className="blue-text"> Learn more</span>
-          <br />
-              & <span className="blue-text">FREE Returns</span> < RiArrowDropDownLine />
+          <div className="free-returns"> 
+                <span className="free-returns-checkout">& <span className="blue-text">FREE Returns</span> < RiArrowDropDownLine /></span>
               <br />
-            FREE delivery
+                <span className="free-delivery"> <span className="blue-text">FREE delivery</span> <span className="bolded-shipping">{this.state.freeShipDate}</span> </span>
+          </div>
+              {console.log(this.state)}
+              <div className="checkout-delivery"> Or Fastest delivery <span className="bolded-shipping">{this.state.fastShipDate}</span> <span className="be-greentext-format">{this.state.orderWithin}</span> </div>
+  
+
+              <div className="layaway-product"> Reserve with Layaway. <br /> Make <span className="redtext"> 5 payments of ${(product.price / 5).toFixed(2)} every 2 weeks</span>. <br /> No interest or fees. Item ships after payments are complete. <br /> <span className="blue-text"> Learn more</span></div> 
+          <br />
 
             <div className="primeshipping"> <img className="primeshipping-show" src="https://amzn-app-seed.s3.us-west-1.amazonaws.com/Screen+Shot+2022-07-22+at+2.28.40+AM.png" alt="prime shipping" /> </div>
+
+          <div className="in-stock checkout-stock"> In Stock. </div>
+
           <div className="qty-dropdown">
   
   {/* {console.log("detailshow",product)} */}
-
-              <form onSubmit={this.handleAddToCart(product.id, cartId, product)} >
-              {/* <select id="quantity" name="quantity" value={this.state.quantity} onChange={this.handleQuantity} className="dropdown" > */}
-              <select onChange={(e) => this.handleQuantity(e)}  className="dropdown" >
+              <select onChange={(e) => this.handleQuantity(e)}  value={this.state.quantity} className="dropdown" >
                     <option value={1} defaultValue>Qty: 1</option>
                   <option value={2}>Qty: 2</option>
                   <option value={3}>Qty: 3</option>
@@ -197,34 +223,62 @@ if (this.props.product) {this.state = {
                   <option value={7}>Qty: 7</option>
                   <option value={8}>Qty: 8</option>
                   <option value={9}>Qty: 9</option>
-
             </select>
+          </div>
+
+                <div className="buttons-right-container">
+
+              <form onSubmit={this.handleAddToCart(product.id, cartId, product)} >
+              {/* <select id="quantity" name="quantity" value={this.state.quantity} onChange={this.handleQuantity} className="dropdown" > */}
             <button type="submit" className="add-to-cart" >Add to Cart</button>
               </form>
-          </div>
           <div className="checkout-buttons">
                 <Link to="/checkout"> <button className="buy-now">Buy Now</button> </Link>
-
-          </div>
+                  </div>
             <div className="secure" >&#x1F512; secure transaction</div>
+          </div>
+
+
             <div className="secure-transacrion-ships">
+              <div className="checkout-table">
               <span className="checkout-span-1">Ships from</span><span className="checkout-span-2">AMZN.com</span>
-              <span className="checkout-span-1">Sold by</span><span className="checkout-span-2">AMZN.ccom</span>
+              </div>
+                <div className="checkout-table">
+              <span className="checkout-span-1">Sold by</span><span className="checkout-span-2">AMZN.com</span>
+                </div>
+                <div className="checkout-table">
               <span className="checkout-span-1">Customer Service</span><span className="checkout-span-2">AMZN.com ....</span>
+                </div>
+                <div className="checkout-table">
               <span className="checkout-span-1">Packaging</span><span className="checkout-span-2">Show what's in ...</span>
+                </div>
             </div>
-            <hr />
-            <span className="details blue-text">Detai;s</span>
-          <div className="returns"> return policy</div>
-            <div className="protection-plan"> 
             <div>
-              <input type="checkbox" id="insurance" name="insurance" />
-                <label for="insurance">add Insurance for {(product.price * .15).toFixed(2)}</label>
+              <hr />
+              </div>  
+            <div className="right-checkout-details-returns-container">
+            <span className="details-checkout blue-text">Details</span>
+                <span className="returns"> Return Policy: <span className="blue-text">Eligible for Return, Refund or Replacement within 30 days of receipt</span> </span>
             </div>
+            <div className="protection-plan"> 
+
+              <span className="bold-1">Add a Protection Plan:</span>
+              <div className="insurance-panel"> 
+              <input type="checkbox" id="insurance" name="insurance" /> <label for="insurance" className="insurance-text"> <span>Add a 3-Year Protection Plan</span> for <span className="redtext">$ {(product.price * .10).toFixed(2)}</span></label>
+              </div>
+                <div className="insurance-panel">
+              <input type="checkbox" id="insurance-2" name="insurance" /> <label for="insurance-2" className="insurance-text"> <span>Add a 4-Year Protection Plan</span> for <span className="redtext">$ {(product.price * .15).toFixed(2)}</span></label>
+                </div>
+
             </div>
+              <div><hr /></div>
+          <div className="saved-for-later-container">
           <button>Add to Saved-for-later List</button>
           </div>
+            
           </div>
+          </div>
+
 
           <div className="checkout-right-spacer"></div>
 

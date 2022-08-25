@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { requestCart } from "../actions/cart_actions"
 import SearchBar from "./search_bar"
 import { IoMdArrowDropdown } from "react-icons/io"
+import { ImLocation } from "react-icons/im"
 
 
 let fetched = false
@@ -66,6 +67,15 @@ showcartquantity(qty){
         {/* <img src="../../../app/assets/images/Amazon logo.png"  className="header-logo" alt="" /> */}
         {/* <img src={Amazon_logo} className="header-logo" alt="" />
         <Image src={Amazon_logo} className="header-logo" /> */}
+
+      <div className="deliver-to">
+        <ImLocation size={25}/>
+        <div className="location-div-navbar">
+          <div className="deliver-to line-1">Deliver to {this.props.currentUser}</div>
+          <div className="deliver-to line-2">Oakland, Ca 94068 </div>
+        </div>
+      </div>
+
           <SearchBar/>
         {/* <div className="navbar-search">
           <SearchBar/>
@@ -74,6 +84,12 @@ showcartquantity(qty){
         </div> */}
 
       <div className="navbar-account">
+
+<div className="flag-navbar">
+  <img className="navbar-footer-usa-logo" width="25" src={window.usa_flag} alt="usa flag IMG" />
+          <IoMdArrowDropdown />
+</div>
+
           <div className="navbar-right box-hover account-1">
           <Link to={this.loginlogout()}><span className="navbar-right line-1">Welcome {this.props.currentUser}</span>
             <span className="navbar-right line-2">login/logout </span></Link>

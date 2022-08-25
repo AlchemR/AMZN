@@ -4,18 +4,18 @@ h1{
 
 .review-details-outer{
 display: flex;
-
+flex-direction: column;
 border-top: 1px;
 border-color: solid black;
 margin-top: 72px;
-width: 1200px;
+width: 100%;
 
 }
 
 
 .review-left-col{
   display: flex;
-  width: 400px;
+  width: 20%;
   margin-left: 1%;
 
 }
@@ -58,8 +58,8 @@ align-self: center;
 /* right side  */
 
 .review-right-col{
-  margin-right: 20%;
-  margin-left: 7%;
+  margin-right: 16%;
+  margin-left: 10%;
   width: 80%;
 }
 

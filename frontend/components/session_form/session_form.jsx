@@ -8,7 +8,7 @@ class SessionForm extends React.Component {
     // this.state = { username: '', password: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoUser = this.demoUser.bind(this)
-    if (this.props.formType === "signup") { this.state = { username: '', password: '', email: '', account_fname: '', account_lname: '' }; } else { this.state = { email: '', password: '' };};
+    if (this.props.formType === "signup") { this.state = { username: '', password: '', email: '', account_fname: '', account_lname: '' }; } else { this.state = { email: '', password: '', submitted: false };};
 
   }
 
@@ -28,23 +28,28 @@ class SessionForm extends React.Component {
       // () => setTimeout(function () { return <Redirect to={'/'} /> }.bind(this), 2000))
   }
 
-demoUser(e){
-  e.preventDefault();
 
-  this.setState({email: "" , password:"" })
+  
+  demoUser(e, submitted){
+    e.preventDefault();
 
-  let email = "Demo@user.com"
-  let password = "12345678"
+    if (!submitted) {
 
-let index = 0; 
-
-this.demo = setInterval(() => {
-  this.setState({ email: index < password.length ? (this.state.email.concat(email[index])) : (email), password: index < password.length ? (this.state.password.concat(this.state.password[index])) : (password) })
-  index++
-  if (index > 15) { setTimeout(function () { this.props.processForm({ password: '12345678', email: 'Demo@user.com' }) }.bind(this), 1000); clearInterval(this.demo)}
-
-}, 100);  
-
+      this.setState({submitted: true})
+      this.setState({email: "" , password:"" })      
+      let email = "Demo@user.com"
+      let password = "12345678"
+      
+      let index = 0; 
+      
+      this.demo = setInterval(() => {
+        this.setState({ email: index < password.length ? (this.state.email.concat(email[index])) : (email), password: index < password.length ? (this.state.password.concat(this.state.password[index])) : (password) })
+        index++
+        if (index > 15) { const logintimeout = setTimeout(function () { this.props.processForm({ password: '12345678', email: 'Demo@user.com' }) }.bind(this), 2500); clearInterval(this.demo) }; 
+        
+      }, 100);  
+      
+    } else { console.log("Please do not press demo user submit so many times.")  }
 
 }
 
@@ -65,6 +70,7 @@ this.demo = setInterval(() => {
 
 
   render() {
+    
     return (
 
       <div className="login-form-container grow-main" >
@@ -105,7 +111,7 @@ this.demo = setInterval(() => {
             <br />
             <span className='variable-display'>Or, Try A Demo User</span>
             <br />
-            <button onClick={this.demoUser} className="demo-user-btn session-submit" >Demo User Login</button>
+            <button onClick={(e) => this.demoUser(e, this.state.submitted)} className="demo-user-btn session-submit" >Demo User Login</button>
             </div>
         </div>
         </div>
