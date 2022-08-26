@@ -21,7 +21,7 @@ const NavSubBar =  () => {
       <div className="sub-4 new-releases"><div className="sub"><Link to={`/products/category/electronics`}>Electronics</Link></div></div>
       <div className="sub-4 new-releases"><div className="sub"><Link to={`/products/category/monitors`}>Monitors</Link></div></div>
       <div className="sub-5 today-deals"><div className="sub"><Link to={`/products/category/deals`}>Today's Deals</Link></div></div>
-      <div className="sub-6 customer-service"><div className="sub"><Link to={`/products/category/customer`}>Customer Service</Link></div></div>
+      <div className="sub-6 customer-service"><div className="sub"><Link to={`/customer_service`}>Customer Service</Link></div></div>
       <div className="sub-7 books"> <div className="sub"> <Link to={`/products/category/books`}>Books</Link></div><div id="books"></div></div>
 
     </div>

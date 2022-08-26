@@ -51,7 +51,9 @@ u22 = User.create!({  username: "nibbler", account_fname: "the_dog", account_lna
 u22 = User.create!({  username: "zoidberg", account_fname: "the_crab_creature", account_lname: "scavenger_sandwich", email: "dissapointed@friendships.com", password: "123456" })
 u23 = User.create!({  username: "Professor", account_fname: "Prof_farnsworth", account_lname: "upset_scientist", email: "good_news@everyone.com", password: "123456" })
 u24 = User.create!({  username: "Fry", account_fname: "Fry_farnsworth", account_lname: "delta_brain", email: "clumsy_family_tree@planetexpress.com", password: "123456" })
-u25 = User.create!({  username: "Leelah", account_fname: "Leelah", account_lname: "large_contacts", email: "driver@planetexpress.com", password: "123456" })
+u25 = User.create!({  username: "AMZN Basics", account_fname: "AMZN", account_lname: "Basics", email: "AMZN@basics.com", password: "123456" })
+u26 = User.create!({  username: "Leelah", account_fname: "Leelah", account_lname: "large_contacts", email: "driver@planetexpress.com", password: "123456" })
+u27 = User.create!({  username: "Steven", account_fname: "Steven R. Covey", account_lname: "author", email: "steven@7habits.com", password: "123456" })
 
 
 
@@ -62,7 +64,7 @@ p1 = Product.create({
   detailed_description: "computer monitor"  , 
   additional_details:["21.5 inches Full HD (1920 x 1080) widescreen IPS display", "And Radeon free sync technology. No compatibility for VESA Mount" ,"Refresh rate: 75 hertz - Using HDMI port" , "Zero-frame design; Ultra-thin; 4ms response time; IPS panel", "Ports: 1 x HDMI & 1 x VGA" ,  "Aspect ratio - 16:9. Color supported - 16.7 million colors. Brightness - 250 nit" , "Tilt angle -5 degree to 15 degree. Horizontal viewing angle-178 degree. Vertical viewing angle-178 degree" , "75 hertz" ] , 
   price: 99.99, 
-  categories: ['electronics', 'computers & accessories', 'monitors'] , 
+  categories: ['electronics', 'computers & accessories', 'monitors', 'best'] , 
     discounts:[ "10% 0ff", "15% off", "25% off" ], 
     seller_id: u1.id, 
     in_stock: :true, inventory_count: 10 } )
@@ -192,12 +194,100 @@ p10 = Product.create({
   detailed_description: " Premium Televisions from TCL "  , 
   additional_details:[ "Superior 4K Ultra HD: Picture clarity combined with the contrast, color, and detail of Dolby Vision HDR (High Dynamic Range) for the most lifelike picture." ,"QLED: Quantum dot technology delivers better brightness and wider color volume, matching the format used by most cinema screens and Hollywood content creators for exceptionally vivid and lifelike picture performance." ,"HDR Pro Pack: Enjoy a truly cinematic experience at home with striking brightness, incredible contrast, and amazingly lifelike color with support for Dolby Vision, HDR10, and HLG." ,"Contrast Control Zones: Contrast is individually optimized across up to 192 localized zones for striking contrast between bright and dark areas of the image." ,"THX Certified Game Mode: Gain a competitive edge with the most optimal viewing experience for big screen gaming; never miss the action due to image smear, response time, or input lag, and enjoy the game as it was intended by the creators." ,"Easy Voice Control: Works with Amazon Alexa or Google Assistant to help you find movie titles, launch or change channels, even switch inputs, using just your voice. Also available through the Roku mobile app or voice enabled remote control" ,"4 HDMI inputs (1 eARC): Connect all your favorite devices through the four HDMI inputs that includes 1 eARC to easily sync audio and video sources and deliver better quality sound"  ] , 
   price: 2299.99,  
-  categories: ['electronics', 'television & video', 'televisions' ] ,
+  categories: ['electronics', 'television & video', 'televisions', 'best' ] ,
   discounts:[ "5% off" , "10% off"  ], 
   seller_id: u5.id,
   in_stock: :true,  
   inventory_count: 20  })
 p10.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/81UkjRSYpsS._AC_SL1500_.jpg'), filename: 'Television5.jpg' )
+
+p11 = Product.create({
+  title: 'Amazon Basics Medicine Ball for Workouts  ',  
+  description: "Medicine Ball for Exercise Balance Training",  
+  details_description_array: [ "Brand"	,"AMZN Basics","Material","Rubber","Color	","Blue","Age Range (Description)",	"Adult","Item Weight	","10 Pounds","Sport Type",	"Exercise & Fitness" ] ,
+  detailed_description: " AMZN Basics Excercise Equipment"  , 
+  additional_details:[ "Weighted medicine ball for upper, lower, and full body exercises", "Includes a 10-pound medicine ball made of sturdy, firm rubber in blue and black", "Lightly textured surface provides a superior grip", "Weight clearly labeled on both sides", "Can bounce off hard surfaces (for slam ball workouts, search Amazon Basics Slam Ball)", "Ideal for classic medicine ball workouts, including ball toss, weighted twists, squats, sit ups, and more", "Can help develop core strength, balance, and coordination", "Ready to use right out of the box", "Product dimensions: 9.3 inches in diameter" ] , 
+  price: 39.99,  
+  categories: ['best', 'basics', 'exercise', "weights" ] ,
+  discounts:[ "5% off" , "10% off"  ], 
+  seller_id: u25.id,
+  in_stock: :true,  
+  inventory_count: 11  })
+p11.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/91DO-xUj1KL._AC_SL1500_.jpg'), filename: 'exercise1.jpg' )
+
+p12 = Product.create({
+  title: 'Amazon Basics Wood Wobble Exercise Balance Board',  
+  description: "Wobble Board for Exercise Balance Training",  
+  details_description_array: [ "Brand	", "Amazon Basics", "Color	", "Black", "Item Weight	", "3.2 Pounds", "Material	", "Wood", "Item Dimensions LxWxH	", "15.5 x 15.5 x 3.15 inches", "Maximum Weight Recommendation	", "265 Pounds" ] ,
+  detailed_description: " AMZN Basics Excercise Equipment"  , 
+  additional_details:[ "Black balance board can help improve core strength, coordination, posture, and balance", "Suitable for a wide range of exercises, including push-ups, plank, standing balance poses, and targeted workouts for strengthening specific muscles, ligaments, tendons, and joints", "Solid wood top supports up to 265 pounds; non-slip surface for a secure grip", "For individuals and athletes; ideal for a rehab center, gym, or home workout space", "Measures 15.5 by 15.5 by 3.15 inches (LxWxH); backed by an Amazon Basics 1-year limited warranty" ] , 
+  price: 18.96,  
+  categories: ['best', 'basics', 'exercise', "balance" ] ,
+  discounts:[ "5% off" , "10% off"  ], 
+  seller_id: u25.id,
+  in_stock: :true,  
+  inventory_count: 11  })
+p12.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/91ao1xkzQ3L._AC_SL1500_.jpg'), filename: 'exercise2.jpg' )
+
+
+p13 = Product.create({
+  title: 'Amazon Basics Adjustable Barbell Lifting Dumbbells Weight Set with Case, 38 Pounds, Black',  
+  description: "Weight Set for Exercise Weight Training",  
+  details_description_array: [ "Material	","Alloy Steel","Brand	","Amazon Basics","Item Weight	","40 Pounds","Item Dimensions LxWxH	","17.1 x 6.22 x 9.49 inches","Finish Type	","Black" ] ,
+  detailed_description: "in Exercise & Fitness Dumbbells by Amazon Basics"  , 
+  additional_details:[ "Adjustable 38-pound weight lifting set; great for daily workouts, including arms, shoulders, and back","Includes (2) 3-pound barbells, (4) 0.5-pound collars, and (4) 2.5-pound and (4) 5-pound plates made of black painted steel","Includes a durable black plastic storage case with carry handle for compact storage and easy transport","Quick weight adjustments: simply slide plates on and off the barbells and secure with threaded collars" ] , 
+  price: 42.42,  
+  categories: [ 'basics', 'exercise', "weights" ] ,
+  discounts:[ "5% off" , "10% off"  ], 
+  seller_id: u25.id,
+  in_stock: :true,  
+  inventory_count: 12  })
+p13.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/91QxtmB7tEL._AC_SL1500_.jpg'), filename: 'exercise3.jpg' )
+
+
+p14 = Product.create({
+  title: 'Amazon Basics High Density Exercise Equipment and Treadmill Mat',  
+  description: "in Exercise Mats by Amazon Basics",  
+  details_description_array: [ "Color	","Black","Brand	","Amazon Basics","Material	","Polyvinyl Chloride","Product Care Instructions","Hand Wash Only","Item Weight","7.54 Pounds","Product Dimensions","102L x 36W x 0.2T" ] ,
+  detailed_description: "in Exercise & Fitness Equipment by Amazon Basics"  , 
+  additional_details:[ "3-by-8.5-foot mat made of high-density PVC; ideal for placing under a home-gym rowing machine or an exercise bike","Helps protect floors and carpets from the impact of heavy equipment","Creates a clean, optimal workout space","Also works well for step-aerobics or as a general aerobic mat; sleek black color for easy coordinating","Measures 102 by 36 by 0.2 inches (LxWxH); weighs 7 pounds" ] , 
+  price: 45.52,  
+  categories: [ 'basics', 'exercise', "mats" ] ,
+  discounts:[ "5% off" , "10% off"  ], 
+  seller_id: u25.id,
+  in_stock: :true,  
+  inventory_count: 20  })
+p14.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/71PVna0GXHS._AC_SL1500_.jpg'), filename: 'exercise4.jpg' )
+
+p15 = Product.create({
+  title: 'Amazon Basics Foam Interlocking Exercise Gym Floor Mat Tiles - 6-Pack, 24 x 24 x .5 Inch Tiles (24 sqft)',  
+  description: "in Exercise Mats by Amazon Basics",  
+  details_description_array: [ "Color	", "Black", "Brand	", "Amazon Basics", "Material	", "Foam", "Product Care Instructions	", "Hand Wash Only", "Item Weight	", "300 Grams", "Product Dimensions	", "24.7L x 24.7W x 0.5Th" ] ,
+  detailed_description: "in Exercise & Fitness Equipment by Amazon Basics"  , 
+  additional_details:[  "Foam floor mat tiles help optimize any workout space; ideal for home, gym, or a kid's playroom", "Includes 6 interlocking black tiles made of non-skid, high-density foam; covers a 24 square foot area", "Protects floors from workout gear, helps reduce noise, and offers added comfort to workouts", "Grippy, non-slip surface provides enhanced safety", "Water resistant and easy to clean", "Sets up in seconds; quickly disassembles for moving or storage", "Product dimensions: 24.7 x 24.7 x .5 inches (LxWxH, per tile)" ] , 
+  price: 55.55,  
+  categories: [ 'basics', 'exercise', "mats" ] ,
+  discounts:[ "5% off" , "10% off"  ], 
+  seller_id: u25.id,
+  in_stock: :true,  
+  inventory_count: 10  })
+p15.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/91T3ImnBwUL._AC_SL1500_.jpg'), filename: 'exercise5.jpg' )
+
+p16 = Product.create({
+  title: 'The 7 Habits of Highly Effective People: 30th Anniversary Edition Paperback – Special Edition, May 19, 2020',  
+  description: "in Books By Successful Authors",  
+  details_description_array: [ "Publisher "," Simon & Schuster; Anniversary edition (May 19, 2020)","Language   "," English","Paperback  "," 464 pages","ISBN-10 ","  1982137274","ISBN-13 ","  978-1982137274","Item Weight ","  13.1 ounces","Dimensions  "," 5.5 x 1.2 x 8.38 inches" ] ,
+  detailed_description: "by Stephen R. Covey  (Author), Jim Collins (Foreword), Sean Covey (Contributor)"  , 
+  additional_details:[ "The 7 Habits have become famous and are integrated into everyday thinking by millions and millions of people. Why? Because they work!","With Sean Covey’s added takeaways on how the habits can be used in our modern age, the wisdom of the 7 Habits will be refreshed for a new generation of leaders.","One of the most inspiring and impactful books ever written, The 7 Habits of Highly Effective People has captivated readers for nearly three decades. It has transformed the lives of presidents and CEOs, educators and parents—millions of people of all ages and occupations. Now, this 30th anniversary edition of the timeless classic commemorates the wisdom of the 7 Habits with modern additions from Sean Covey.","Sean Covey is the President of FranklinCovey Education and the original architect of the 4 Disciplines methodology. A Harvard MBA and former Brigham Young University quarterback, Sean is also a New York Times bestselling author and has written numerous books, including The Leader in Me and The 7 Habits of Highly Effective Teens." ,"“[Thirty] years after it first appeared, the wisdom of The 7 Habits is more relevant than ever. On an individual level people are burning out, and on a collective level we are burning up the planet. So Dr. Coveys emphasis on self-renewal and his understanding that leadership and creativity require us to tap into our own physical, mental, and spiritual resources are exactly what we need now.” —Arianna Huffington" ,"“No person lasts forever, but books and ideas can endure. Stephen R. Coveys life is done, but his work is not. It continues, right here in this book as alive today as when first written.” —Jim Collins" ,"“Every so often a book comes along that not only alters the lives of readers but leaves an imprint on the culture itself. The 7 Habits is one of those books.” —Daniel Pink, author of Drive and When"  ] , 
+  price: 14.55,  
+  categories: [ 'best', 'books', 'deals' ] ,
+  discounts:[ "5% off" , "10% off"  ], 
+  seller_id: u27.id,
+  in_stock: :true,  
+  inventory_count: 10  })
+p16.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/1982137274.01._SCLZZZZZZZ_SX500_.jpg'), filename: 'book1.jpg' )
+
+
 
 # p11 = Product.create({
 #   title: 'TCL 85-inch Class 4K UHD Dolby Vision HDR QLED Roku Smart TV - 85R745, 2021 model ',  
@@ -279,6 +369,11 @@ r37 = Review.create!({ user_id: u19.id, product_id: p7.id, review_header: "Demo 
 r38 = Review.create!({ user_id: u19.id, product_id: p8.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
 r39 = Review.create!({ user_id: u19.id, product_id: p9.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
 r40 = Review.create!({ user_id: u19.id, product_id: p10.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
+r41 = Review.create!({ user_id: u19.id, product_id: p11.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
+r42 = Review.create!({ user_id: u19.id, product_id: p12.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
+r43 = Review.create!({ user_id: u19.id, product_id: p13.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
+r44 = Review.create!({ user_id: u19.id, product_id: p14.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
+r45 = Review.create!({ user_id: u19.id, product_id: p15.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
 
 
 

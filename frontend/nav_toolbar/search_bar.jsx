@@ -34,11 +34,19 @@ updateSearchInput = (e, feild) => {
 
   searchSubmit(e){
     e.preventDefault()
-    let querydata = this.state
+    // let querydata = this.state
     // console.log("searchSubmit", querydata)
-    if (this.state.category === "All") { this.props.history.push(`/products/search/${this.state.query}`) } else { this.props.history.push(`/products/${this.state.category}/search/${this.state.query}`) }
+    // console.log("!= All", (this.state.category != "All" ) )
+    // console.log("!= query", (this.state.query === "" ) )
+
+    if (this.state.category === "All" && this.state.query === "" ) { alert("Please enter a query to use the search function") } else{
+      if (this.state.category != "All" && this.state.query === "") {this.props.history.push(`/products/category/${this.state.category}`)} else{ 
+        if (this.state.category === "All") { this.props.history.push(`/products/search/${this.state.query}`) } else { this.props.history.push(`/products/category/${this.state.category}/search/${this.state.query}`) }
+      }
+    }
+    
     this.setState({ query: "", category: "All" } )
-  }
+  } 
 
 
 
@@ -49,13 +57,19 @@ updateSearchInput = (e, feild) => {
           {/* <select onChange={() => this.updateSearchInput("category")}> */}
                       
 
-          <select style={{width:`${ 8 * this.state.category.length + 20 }px`}} className="search-dropdown" onChange={(e) => this.updateSearchInput(e, "category")}>
+          <select style={{width:`${ 8 * this.state.category.length + 20 }px`}} className="search-dropdown" value={this.state.category} onChange={(e) => this.updateSearchInput(e, "category")}>
             <option value="All" defaultValue>All</option>
-            <option value="Electronics">Electronics</option>
-            <option value="really long dynamic range test dummy modal">really long dynamic range test dummy modal</option>
+            <option value="books">books</option>
+            <option value="best">best sellers</option>
+            <option value="deals">Deals</option>
+            <option value="basics">basics</option>
+            <option value="mats">mats</option>
+            <option value="exercise">exercise</option>
+            <option value="weights">weights</option>
+
           </select>
         {/* <input type="text" className="navbar-search-input" onChange={() => this.updateSearchInput("query")} /> */}
-        <input type="text" className="navbar-search-input" onChange={(e) => this.updateSearchInput(e, "query")} />
+        <input type="text" className="navbar-search-input" onChange={(e) => this.updateSearchInput(e, "query")} value={this.state.query} />
           {/* <div type="text" className="navbar-search-icon">&#x1F50D;</div> */}
           <button className="navbar-search-icon" onClick={(e) => this.searchSubmit(e)} ><BsSearch size={20} color={'black'} /></button>
         </form>
