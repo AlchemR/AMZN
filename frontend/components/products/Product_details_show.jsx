@@ -2,11 +2,11 @@ import React from "react"
 import { connect } from "react-redux"
 import { Link, NavLink, Redirect, withRouter } from "react-router-dom"
 import { requestProduct } from "../../actions/product_actions"
-import { createLedger, updateLedger } from "../../actions/cart_ledger_actions"
+import { createLedger, updateLedger, deleteLedger } from "../../actions/cart_ledger_actions"
 import { requestCart } from '../../actions/cart_actions'
 import ReviewDetail from '../reviews/review_detail'
 import { IoMdArrowDropdown } from "react-icons/io"
-import { RiArrowDropDownLine, RiChat2Line, RiInformationFill } from "react-icons/ri"
+import {RiStarSFill, RiStarSLine, RiArrowDropDownLine, RiChat2Line, RiInformationFill } from "react-icons/ri"
 
 
 class ProductShowDetails extends React.Component {
@@ -19,6 +19,7 @@ if (this.props.product) {this.state = {
       cart_id: this.props.cartId }
     }
     this.handleAddToCart = this.handleAddToCart.bind(this)
+    this.checkout = this.checkout.bind(this)
     // this.handleQuantity = this.handleQuantity.bind(this)
   }
 
@@ -100,7 +101,10 @@ if (this.props.product) {this.state = {
   displayStars(num) {
     let output = []
     for (let index = 1; index < 6; index++) {
-      if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }
+      
+
+      if (num >= index) { output.push(<RiStarSFill />) } else if (num < index) { output.push(<RiStarSLine />) }
+      // if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }
       // else if (num < index && num > index - 0.6) { output.push("halfstar") }
     }
     return output
@@ -112,6 +116,24 @@ if (this.props.product) {this.state = {
 //   averagerate = (averagerate / reviews.count)
 //  return averagerate
 // }
+
+
+checkout(e){
+console.log("product detail show props", this.props)
+
+    e.preventDefault()
+    console.log("do we hit clear cart")
+    // let cartID = cart.id
+    this.props.tempcart.slice(0, this.props.tempcart.length - 1).map(cartitem => {
+      console.log("cartitem", cartitem),
+        console.log("cartitemID", cartitem.id),
+        this.props.deleteLedger(cartitem.id)
+    })
+    setTimeout(() => this.props.history.push('/checkout'), 100)
+    setTimeout(() => this.props.requestCart(this.props.cartId), 50)
+    // these will eventually be replaced by converting the current cart into transaction history
+
+}
 
   render(){
     const {product, cartId} = this.props 
@@ -233,7 +255,8 @@ if (this.props.product) {this.state = {
             <button type="submit" className="add-to-cart" >Add to Cart</button>
               </form>
           <div className="checkout-buttons">
-                <Link to="/checkout"> <button className="buy-now">Buy Now</button> </Link>
+                 <button className="buy-now" onClick={this.checkout} >Buy Now</button>
+                {/* <Link to="/checkout"> <button className="buy-now" onClick={this.checkout} >Buy Now</button> </Link> */}
                   </div>
             <div className="secure" >&#x1F512; secure transaction</div>
           </div>
@@ -306,6 +329,7 @@ requestProduct: id => dispatch(requestProduct(id)),
 createLedger: (ledger) => dispatch(createLedger(ledger)),
 requestCart: (cartId) => dispatch(requestCart(cartId)),
 updateLedger: (ledger) => dispatch(updateLedger(ledger)),
+deleteLedger: (ledgerId) => dispatch(deleteLedger(ledgerId)),
 })
 
 

@@ -180,8 +180,8 @@ text-align: center;
   border-bottom:  solid 2px gray;
   border-radius: 20px;
   margin-right: 5%;
-  margin-left: 3%
-
+  margin-left: 3%;
+  min-width: 280px;
 }
 .checkout-inner-right-col{
 padding: 15px;

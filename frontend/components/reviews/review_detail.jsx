@@ -4,6 +4,9 @@ import { Link, NavLink, Redirect } from "react-router-dom"
 import { createReview, updateReview, deleteReview, requestReviews } from "../../actions/review_actions"
 import EditReview from "./edit_review"
 import ReviewSmallCard from "./review_smallcard"
+import { RiStarSFill, RiStarSLine } from "react-icons/ri"
+
+
 
 
 class ReviewDetail extends React.Component {
@@ -44,7 +47,10 @@ class ReviewDetail extends React.Component {
 displayStars(num){
   let output = []
   for (let index = 1; index < 6; index++) { 
-    if (num >= index) { output.push("★") }  else if (num < index) { output.push("☆")}    
+    
+
+    if (num >= index) { output.push(<RiStarSFill />) } else if (num < index) { output.push(<RiStarSLine />)}
+    // if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }        
     // else if (num < index && num > index - 0.6) { output.push("halfstar") }
   }
   return output

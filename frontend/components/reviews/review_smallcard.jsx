@@ -2,6 +2,8 @@ import React from "react"
 import EditReview from "./edit_review"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
+import { RiStarSFill, RiStarSLine } from "react-icons/ri"
+
 
 class ReviewSmallCard extends React.Component{
   constructor(props){
@@ -30,7 +32,8 @@ class ReviewSmallCard extends React.Component{
   displayStars(num) {
     let output = []
     for (let index = 1; index < 6; index++) {
-      if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }
+      if (num >= index) { output.push(<RiStarSFill />) } else if (num < index) { output.push(<RiStarSLine />) }
+      // if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }
       // else if (num < index && num > index - 0.6) { output.push("halfstar") }
     }
     return output

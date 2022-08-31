@@ -94,12 +94,12 @@ if (!errors) {
 
   displayStars() {
     {
-      return <div>
+      return <div className="star-div" >
         {[...Array(5)].map((star, idx) => {
           let ratingValue = idx + 1
           let hover = null
           return (
-            <RiStarSFill key={idx} className='star' color={ratingValue <= (hover || this.state.rating) ? "rgb(250,156,27)" : "lightgray"} onMouseEnter={(() => hover = ratingValue)} onMouseLeave={(() => hover = null)}
+            <RiStarSFill size={24} key={idx} className='star' color={ratingValue <= (hover || this.state.rating) ? "rgb(250,156,27)" : "lightgray"} onMouseEnter={(() => hover = ratingValue)} onMouseLeave={(() => hover = null)}
               onClick={() => this.setState({ rating: ratingValue }, () => { if (parseInt(this.state.rating) > 0) { if (this.state.error_rating) { this.setState({ error_rating: false }) } } else { this.setState({ error_rating: "Review Rating Required" }) } })}
             />
           )
@@ -136,8 +136,8 @@ if (!errors) {
                   <div className='review-errors'>
                     {this.state.display_errors && this.state.error_rating && <p>{this.state.error_rating}</p> }
                   </div>
-                  <label>Rating: {this.displayStars(this.state.rating)}</label>
-                  <input type="text" onChange={this.handleUpdate('rating')} value={this.state.rating} placeholder="5" />
+                  <label className="rating-const">Rating {this.state.rating} / 5 : {this.displayStars(this.state.rating)}</label>
+                  {/* <input type="text" onChange={this.handleUpdate('rating')} value={this.state.rating} placeholder="5" /> */}
                 </div>
                 <div className="review-body">
                   <div className='review-errors'>

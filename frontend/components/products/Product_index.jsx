@@ -5,6 +5,10 @@ import ProductSingleCard from './product_single_card'
 import { Link, Redirect, withRouter } from 'react-router-dom'
 import { createLedger, updateLedger } from "../../actions/cart_ledger_actions"
 import {requestCart } from '../../actions/cart_actions'
+import { RiStarSFill, RiStarSLine } from "react-icons/ri"
+
+
+
 
 class ProductIndex extends React.Component{
 constructor(props){
@@ -23,7 +27,10 @@ constructor(props){
   displayStars(num) {
     let output = []
     for (let index = 1; index < 6; index++) {
-      if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }
+
+
+      if (num >= index) { output.push(<RiStarSFill />) } else if (num < index) { output.push(<RiStarSLine />) }
+      // if (num >= index) { output.push("★") } else if (num < index) { output.push("☆") }
       // else if (num < index && num > index - 0.6) { output.push("halfstar") }
     }
     return output

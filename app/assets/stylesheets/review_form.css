@@ -43,3 +43,13 @@ margin-left: 100px;
   width: 100%;
   color: red;
 }
+
+label.rating-const {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.star-div{
+padding-left: 10px;
+}

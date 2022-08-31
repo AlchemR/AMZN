@@ -12,6 +12,7 @@ class CartIndex extends React.Component {
   constructor(props) {
     super(props)
     this.handleQuantity = this.handleQuantity.bind(this)
+    this.clearCart = this.clearCart.bind(this)
   }
 
   componentDidMount() {
@@ -26,6 +27,20 @@ class CartIndex extends React.Component {
     // return ( this.props.updateLedger({ product_id: cartitem.product_id, quantity: e.target.value, cart_id: cartitem.cart_id, id: cartitem.id }).then(setTimeout(() => this.props.requestCart(this.props.cartId), 100) ) )
   }
 
+  clearCart(e) {
+    e.preventDefault()
+    console.log("do we hit clear cart")
+    // let cartID = cart.id
+    this.props.cart.slice(0, this.props.cart.length - 1).map(cartitem => {
+      console.log("cartitem",cartitem),
+      console.log("cartitemID",cartitem.id),
+      this.props.deleteLedger(cartitem.id)
+    })
+    setTimeout(() => this.props.history.push('/checkout'), 100)
+    setTimeout(() => this.props.requestCart(this.props.cartId), 50)
+    // these will eventually be replaced by converting the current cart into transaction history
+      
+  }
   
   render() {
     const { cart } = this.props
@@ -107,7 +122,8 @@ class CartIndex extends React.Component {
               <div className="checkout-right-total"> Subtotal ({item_total} items): {price_total.toFixed(2)} </div>
               <br />
               <label> this order contains a gift <input type="checkbox" /> </label>
-              <Link to="/checkout"><button className="buy-now" onClick={() => console.log("to the checkout page!  Hello to whomever carefully examines console logs.  I see you!")}>Proceed to Checkout</button></Link>
+              {console.log("right chekout cart",cart)}
+              <Link to="/checkout"><button className="buy-now" onClick={(e) => this.clearCart(e)}>Proceed to Checkout</button></Link>
             </div>
 
           </div>
@@ -140,4 +156,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartIndex)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CartIndex))

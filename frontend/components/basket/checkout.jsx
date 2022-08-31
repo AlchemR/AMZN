@@ -1,6 +1,7 @@
 import { FcCheckmark } from 'react-icons/fc'
 import { ImPointRight } from 'react-icons/im'
 import React from 'react'
+import { connect } from "react-redux"
 
 
 const Checkout = () => {
@@ -47,5 +48,24 @@ const Checkout = () => {
 
   )
 }
+
+
+// const mapStateToProps = (state, ownProps) => ({
+//   cartId: state.session.cart,
+//   // console1: console.log("state", state),
+//   // console2: console.log("ownProps", ownProps),
+//   // console3: console.log("state entities cart", state.entities.cart),
+//   cart: state.entities.cart ? Object.values(state.entities.cart) : null,
+//   products: state.entities.products ? Object.values(state.entities.products) : null
+//   // cart: state.entities.cart,
+// });
+
+// const mapDispatchToProps = dispatch => ({
+//   requestProducts: () => dispatch(requestProducts()),
+//   requestLedger: (ledgerId) => dispatch(requestLedger(ledgerId)),
+//   updateLedger: (ledger) => dispatch(updateLedger(ledger)),
+//   deleteLedger: (ledgerId) => dispatch(deleteLedger(ledgerId)),
+//   requestCart: (cartId) => dispatch(requestCart(cartId)),
+// })
 
 export default Checkout;
