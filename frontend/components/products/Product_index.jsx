@@ -48,7 +48,8 @@ componentDidUpdate(prevProps, prevState){
     query: this.props.match.params.query
   }
  
-  if ((this.props.match.params.category !== prevProps.match.params.category) || (this.props.match.params.query !== prevProps.match.params.query)) { this.props.requestProducts(searchData)} else {console.log("no request")}
+  if ((this.props.match.params.category !== prevProps.match.params.category) || (this.props.match.params.query !== prevProps.match.params.query)) { this.props.requestProducts(searchData)} else {}
+  // if ((this.props.match.params.category !== prevProps.match.params.category) || (this.props.match.params.query !== prevProps.match.params.query)) { this.props.requestProducts(searchData), console.log("searched")} else {console.log("no request")}
 
   // console.log("component didupdate prevprops category", prevProps.match.params.category)
   // console.log("component didupdate this.props category", this.props.match.params.category)
@@ -121,25 +122,32 @@ queryCategoryShow(){
     if (!this.props.match.params.query && this.props.match.params.category)  { return(
     <div> <h1>Product Category: {this.props.match.params.category}</h1> 
     </div> ) }
-    
    if (!this.props.match.params.query && !this.props.match.params.category) { return (<div> <h1>Product Category: All</h1> </div>) }
-
-
   }
   
+  nullShow(products){
+    if (products.length == 0) { return <div className='nullshow'> <h1>No Products match your Query</h1></div> } else {return <div className='nullshow'></div> }
+  }
 
 
 render(){
   const {products, cartId, createLedger} = this.props
-  // console.log("products",this.props)
+  console.log("products",this.props.products.length)
+  console.log("products",this.props.products)
 return(
   <div className='grow-main'>
     {/* {console.log("line 60 product index", this.props)} */}
-    {this.queryCategoryShow()}
+    <div className="conditional-render">
+      {this.queryCategoryShow()}
+      {this.nullShow(products)}
+    </div>
     <div className='product-index-spacer-wrapper'>
-      <div className='product-index-spacer'></div>
+      <div className='product-index-spacer'>
+        
+      </div>
+      
   <div className='product-index main'>
-    
+
         {products.map(prod => 
         // {products.slice(this.state.pageStart, this.state.pageEnd).map(prod => 
       <div className="outercard">

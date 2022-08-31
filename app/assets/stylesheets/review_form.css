@@ -37,3 +37,9 @@ margin-left: 100px;
   margin: 50px;
 
 }
+
+.review-errors {
+  padding: 15px;
+  width: 100%;
+  color: red;
+}

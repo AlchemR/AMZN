@@ -69,7 +69,7 @@ updateSearchInput = (e, feild) => {
 
           </select>
         {/* <input type="text" className="navbar-search-input" onChange={() => this.updateSearchInput("query")} /> */}
-        <input type="text" className="navbar-search-input" onChange={(e) => this.updateSearchInput(e, "query")} value={this.state.query} />
+          <input type="text" className="navbar-search-input" placeholder={"Search product names or brands: eg. 'TV' 'Exercise' or 'Acer' "} onChange={(e) => this.updateSearchInput(e, "query")} value={this.state.query} />
           {/* <div type="text" className="navbar-search-icon">&#x1F50D;</div> */}
           <button className="navbar-search-icon" onClick={(e) => this.searchSubmit(e)} ><BsSearch size={20} color={'black'} /></button>
         </form>

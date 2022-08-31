@@ -26,6 +26,13 @@
 justify-items: center;
 }
 
+.conditional-render{
+  margin-top: 25px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .outercard {
   width: 300px;

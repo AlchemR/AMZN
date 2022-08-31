@@ -17,6 +17,7 @@ class ReviewDetail extends React.Component {
     this.toggleEdit = this.toggleEdit.bind(this)
     this.toggleHelpful = this.toggleHelpful.bind(this);
     this.reportAbuse = this.reportAbuse.bind(this);
+    this.writeReview = this.writeReview.bind(this);
   }
   
     // this.handleQuantity = this.handleQuantity.bind(this)
@@ -107,6 +108,14 @@ sortReviews(reviews, filter) {
   }
 }
 
+writeReview(currentUser, product){
+  // console.log("this.props", this.props.currentUser)
+  // console.log("this.props", typeof this.props.currentUser)
+  // console.log("this.props", typeof this.props.currentUser == 'string')
+  // if (this.props.currentUser == 'string') { return <Link to={`/products/${product.id}/createreview`}  >  Write a customer review </Link> } else {return "Write a customer review" }
+  if (typeof this.props.currentUser == 'number') { return <Link to={`/products/${product.id}/createreview`}  >  Write a customer review </Link> } else { return <Link to={`/login`} > Log In to Write a Review </Link> }
+}
+
 render() {
     let output 
     // console.log("reviewdetail props in render", this.props)
@@ -142,7 +151,7 @@ render() {
               <h1>review this product</h1>
               share your thoughts with other customers
               <br />
-                <button className="add-to-cart" ><Link to={`/products/${product.id}/createreview`}  >  Write a customer review </Link></button>
+                <button className="add-to-cart" >{this.writeReview(currentUser, product)}</button>
               <hr />
                 </div>
 

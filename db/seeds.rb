@@ -67,7 +67,8 @@ p1 = Product.create({
   categories: ['electronics', 'computers & accessories', 'monitors', 'best'] , 
     discounts:[ "10% 0ff", "15% off", "25% off" ], 
     seller_id: u1.id, 
-    in_stock: :true, inventory_count: 10 } )
+    in_stock: :true, 
+    inventory_count: 10 } )
 p1.photo.attach(io: open('https://amzn-app-seed.s3.us-west-1.amazonaws.com/81QpkIctqPL._AC_SL1500_.jpg'), filename: 'Computer monitor1.jpg' )
 # p1.photo.attach(io: open('amazon path'), filename: 'same as image name' )
 
@@ -374,6 +375,7 @@ r42 = Review.create!({ user_id: u19.id, product_id: p12.id, review_header: "Demo
 r43 = Review.create!({ user_id: u19.id, product_id: p13.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
 r44 = Review.create!({ user_id: u19.id, product_id: p14.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
 r45 = Review.create!({ user_id: u19.id, product_id: p15.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
+# r46 = Review.create!({ user_id: u19.id, product_id: p16.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
 
 
 

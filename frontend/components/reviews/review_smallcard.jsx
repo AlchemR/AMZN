@@ -79,7 +79,7 @@ return(
     <div className="review-verified-purchase" > {(review.verified_purchase) ? ("Verified Purchase") : ("Unverified Customer")}  </div>
     <div className="individual-review-body">{review.review_body}</div>
     {/* {let review.id.abuse = false} */}
-    <div className="helpful-buttons"> <button className="helpful-button-helpful" onClick={() => this.toggleHelpful()} > Helpful </button> | <button className="helpful-button-report" onClick={() => this.reportAbuse} >report abuse</button> </div> <div> {(this.state.helpful) ? "marked as helpful!" : null} {(this.state.abuse) ? "marked as abuse" : null}  </div>
+    <div className="helpful-buttons"> <button className="helpful-button-helpful" onClick={() => this.toggleHelpful()} > Helpful </button> | <button className="helpful-button-report" onClick={() => this.reportAbuse()} >report abuse</button> </div> <div> {(this.state.helpful) ? "marked as helpful!" : null} {(this.state.abuse) ? "marked as abuse" : null}  </div>
     <div className="review-edit-delete"> {this.displayEditButtons(review)} </div>
 
   </div>

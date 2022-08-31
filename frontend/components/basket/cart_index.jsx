@@ -78,7 +78,7 @@ class CartIndex extends React.Component {
                   {/* </select>  |  <button key={`${cartitem.id}-6`} onClick={() => this.props.deleteLedger(cartitem.id).then(console.log("send delete"))} className="checkout-delete-button blue-text" >  delete</button> | <span className="blue-text"> save for later</span> | <span className="blue-text"> compare with similar items</span></div> */}
                   </select>  |  <button key={`${cartitem.id}-6`} onClick={() => this.props.deleteLedger(cartitem.id).then(setTimeout(() => this.props.requestCart(this.props.cartId), 80))} className="checkout-delete-button blue-text" >  delete</button> | <span className="blue-text"> save for later</span> | <span className="blue-text"> compare with similar items</span></div>
                 </div>
-                <div key={`${cartitem.id}-7`} className="ledger-item-price" > <div className="text-price"> price: {cartitem.price} </div>  <div>  Apply cupon dropdown <select name="cupon" id=""  >
+                <div key={`${cartitem.id}-7`} className="ledger-item-price" > <div className="text-price"> price: {cartitem.price} </div>  <div>  Apply coupon dropdown <select name="coupon" id=""  >
                   <option value={1}>no discount</option>
                   <option value={.1}>10% off</option>
                   <option value={.15}>15% off</option>
