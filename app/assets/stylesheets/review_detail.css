@@ -16,8 +16,8 @@ width: 100%;
 .review-left-col{
   display: flex;
   width: 20%;
-  margin-left: 1%;
-  min-width: 15%;
+  margin-left: 7%;
+
 }
 
 .customer-reviews-header1{
@@ -41,7 +41,7 @@ align-self: center;
   border: solid black 2px;
   height: fit-content;
   width: 300px;
-  margin-left: 100px;
+
 }
 
 
@@ -61,7 +61,7 @@ align-self: center;
   margin-right: 16%;
   margin-left: 10%;
   width: 80%;
-  min-width: 45%
+
 }
 
 .reviews-with-images-header{
@@ -70,6 +70,9 @@ font-size: x-large;
 margin: 30px;
 }
 
+.review-mid-spacer{
+width: 10px;
+}
 /* .review-images-all{
   display: grid;
   grid-auto-flow: row;

@@ -166,20 +166,21 @@ render() {
           
 
 
-          <div>
 
-          </div>
 
           
           </div>
+            <div className="review-mid-spacer">
+            </div>
 
           <div className="review-right-col">
   
-                <span className="reviews-with-images-header"><h1>Reviews with Images</h1> </span>
+                {/* <span className="reviews-with-images-header"><h1>Reviews with Images</h1> </span>
             <div className="review-images-all">
                 <div className="review-images-small" > links to each review on clicking on image</div><div className="review-images-small" > links to each review on clicking on image</div><div className="review-images-small" > links to each review on clicking on image</div><div className="review-images-small" > links to each review on clicking on image</div>
-            </div>
-              <div className="wordcloud-link"> <a className="see-all-customer-images blue-text"> See All Customer images </a></div>
+            </div> */}
+            {/* placeholder until upload images with review is possible */}
+              {/* <div className="wordcloud-link"> <a className="see-all-customer-images blue-text"> See All Customer images </a></div> */}
               {/* <div className="wordcloud-link"> <a href="" className="see-all-customer-images"> See All Customer images </a></div> */}
               <span className="reviews-wordcloud-header"> Read Reviews that mention:</span>
                <div className="reviews-wordcloud">

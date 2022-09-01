@@ -110,13 +110,12 @@ overflow-wrap: break-word;
 }
 .details-descriptive-header{
 font-size: large;
-font-family: "Amazon Ember",Arial, sans-serif;
+
 }
 .details-descriptive > li{
   margin: 10px 0px;
   word-wrap: break-word;
   text-indent: -24px;
-  font-family: "Amazon Ember",Arial, sans-serif;
   margin-left: 25px;
   font-size: 14px;
 }
