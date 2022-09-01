@@ -375,7 +375,7 @@ r42 = Review.create!({ user_id: u19.id, product_id: p12.id, review_header: "Demo
 r43 = Review.create!({ user_id: u19.id, product_id: p13.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
 r44 = Review.create!({ user_id: u19.id, product_id: p14.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
 r45 = Review.create!({ user_id: u19.id, product_id: p15.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
-# r46 = Review.create!({ user_id: u19.id, product_id: p16.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
+r46 = Review.create!({ user_id: u19.id, product_id: p16.id, review_header: "Demo User review ", review_author: u19.account_fname, rating: 5, review_body: "Demo user reviews", verified_purchase: true })
 
 
 
