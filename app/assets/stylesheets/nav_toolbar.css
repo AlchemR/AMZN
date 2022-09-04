@@ -271,3 +271,30 @@ border: 1px solid white;
 .navbar-footer-spacer{
 margin-top: 100px;
 }
+
+.account-information-main-1 {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  width: 225px;
+  top: 55px;
+  right: 75px;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 13%);
+  border: 1px solid #bbb;
+
+}
+
+.dropdown-prime-text {
+  padding: 10px;
+  border: 1px solid transparent;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+}
+
+.dropdown-prime-text:hover {
+  border: 1px solid orange;
+  background-color: lightgray;
+
+}

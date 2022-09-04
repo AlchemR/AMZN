@@ -71,7 +71,6 @@ if (this.props.product) {this.state = {
       e.preventDefault()
 
       if (cartID == 'Guest') {
-
         // console.log("cartID", cartID)
         alert("Please login to use Cart Functionality");
         this.props.history.push('/login')
@@ -85,7 +84,9 @@ if (this.props.product) {this.state = {
         // console.log("tempcart at index", this.props.tempcart[index])
         if (this.props.tempcart[index].product_id == itemID) { productexists = true, tempnum = this.props.tempcart[index].quantity, tempId = this.props.tempcart[index].id }
       }
-       if (productexists) { this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: tempId }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) } else { this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) }
+       if (productexists) { 
+         this.props.updateLedger({ product_id: itemID, quantity: tempnum + this.state.quantity, cart_id: cartID, id: tempId }).then(() => setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) } else {
+            this.props.createLedger({ product_id: itemID, quantity: this.state.quantity, cart_id: cartID }).then(setTimeout(function () { this.props.requestCart(cartID) }.bind(this), 200)) }
      
     }
     }
@@ -122,6 +123,15 @@ checkout(e){
 console.log("product detail show props", this.props)
 
     e.preventDefault()
+
+  if (cartID == 'Guest') {
+    // console.log("cartID", cartID)
+    alert("Please login to use Cart Functionality");
+    this.props.history.push('/login')
+    return (<Redirect to={"/login"} />)
+  } else {
+
+
     console.log("do we hit clear cart")
     // let cartID = cart.id
     this.props.tempcart.slice(0, this.props.tempcart.length - 1).map(cartitem => {
@@ -132,7 +142,8 @@ console.log("product detail show props", this.props)
     setTimeout(() => this.props.history.push('/checkout'), 100)
     setTimeout(() => this.props.requestCart(this.props.cartId), 50)
     // these will eventually be replaced by converting the current cart into transaction history
-
+  }
+  
 }
 
   render(){

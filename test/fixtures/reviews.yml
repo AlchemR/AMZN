@@ -12,6 +12,7 @@
 #  verified_purchase :boolean
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  wordcloud         :text
 #
 
 # This model initially had no columns defined. If you add columns to the

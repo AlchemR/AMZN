@@ -12,6 +12,7 @@ class CartIndex extends React.Component {
   constructor(props) {
     super(props)
     this.handleQuantity = this.handleQuantity.bind(this)
+    this.handleDiscount = this.handleDiscount.bind(this)
     this.clearCart = this.clearCart.bind(this)
   }
 
@@ -23,7 +24,13 @@ class CartIndex extends React.Component {
 
   handleQuantity = (e, cartitem) => {
     e.preventDefault()
-    return ( this.props.updateLedger({ product_id: cartitem.product_id, quantity: e.target.value, cart_id: cartitem.cart_id, id: cartitem.id }).then(setTimeout(() => this.props.requestCart(this.props.cartId), 100) ) )
+    return ( this.props.updateLedger({ product_id: cartitem.product_id, quantity: e.target.value, cart_id: cartitem.cart_id, id: cartitem.id, discount: cartitem.discount }).then(setTimeout(() => this.props.requestCart(this.props.cartId), 100) ) )
+    // return ( this.props.updateLedger({ product_id: cartitem.product_id, quantity: e.target.value, cart_id: cartitem.cart_id, id: cartitem.id }).then(setTimeout(() => this.props.requestCart(this.props.cartId), 100) ) )
+  }
+
+  handleDiscount = (e, cartitem) => {
+    e.preventDefault()
+    return ( this.props.updateLedger({ product_id: cartitem.product_id, quantity: cartitem.quantity, cart_id: cartitem.cart_id, id: cartitem.id, discount: e.target.value }).then(setTimeout(() => this.props.requestCart(this.props.cartId), 100) ) )
     // return ( this.props.updateLedger({ product_id: cartitem.product_id, quantity: e.target.value, cart_id: cartitem.cart_id, id: cartitem.id }).then(setTimeout(() => this.props.requestCart(this.props.cartId), 100) ) )
   }
 
@@ -62,7 +69,7 @@ class CartIndex extends React.Component {
           {cart.slice(0, cart.length - 1).map(cartitem => 
             <div key={`${cartitem.id}${cartitem.id}${cartitem.id}`}>
               {/* <CartLedgerDetails key={`${cartitem.id}x${cartitem.id}`} cartitem={cartitem} itemqty={cartitem.quantity} /> */}
-              <div className="hidden-math" >{price_total += (cartitem.quantity * cartitem.price)}</div>
+              <div className="hidden-math" >{(cartitem.discount == null || cartitem.discount == 1) ? price_total += (cartitem.quantity * cartitem.price) : price_total += ((cartitem.quantity * cartitem.price) - (cartitem.discount * (cartitem.quantity * cartitem.price)))}</div>
               <div className="hidden-math" >{item_total += (cartitem.quantity)}</div>
               <div key={`${cartitem}-#`} className="ledger-items-container">
                 <div key={`${cartitem}-###`} className="ledger-checkbox"><input type="checkbox" checked onChange={() => {} }/></div>
@@ -93,7 +100,8 @@ class CartIndex extends React.Component {
                   {/* </select>  |  <button key={`${cartitem.id}-6`} onClick={() => this.props.deleteLedger(cartitem.id).then(console.log("send delete"))} className="checkout-delete-button blue-text" >  delete</button> | <span className="blue-text"> save for later</span> | <span className="blue-text"> compare with similar items</span></div> */}
                   </select>  |  <button key={`${cartitem.id}-6`} onClick={() => this.props.deleteLedger(cartitem.id).then(setTimeout(() => this.props.requestCart(this.props.cartId), 80))} className="checkout-delete-button blue-text" >  delete</button> | <span className="blue-text"> save for later</span> | <span className="blue-text"> compare with similar items</span></div>
                 </div>
-                <div key={`${cartitem.id}-7`} className="ledger-item-price" > <div className="text-price"> price: {cartitem.price} </div>  <div>  Apply coupon dropdown <select name="coupon" id=""  >
+                {console.log("cartitem", cartitem)}
+                <div key={`${cartitem.id}-7`} className="ledger-item-price" > <div className="text-price"> price: {(cartitem.discount == null || cartitem.discount == 1) ? (cartitem.price) : (cartitem.price - (cartitem.price * cartitem.discount)).toFixed(2)} </div>  <div>  Apply coupon dropdown <select name="coupon" id="cupon" value={cartitem.discount} onChange={(e) => this.handleDiscount(e, cartitem)}  >
                   <option value={1}>no discount</option>
                   <option value={.1}>10% off</option>
                   <option value={.15}>15% off</option>

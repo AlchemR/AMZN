@@ -53,7 +53,7 @@ class Api::CartLedgersController < ApplicationController
   end
 
   def ledger_params
-    params.require(:cart_ledger).permit(:product_id, :quantity, :cart_id, :id)
+    params.require(:cart_ledger).permit(:product_id, :quantity, :cart_id, :id, :discount)
   end
 
 end

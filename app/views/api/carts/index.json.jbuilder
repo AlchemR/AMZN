@@ -2,7 +2,7 @@
 
   @carts.cartLedgers.each do |cart_item|
   json.set! cart_item do
-     json.extract! cart_item, :id, :product_id, :quantity, :cart_id
+     json.extract! cart_item, :id, :product_id, :quantity, :cart_id, :discount
     #  cart item should have same feilds as cart_ledger_item
 
   end

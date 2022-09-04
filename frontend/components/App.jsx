@@ -34,7 +34,7 @@ const App = (currentUsername) => (
     <AuthRoute exact path="/login" component={LogInFormContainer} />
     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
     <Route exact path="/greeting" component={GreetingContainer}/>
-    <Route exact path='/account' component={AccountDetails}/>
+    {/* <Route exact path='/account' component={AccountDetails}/> */}
     <Route exact path='/products/search/:query' component={ProductIndex} />
     <Route exact path='/products/category/:category' component={ProductIndex} />
     <Route exact path='/products/category/:category/search/:query' component={ProductIndex} />

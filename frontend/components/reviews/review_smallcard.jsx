@@ -80,6 +80,7 @@ return(
 
     <div className="review-time">Reviewed on: {new Date(review.updated_at).toDateString()}</div>
     <div className="review-verified-purchase" > {(review.verified_purchase) ? ("Verified Purchase") : ("Unverified Customer")}  </div>
+    <div className="review-verified-purchase" > Tags: {review.wordcloud}  </div>
     <div className="individual-review-body">{review.review_body}</div>
     {/* {let review.id.abuse = false} */}
     <div className="helpful-buttons"> <button className="helpful-button-helpful" onClick={() => this.toggleHelpful()} > Helpful </button> | <button className="helpful-button-report" onClick={() => this.reportAbuse()} >report abuse</button> </div> <div> {(this.state.helpful) ? "marked as helpful!" : null} {(this.state.abuse) ? "marked as abuse" : null}  </div>

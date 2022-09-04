@@ -111,18 +111,28 @@ margin: 50px;
 .reviews-wordcloud{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   
 }
+
 
 .reviews-wordcloud-indi{
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  width: 100px;
-  height: 53px;
-  margin: 20px;
+  width: 150px;
+  height: 52px;
+  margin: 10px;
+  font-size: 13px;
+}
+.reviews-wordcloud-indi:hover {
+  background-color: gray;
+}
+
+.reviews-wordcloud-indi-clicked {
+  background-color: gray;
 }
 
 .individual-review{

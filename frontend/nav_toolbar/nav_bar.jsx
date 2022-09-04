@@ -8,6 +8,7 @@ import SearchBar from "./search_bar"
 import { IoMdArrowDropdown } from "react-icons/io"
 import { ImLocation } from "react-icons/im"
 
+import AccountDetails from '../components/account/account_info';
 
 let fetched = false
 
@@ -102,10 +103,11 @@ showcartquantity(qty){
             </div>
 
           <div className="navbar-right box-hover navtop account-3">
-            <Link to='/account'>
-            <span className="navbar-right line-1">Your</span>
-            <span className="navbar-right line-2" >prime <IoMdArrowDropdown /> </span>
-          </Link>
+            {/* <Link to='/account'> */}
+            {/* </Link> */}
+            {/* <span className="navbar-right line-1">Your</span>
+            <span className="navbar-right line-2" >prime</span> */}
+           <AccountDetails />
           </div>
 
           <div className="navbar-right box-hover navtop account-4">

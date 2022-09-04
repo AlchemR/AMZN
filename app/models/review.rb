@@ -12,6 +12,7 @@
 #  verified_purchase :boolean
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  wordcloud         :text
 #
 class Review < ApplicationRecord
 

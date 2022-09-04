@@ -16,6 +16,8 @@
 #  inventory_count           :integer
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
+#  wordcloud_tags            :text             default([]), is an Array
+#  product_options           :text             default([]), is an Array
 #
 
 # This model initially had no columns defined. If you add columns to the
