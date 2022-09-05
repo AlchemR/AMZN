@@ -280,7 +280,7 @@ margin-top: 100px;
   top: 55px;
   right: 75px;
   background-color: white;
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 13%);
+  /* box-shadow: 0 2px 4px 0 rgb(0 0 0 / 13%); */
   border: 1px solid #bbb;
 
 }
