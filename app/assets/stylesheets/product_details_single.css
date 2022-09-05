@@ -49,31 +49,43 @@
   align-items: center;
 }
 
+.detailed-imagetop {
+  height: 550px;
+}
 
 .detailed-view-image{
   max-width: 90%;
   object-fit: contain;
+  max-height: 500px;
 }
 
 .image-instruction{
   font-size: medium;
 justify-self: center;
 color: gray;
+margin-top: 20px;
 }
 
 .images-array{
   display: grid;
-  grid-template-columns: repeat(4,1fr);
-  column-gap: 5px;
+  grid-template-columns: repeat(5,1fr);
+  column-gap: 20px;
   row-gap: 10px;
+  margin-top: 20px;
 }
 
 .subgrid{
 border: 2px solid black;
-width: 50px;
-height: 50px;
+width: 75px;
+height: 75px;
+max-height: 75px;
+max-width: 75px;
 font-size: smaller;
 overflow-wrap: break-word;
+}
+.subgrid > img {
+  width: inherit;
+  max-height: inherit;
 }
 
 .blue-text{

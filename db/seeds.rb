@@ -69,6 +69,7 @@ p1 = Product.create({
   categories: ['electronics', 'computers & accessories', 'monitors', 'best'] , 
     discounts: [ ".1", ".15", ".25" ], 
     wordcloud_tags: [ "Picture Quality", "Easy-Setup", "Great Value", "Second Monitor", "Price-Point" ], 
+    additional_photos: [ "https://amzn-app-seed.s3.us-west-1.amazonaws.com/51A1kQvFNaL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/51tuEFDaPhL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/61zhZdddWVL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71xb7GDuAGL._AC_SL1500_.jpg" ],
 # havent rolled out product options yet, need more seeds
 # product_options: [ "1", "2" ], 
     seller_id: u1.id, 
@@ -87,6 +88,7 @@ p2 = Product.create({
   categories: ['electronics', 'computers & accessories', 'monitors' ]  ,
   discounts:[ ".1" ], 
   wordcloud_tags: [ "Picture Quality", "home office", "price-point", "stopped working", "work from home" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/41Fpa7kULnL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/61ErMXHUtRL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/61QlrzZuj6L._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71zynnu2lPL._AC_SL1500_.jpg"],
   seller_id: u1.id,  
   in_stock: :true,  
   inventory_count: 7  })
@@ -102,6 +104,7 @@ p3 = Product.create({
   categories: ['electronics', 'computers & accessories', 'monitors' ] ,
   discounts:[ ".2" ], 
   wordcloud_tags: [ "viewing angles", "price-point", "home office", "response time", "Great Value" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/61FqnfB6QzL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71Jj0EDH21L._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71TIMU3KATL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/91CAvrhwPbL._AC_SL1500_.jpg"],
   seller_id: u3.id,  
   in_stock: :true,  
   inventory_count: 12  })
@@ -120,6 +123,7 @@ p4 = Product.create({
   categories: ['electronics', 'computers & accessories', 'monitors' ] ,
   discounts:[ ".1" ], 
   wordcloud_tags: [ "picture quality", "second monitor", "screen protector", "highly recommend", "easy to use" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/71QgP3jpEcL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71gUjRc8-oL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71vGZM-P-eS._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81u%2BByXW3YL._AC_SL1500_.jpg"],
   seller_id: u3.id,  
   in_stock: :true,  
   inventory_count: 2  })
@@ -134,7 +138,8 @@ p5 = Product.create({
   price: 239.99,  
   categories: ['electronics', 'computers & accessories', 'monitors' ] ,
   discounts:[ ".1" , ".2" ], 
-  wordcloud_tags: [  ], 
+  wordcloud_tags: [ "picture quality", "second monitor", "screen protector" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/61PAKfZaz8L._AC_SL1350_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/61YyJAVkF-L._AC_SL1350_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/61vSs4vIYyL._AC_SL1350_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71%2BNsxt5iIL._AC_SL1350_.jpg"],
   seller_id: u4.id,  
   in_stock: :true,  
   inventory_count: 10  })
@@ -151,6 +156,7 @@ p6 = Product.create({
   categories: ['electronics', 'television & video', 'televisions' ] ,
   discounts:[ ".1" , ".05" ], 
   wordcloud_tags: [ "picture quality", "remote control", "light weight", "easy setup", "sound quality" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/51TMcjHOpZL._AC_SL1200_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/616NTX1d6oL._AC_SL1200_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/61eK8h%2Bv3uL._AC_SL1200_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/61i3tUxV9SL._AC_SL1200_.jpg"],
   seller_id: u5.id,  
   in_stock: :true,  
   inventory_count: 22  })
@@ -165,7 +171,8 @@ p7 = Product.create({
   price: 399.99,  
   categories: ['electronics', 'television & video', 'televisions' ] ,
   discounts:[ ".1" , ".05" ], 
-  wordcloud_tags: [  ], 
+  wordcloud_tags: [ "picture quality", "great price", "easy to use" ], 
+  additional_photos: [ "https://amzn-app-seed.s3.us-west-1.amazonaws.com/61iFGSelD0L._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/618Yxam1kWL._AC_SL1000_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/51hHmk%2BjsVL._AC_SL1000_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/31VF3fX7paL._AC_SL1000_.jpg" ],
   seller_id: u8.id,  
   in_stock: :true,  
   inventory_count: 21  })
@@ -181,6 +188,7 @@ p8 = Product.create({
   categories: ['electronics', 'television & video', 'televisions' ] ,
   discounts:[ ".05" , ".1" ,  ".15" ], 
   wordcloud_tags: [ "picture quality", "great picture", "easy to use", "great price", "voice control" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/31Exk5HsxCL._AC_SL1000_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/41-u5kIvyxL._AC_SL1000_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/51EBhwkD%2BkL._AC_SL1000_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/51bVkAj--qL._AC_SL1000_.jpg"],
   seller_id: u8.id,  
   in_stock: :true,  
   inventory_count: 18  })
@@ -196,6 +204,7 @@ p9 = Product.create({
   categories: ['electronics', 'television & video', 'televisions' ] ,
   discounts:[ ".05" , ".1"  ], 
   wordcloud_tags: [ "picture quality", "smart features", "remote control", "wall mount", "game console" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/516848qPOkL._AC_SL1080_.jpg","https://amzn-app-seed.s3.us-west-1.amazonaws.com/61w78zUi5nL._AC_SL1200_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71m6n1MOEzL._AC_SL1080_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71r6AJQnwmL._AC_SL1500_.jpg"],
   seller_id: u8.id,  
   in_stock: :true,  
   inventory_count: 10  })
@@ -211,6 +220,7 @@ p10 = Product.create({
   categories: ['electronics', 'television & video', 'televisions', 'best' ] ,
   discounts:[ ".05" , ".1"  ], 
   wordcloud_tags: [ "picture quality", "easy to set", "remote control",  "living room",  "great price" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/91v6vzliM-S._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81yrPKGgHmS._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81X%2B%2B%2BmmVLS._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/51Eqsy6tEaS._AC_SL1500_.jpg"],
   seller_id: u5.id,
   in_stock: :true,  
   inventory_count: 20  })
@@ -226,6 +236,7 @@ p11 = Product.create({
   categories: ['best', 'basics', 'exercise', "weights" ] ,
   discounts:[ ".05" , ".1"  ], 
   wordcloud_tags: [ "medicine balls", "well made", "good quality", "easy to grip", "home gym" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/816s7YlqtUL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81ZVRR1VyqL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81gnsJs%2Br9L._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/91pIMTVzwUL._AC_SL1500_.jpg"],
   seller_id: u25.id,
   in_stock: :true,  
   inventory_count: 11  })
@@ -241,6 +252,7 @@ p12 = Product.create({
   categories: ['best', 'basics', 'exercise', "balance" ] ,
   discounts:[ ".05" , ".1"  ], 
   wordcloud_tags: [ "standing desk", "works great", "physical therapy", "well made", "great price" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/61YSdZwDPWL._AC_SL1000_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71N%2BWvi-jWL._AC_SL1182_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71hJToH1llL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81H6UkVP8YL._AC_SL1500_.jpg"],
   seller_id: u25.id,
   in_stock: :true,  
   inventory_count: 11  })
@@ -257,6 +269,7 @@ p13 = Product.create({
   categories: [ 'basics', 'exercise', "weights" ] ,
   discounts:[ ".05" , ".1"  ], 
   wordcloud_tags: [ "great value", "weight set", "good quality", "easy to assemble", "value for the money" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/714YleXAOTL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71D05OuJcVL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81tY08Pui7L._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/91-jE2Y%2BibL._AC_SL1500_.jpg"],
   seller_id: u25.id,
   in_stock: :true,  
   inventory_count: 12  })
@@ -273,6 +286,7 @@ p14 = Product.create({
   categories: [ 'basics', 'exercise', "mats" ] ,
   discounts:[ ".05" , ".1"  ], 
   wordcloud_tags: [ "home gym", "yoga mat", "exercise equipment", "high quality", "perfect size" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/619lNP-HGLL._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/71USmg64WyS._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81-I7NGWo5L._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81YojaR%2Bw0L._AC_SL1500_.jpg"],
   seller_id: u25.id,
   in_stock: :true,  
   inventory_count: 20  })
@@ -288,6 +302,7 @@ p15 = Product.create({
   categories: [ 'basics', 'exercise', "mats" ] ,
   discounts:[ ".05" , ".1"  ], 
   wordcloud_tags: [ "home gym", "easy to assemble", "easy to clean", "workout area", "good quality" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/811Wb9LixcS._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81OpuD9XnQS._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81UWRHsvu1S._AC_SL1500_.jpg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/A1VMqElZ44L._AC_SL1500_.jpg"],
   seller_id: u25.id,
   in_stock: :true,  
   inventory_count: 10  })
@@ -303,6 +318,7 @@ p16 = Product.create({
   categories: [ 'best', 'books', 'deals' ] ,
   discounts:[ ".05" , ".1"  ], 
   wordcloud_tags: [ "highly effective effective people", "seven habits", "common sense",  "understand then to be understood", "put first things" ], 
+  additional_photos: ["https://amzn-app-seed.s3.us-west-1.amazonaws.com/71NcwsVdOmL.jpeg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81Qqdt-5ELL.jpeg", "https://amzn-app-seed.s3.us-west-1.amazonaws.com/81ZIMhAs37L.jpeg"],
   seller_id: u27.id,
   in_stock: :true,  
   inventory_count: 10  })

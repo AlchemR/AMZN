@@ -12,12 +12,6 @@ import {RiStarSFill, RiStarSLine, RiArrowDropDownLine, RiChat2Line, RiInformatio
 class ProductShowDetails extends React.Component {
   constructor(props){
     super(props)
-    // console.log("product show details constructor", this.props)
-if (this.props.product) {this.state = {
-      product_id: this.props.product.id,
-      quantity: 1,
-      cart_id: this.props.cartId }
-    }
     this.handleAddToCart = this.handleAddToCart.bind(this)
     this.checkout = this.checkout.bind(this)
     // this.handleQuantity = this.handleQuantity.bind(this)
@@ -58,8 +52,8 @@ if (this.props.product) {this.state = {
         cart_id: this.props.cartId,
         freeShipDate: freeShipDate,
         fastShipDate: fastShipDate,
-        orderWithin: orderWithin
-      
+        orderWithin: orderWithin,
+        photoDisplay: this.props.product.photoUrl
       })
       }
       // console.log("component did update product details show", this.props)
@@ -165,9 +159,17 @@ checkout(e){
         <hr />
       <div className="product-container">
        <div className="image-left-col">
-            <div className="detailed-imagetop"> <img src={product.photoUrl} className="detailed-view-image" /> </div>
+            <div className="detailed-imagetop"> <img src={this.state.photoDisplay} className="detailed-view-image" /> </div>
+            {console.log("this state for photo",this.state)}
+            {console.log("this state for photo",this.props)}
          <div className="image-instruction"> roll over image to zoom in </div>
-            <div className="images-array"> <div className="subgrid"> 8x8 grid </div><div className="subgrid"> 8x8 grid </div><div className="subgrid"> 8x8 grid </div><div className="subgrid">  8x8 grid </div> </div>
+            <div className="images-array"> 
+              <div className="subgrid" onMouseEnter={() => this.setState({ photoDisplay: product.photoUrl }) } > <img src={product.photoUrl} /> </div>
+              <div className="subgrid" onMouseEnter={() => this.setState({ photoDisplay: product.additional_photos[0] })} > <img src={product.additional_photos[0]}  /> </div>
+              <div className="subgrid" onMouseEnter={() => this.setState({ photoDisplay: product.additional_photos[1] })} > <img src={product.additional_photos[1]}  /> </div>
+              <div className="subgrid" onMouseEnter={() => this.setState({ photoDisplay: product.additional_photos[2] })} > <img src={product.additional_photos[2]}  /> </div> 
+              <div className="subgrid" onMouseEnter={() => this.setState({ photoDisplay: product.additional_photos[3] })} > <img src={product.additional_photos[3]}  /> </div> 
+            </div>
           </div>
         <div className="details-center-col">
             <div className="details-title" > {product.title} </div>
@@ -232,7 +234,6 @@ checkout(e){
               <br />
                 <span className="free-delivery"> <span className="blue-text">FREE delivery</span> <span className="bolded-shipping">{this.state.freeShipDate}</span> </span>
           </div>
-              {console.log(this.state)}
               <div className="checkout-delivery"> Or Fastest delivery <span className="bolded-shipping">{this.state.fastShipDate}</span> <span className="be-greentext-format">{this.state.orderWithin}</span> </div>
   
 

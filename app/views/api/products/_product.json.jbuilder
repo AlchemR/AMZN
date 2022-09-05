@@ -1,4 +1,4 @@
-json.extract! product, :id, :title, :description, :detailed_description, :price, :categories, :inventory_count, :in_stock, :details_description_array, :additional_details, :wordcloud_tags, :product_options
+json.extract! product, :id, :title, :description, :detailed_description, :price, :categories, :inventory_count, :in_stock, :details_description_array, :additional_details, :wordcloud_tags, :product_options, :additional_photos
 total = 0
 
 
