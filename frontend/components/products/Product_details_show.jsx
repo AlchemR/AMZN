@@ -120,7 +120,7 @@ if (this.props.product) {this.state = {
 
 
 checkout(e){
-console.log("product detail show props", this.props)
+// console.log("product detail show props", this.props)
 
     e.preventDefault()
 
@@ -132,11 +132,11 @@ console.log("product detail show props", this.props)
   } else {
 
 
-    console.log("do we hit clear cart")
+    // console.log("do we hit clear cart")
     // let cartID = cart.id
     this.props.tempcart.slice(0, this.props.tempcart.length - 1).map(cartitem => {
-      console.log("cartitem", cartitem),
-        console.log("cartitemID", cartitem.id),
+      // console.log("cartitem", cartitem),
+        // console.log("cartitemID", cartitem.id),
         this.props.deleteLedger(cartitem.id)
     })
     setTimeout(() => this.props.history.push('/checkout'), 100)
@@ -148,7 +148,7 @@ console.log("product detail show props", this.props)
 
   render(){
     const {product, cartId} = this.props 
-    console.log("This state",this.state)
+    // console.log("This state",this.state)
     if (!product || !this.state) {return null} else {
       let a;
        a = new String(product.price).split(".")

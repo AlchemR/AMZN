@@ -67,7 +67,7 @@ class EditReviewFull extends React.Component {
     let errors = (this.state.error_review_header || this.state.error_review_body || this.state.error_rating)
 if (!errors) {
   this.props.updateReview(this.state).then(this.props.history.push(`/products/${this.props.productId}`) )
-} else { setTimeout(() => this.setState({ display_errors: true }, () => { console.log("first timeout", this.state), setTimeout(() => this.setState({ display_errors: false, console: console.log("set display errors to false") }), 10000) })) }
+} else { setTimeout(() => this.setState({ display_errors: true }, () => {  setTimeout(() => this.setState({ display_errors: false }), 10000) })) }
 
   }
 

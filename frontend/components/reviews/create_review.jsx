@@ -46,9 +46,9 @@ if (!this.props.product){
 
 
 componentDidUpdate(prevProps){
-console.log("prevprops", prevProps.productId == this.props.productId)
-console.log("component did update", this.state)
-  if (prevProps.productId !== this.props.productId) { console.log("request product fired"); this.props.requestProduct(this.props.productId) } 
+// console.log("prevprops", prevProps.productId == this.props.productId)
+// console.log("component did update", this.state)
+  if (prevProps.productId !== this.props.productId) {  this.props.requestProduct(this.props.productId) } 
 }
 
   handleSubmit = (e) =>{
@@ -61,7 +61,7 @@ console.log("component did update", this.state)
 
     if (!errors) {  
       this.props.createReview(this.state).then(this.props.history.push(`/products/${this.props.productId}`) )
-    } else { setTimeout(() => this.setState({ display_errors: true }, () => { console.log("first timeout", this.state), setTimeout(() => this.setState({ display_errors: false, console: console.log("set display errors to false") }), 10000) }) ) }
+    } else { setTimeout(() => this.setState({ display_errors: true }, () => {  setTimeout(() => this.setState({ display_errors: false }), 10000) }) ) }
     
   }
 

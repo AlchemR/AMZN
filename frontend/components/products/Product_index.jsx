@@ -139,8 +139,8 @@ queryCategoryShow(){
 
 render(){
   const {products, cartId, createLedger} = this.props
-  console.log("products",this.props.products.length)
-  console.log("products",this.props.products)
+  // console.log("products",this.props.products.length)
+  // console.log("products",this.props.products)
 return(
   <div className='grow-main'>
     {/* {console.log("line 60 product index", this.props)} */}
