@@ -36,11 +36,7 @@ class CartIndex extends React.Component {
 
   clearCart(e) {
     e.preventDefault()
-    // console.log("do we hit clear cart")
-    // let cartID = cart.id
     this.props.cart.slice(0, this.props.cart.length - 1).map(cartitem => {
-      // console.log("cartitem",cartitem),
-      // console.log("cartitemID",cartitem.id),
       this.props.deleteLedger(cartitem.id)
     })
     setTimeout(() => this.props.history.push('/checkout'), 100)
