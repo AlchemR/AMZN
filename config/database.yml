@@ -83,3 +83,4 @@ production:
   database: AMZN_production
   username: AMZN
   password: <%= ENV['AMZN_DATABASE_PASSWORD'] %>
+

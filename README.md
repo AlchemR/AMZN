@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+<!-- note run: bundle lock --add-platform x86_64-linux -->
+<!-- each time you need to generate a new gemfile.lock -->
+<!-- for render.com you will also need to reset the DB every 90 days to stay on the freemium tier -->

@@ -43,7 +43,5 @@ Rails.application.routes.draw do
       # check plurality if 404
     end
 
-
-  get '*path', to: "static_pages#frontend_index"
   root "static_pages#root"
 end
